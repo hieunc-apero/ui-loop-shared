@@ -339,3 +339,7 @@ hairlines and gradient buttons as background-image tiles (8px PNGs; rims = a 1px
 fill is an image), text inside `.gm-s/.gm-d` screen + difference wrappers (`u + .body`), no inset
 shadows. Also capture with `<style>` stripped (inline font-family and gutters on every element) and
 with images off (alt text styled). Keep "<body>" out of comments: it breaks such rewrites.
+Measure overflow with `document.documentElement.scrollWidth` per width AND per mode: a number and
+its unit in two table cells can never wrap, so "+10,000 added" pushed a 320 page to 326 px (366 px
+with fallback fonts). Put them in one cell (number `nowrap`, unit may drop). Icon cells next to a
+long title need a fixed width the title can't squeeze, or the circle turns into a pill.
