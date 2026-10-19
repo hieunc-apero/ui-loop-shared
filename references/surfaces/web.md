@@ -89,3 +89,4 @@ building or what the critic flagged.
 | Scale-up reveals stay sharp | scale-up reveal animations |
 | iPhone Safari layer budget | many animated layers, iOS Safari jank/blur |
 | Cutting a subject out of a photo, and filling the hole | cutting out a subject, inpainting |
+| HTML emails: judge with real merge values | transactional/marketing HTML email, merge fields |

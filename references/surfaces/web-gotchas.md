@@ -315,3 +315,12 @@ hole left behind: LaMa (`pip install simple-lama-inpainting`, ~200 MB model, CPU
 crop around the hole, scale so the long side is 1024, inpaint, scale back, feather 3 px.
 OpenCV Telea/blurred fills leave smears the user rejects ("nền bị xóa trông không ổn"). Always
 preview a cut on magenta and on the real page background before shipping (USELOG 2026-10-17).
+
+## HTML emails: judge with real merge values
+A template full of `{{credits}}` / `{{email}}` renders at the placeholder's length, not the real
+one, and squeezed a side-by-side illustration to 24 px in the before-capture. Capture a filled
+copy instead: a typical value and the longest plausible one ("10,000", a 45-character address).
+Long addresses wrap wherever `break-word` lands, mid-domain ("…@ou / tlook.com"); ask the backend
+in the MERGE FIELDS comment to insert `<wbr>` after "@" and before dots, and to format numbers with
+a thousands separator. Headless Chrome's `--window-size` crops narrow viewports; Playwright from
+any repo's `node_modules` gives true 320/390 captures (USELOG 2026-10-19).
