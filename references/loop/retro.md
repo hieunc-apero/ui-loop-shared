@@ -90,5 +90,8 @@ now proved it matters.
   changed.
 - Project repo: edit `.claude/design-rules.md` but don't commit on the user's branch unless they
   ask — say it's there, uncommitted.
+- **Both repos, every time:** before the last message run `git status -sb` in the skill folder
+  and in `~/.ui-loop`; anything changed is committed and pushed in each, and the reply names both
+  commits. An engine change often has a data side (USELOG, handoff) and the reverse.
 - The last message ends with a short **"Đã cập nhật luật:"** list (one line each), so the user
   can veto a lesson.
