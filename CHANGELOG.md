@@ -12,6 +12,34 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## v0.25 — 2026-10-19 — cost: lanes, scoped/verify rounds, core vs archive, size caps
+**Changed:**
+- **A. Lanes** (SKILL.md "Lane"): small (one element, direction decided → self-check of the element
+  and its neighbours at every width/theme it renders in, no critic, one USELOG line, rules only if
+  the user reacts), medium (one section → one `scoped` critic round), large (as before). Escalate,
+  never shrink after the fact; "sửa nhanh"/"chấm kỹ" set it. Global CLAUDE.md block says so.
+- **B. Round types** (`references/loop/critic-round.md`, critic input 5): `full` · `scoped` (only
+  the changed regions and what touches them, their widths/themes) · `verify` (round 2+: re-measure
+  previous blockers + the regions the fixes touched; no full checklist or taste pass; shorter report).
+- **C. Core vs read-by-topic.** SKILL.md 20.7 → 11.3 KB (dispatch template → `loop/critic-round.md`;
+  learn/retro → `loop/retro.md`). `ui-critic.md` 19.6 → 16.2 KB (surface modes → `critic/modes.md`,
+  read only for non-web surfaces). `web.md` 28.6 → 6.6 KB core + `web-gotchas.md` with a topic index
+  (verbatim, line-checked: nothing lost). Taste: core `taste.md` (principles + thresholds + topics per
+  axis, 🔒 on protected checks) + `taste-archive.md` (the full previous profile, verbatim).
+- **D. Size caps** (`loop/retro.md`, `tools/size-check.sh`): SKILL 14 KB, critic 17 KB, surface core
+  8 KB, taste core 12 KB; project design-rules uncapped. Over a cap: merge (keep all citations) →
+  move the story to the archive → demote to the archive (never delete; never a 🔒 rule; only if
+  uncited in the last 30 USELOG entries; reachable by topic). Promote back + 🔒 when the problem
+  returns. Each move is its own commit and its own "Đã cập nhật luật:" line.
+**Why:** the user: every run costs a lot of tokens and time, small edits most of all. Measured:
+critic rounds 100–160k tokens (≈28k of it static reading: critic 20 KB + taste 43 KB + project
+rules 24 KB), runs 300–480k; the main session loaded ≈121 KB per web run; small fixes ran the
+full matrix; core files only grew (taste 25 → 43 KB in five days).
+**Expected (static reading only, before screenshots):** main session per web run 121 → 68 KB
+(large) / ≈14 KB (small); critic per round 92 → 55 KB (full/scoped) / ≈27 KB (verify). Small lane
+drops the critic entirely. **To measure:** `Lane:` and `Cost:` on every USELOG entry from now; re-run
+the git-history eval to check the critic misses nothing more (not run yet).
+
 ## v0.24 — 2026-10-19 — INSTALL.md + uninstall
 **Changed:** `INSTALL.md` at the root: prerequisites, three cases (first time · new machine with
 existing data via `--data` · another Claude account on the same machine), commands for

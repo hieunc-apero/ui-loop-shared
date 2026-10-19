@@ -8,8 +8,8 @@ sequence, not a page.
 
 ## Build
 
-- **A code funnel also reads `web.md` before the first edit — at least "A whole-page atmosphere
-  layer" whenever the backdrop changes.** Seasonal funnel 2's moodboard pass re-hit both traps that
+- **A code funnel also reads `web.md` before the first edit — and `web-gotchas.md` → "A whole-page
+  atmosphere layer" whenever the backdrop changes.** Seasonal funnel 2's moodboard pass re-hit both traps that
   section names (a body background hiding the z −1 room on phone; a z-index on the paywall trapping
   its pinned buy button) because only this file was read (USELOG 2026-10-16, seasonal funnel 2 vibe).
 

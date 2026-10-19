@@ -38,6 +38,7 @@ nói chuyện được với bạn giữa chừng. Phiên chính thì làm đư�
 Bạn: "làm lại trang Style Studio"            (hoặc gõ /ui-loop …)
         │
         ▼
+ Chọn làn ── nhỏ │ vừa │ lớn  (xem bảng dưới — quyết định tốn bao nhiêu)
  0. Chọn bề mặt ── figma │ web-app │ landing │ funnel │ app
     Chọn chế độ ── một thiết kế │ nhiều phương án
  1. Brief ── trang để làm gì, "xong" là gì, nền tảng + hình thức, các trạng thái cần xem
@@ -56,6 +57,27 @@ Bạn: "làm lại trang Style Studio"            (hoặc gõ /ui-loop …)
 ```
 
 Chi tiết từng bước: [`SKILL.md`](../SKILL.md), mục `## 0` tới `## 10`.
+
+### Ba làn — tốn công theo đúng cỡ việc
+
+| Làn | Khi nào | Chạy gì | Tốn khoảng |
+|---|---|---|---|
+| **Nhỏ** | sửa 1 phần tử / vài thuộc tính, hướng đã rõ (màu, khoảng cách, cỡ, căn, chữ, icon) | tự chụp + đo đúng phần tử và xung quanh ở các độ rộng nó hiện; **không gọi critic**; USELOG 1 dòng | 1–2 phút |
+| **Vừa** | một section, một component qua các trạng thái | **1 vòng critic thu hẹp** (`scoped`): chỉ vùng vừa đổi | vài phút |
+| **Lớn** | trang mới, làm lại, funnel, Figma, luồng | đủ vòng: vòng 1 `full`, vòng sau `verify` (chỉ soát lỗi cũ + chỗ vừa sửa) | như trước, vòng sau rẻ hơn |
+
+Nó nói làn khi bắt đầu. Muốn đổi: *"sửa nhanh"* → nhỏ, *"chấm kỹ"* → lớn. Tự kiểm ở làn nhỏ thấy
+vấn đề lan ra ngoài phần tử thì tự lên làn vừa.
+
+### Đọc khi cần, không đọc hết
+
+Mỗi lần chạy chỉ đọc **file lõi** (ngắn, có trần dung lượng): `SKILL.md`, gu lõi `taste.md`,
+file bề mặt. Mẹo theo chủ đề (`web-gotchas.md`), lời trích gu (`taste-archive.md`), cách chấm
+riêng từng bề mặt (`references/critic/modes.md`) chỉ mở khi việc đụng đúng chủ đề.
+Retro không được để file lõi phình mãi: quá trần thì **gộp** luật trùng, **dời** câu chuyện
+sang file lưu trữ, hoặc **hạ** luật lâu không dùng xuống file lưu trữ — **không xoá**; luật có
+dấu 🔒 (đã chặn lỗi thật, bạn tự đặt, về thanh toán/dữ liệu) không bao giờ bị hạ; lỗi quay lại
+thì luật được nâng lên lõi. `sh tools/size-check.sh` in dung lượng từng file lõi so với trần.
 
 ## 4. Bề mặt (surface) — đang làm trên cái gì
 
@@ -129,7 +151,7 @@ Bài học đi đâu:
 | Bài học về… | Ghi vào |
 |---|---|
 | dự án này (token, component, ngoại lệ có chủ ý) | `.claude/design-rules.md` trong repo dự án |
-| cách bạn nhìn (đúng ở mọi dự án) | `~/.ui-loop/taste.md` (của riêng bạn) |
+| cách bạn nhìn (đúng ở mọi dự án) | lời trích → `~/.ui-loop/taste-archive.md`; nguyên tắc/ngưỡng đo → `~/.ui-loop/taste.md` (lõi) |
 | cách vòng lặp nên chạy | `SKILL.md` / `references/` / `agents/` + một mục `CHANGELOG.md` |
 | chuyện một lần | chỉ `~/.ui-loop/USELOG.md` |
 

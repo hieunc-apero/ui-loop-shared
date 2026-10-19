@@ -38,12 +38,22 @@ fresh so you can't do that. Keep it that way:
    "Not checked". Read it even if the brief doesn't mention it. It is the user's own eye, mined from hundreds of their
    corrections, and applies in every project unless a project rule says otherwise.
 4. **Previous blockers** (round 2+) — the list from your last verdict, to confirm fixed.
+5. **Round** — `full` (default), `scoped`, or `verify`:
+   - `scoped` comes with **Scope**: the regions/selectors that changed, and the widths and themes
+     they show in. Judge those regions and what touches them (their section, anything layered
+     over or beside them); on the rest of the page run only the load check (step 3) and
+     horizontal overflow. Don't judge untouched sections.
+   - `verify` (round 2+): confirm each previous blocker by re-measuring it, at the width/theme it
+     was found; then look at the regions the fixes touched (given in Scope) for anything the fix
+     broke, plus step 3 and overflow. Skip the universal checklist and the taste pass elsewhere.
+     If a fix visibly changed something outside Scope, widen to that region and say so.
 
 If the target is missing, or a URL won't load, stop and say so. Don't critique a broken page.
 
 ## Procedure
 
-1. **Read every rule file you were given, and the taste profile, fully.** Rules marked
+1. **Read every rule file you were given, and the taste profile, fully** (`verify` rounds: read
+   a rule file only to look up a rule cited in a previous blocker or a new finding). Rules marked
    `[đo]`/measurable are blockers when violated. Rules marked `[gu]`/taste are reported with
    your confidence, not as blockers, unless the violation is flagrant. The taste profile's
    axes are mostly about **dose** ("nổi hơn chút, nhưng không too much"): judge each element
@@ -72,8 +82,8 @@ If the target is missing, or a URL won't load, stop and say so. Don't critique a
    [...document.images].filter(i => i.complete && !i.naturalWidth).map(i => i.currentSrc || i.src)
    ```
    plus `read_console_messages` with `onlyErrors`. Broken images are finding #1.
-4. **Look at it** at the widths that apply — default **390, 820, 1440** — in **dark and light**
-   if the app has both themes (`resize_window` `colorScheme`). Take a screenshot at each. Scroll
+4. **Look at it** at the widths that apply — those in the brief; default **390, 820, 1440** —
+   in **dark and light** if the app has both themes and the brief doesn't narrow it (`resize_window` `colorScheme`). Take a screenshot at each. Scroll
    the whole page; scroll-triggered and below-the-fold content counts. Reach the states named in
    the intent (hover the cards, open the dialog, empty the input).
 5. **Look first, then measure.** Write down your first impression of each screenshot before
@@ -92,77 +102,17 @@ If the target is missing, or a URL won't load, stop and say so. Don't critique a
 
 ## Surface modes
 
-The procedure above is written for a browser target. Adjust per surface:
-
-**`landing`** — call `Skill(verifying-landing-pages)` first and work its rubric on top of the
-universal checklist below. Use widths 390 / 820 / 1400. Open image files with `Read`: text baked
-into mockups is invisible to every other check. If you can't name the primary CTA from the
-first screenful at 390, that is a blocker.
-
-**`funnel`** — walk the steps in order, in one tab, with the test input given. Never submit
-real payment or personal data; stop at any purchase/confirm control and judge it without
-pressing. On top of per-page checks: wording, prices and plan names identical across steps;
-the user can tell where they are and how much is left; Back at every step works and keeps the
-input; Close/Skip present where allowed and not hidden; one primary action per step. Report
-which step each finding is on.
-
-**`figma`** — no browser. For each nodeId:
-- `get_screenshot` and look at it (first impression, as in step 5). Skip the browser steps.
-- `get_metadata` for boxes: equal siblings, 44 px targets, text boxes too small for their
-  content, frame widths matching the project's breakpoints.
-- `get_design_context` / `get_variable_defs` for values: compute contrast from the actual
-  fills (text fill vs the fill of the nearest opaque ancestor); flag colours, radii, spacing
-  and type that are raw values while the file defines variables/styles for them. A raw hex
-  that equals a token is still a finding — it won't follow a theme change.
-- Auto-layout missing on containers that hold content; layers named `Frame 123`/`Rectangle 4`;
-  detached instances of library components.
-- Rules tagged `[web]` in the rule file don't apply. Hover, motion and prototype flows can't
-  be judged — list them under Not checked.
-
-**Reference given** (code vs approved Figma) — screenshot both at the same width and compare
-section by section. Unrequested drift in layout, copy, imagery or tokens is a blocker; say
-which frame and where.
-
-**`app`** — iOS/Android screens, as Figma frames or simulator screenshots. Read
-`~/.claude/skills/ui-loop/references/surfaces/app.md` and run its platform checklist (44 pt / 48 dp
-targets, safe areas, text sizes, tab bar ≤ 5, input above the keyboard, sheets, dark and light
-separately). On Figma, measure from node data as in `figma` mode; motion and gestures go under
-Not checked. Flag web-only patterns carried into an app (hover reveals, desktop dropdowns,
-page-width layouts).
-
-**`flow`** — a whole user flow. Read `~/.claude/skills/ui-loop/references/surfaces/flow.md`.
-- *Figma flow:* read the flow-graph JSON you were given (screens, notes, edges with exact
-  from/to, and computed `checks`). Treat each computed check as a lead, not a verdict: screenshot
-  the section (`get_screenshot`, then zoom on regions) to confirm arrow overlaps; for every
-  `branchesEndingInNotes`, decide whether the note is a pointer to another case (then verify that
-  case/screen exists — in this graph or in sections you were given) or a branch written as text
-  where screens are missing (finding). A dead-end screen is fine only if it is a real end state.
-  Duplicate names and non-instance screens are `[figma]` findings when the project rules say so.
-  Also judge what the graph can't: does every screen that calls a server have an error branch,
-  every list an empty state, every payment a cancelled and a pending branch?
-- *Live flow:* walk it as in `funnel` mode, plus every branch the brief names (error, empty,
-  out of credit, cancelled payment, expired session); Back and reload at each step.
-- *Spec given:* list the spec's cases / screen IDs, map each to screens and arrows, and report a
-  table: present / **missing** / **extra** / **mismatched**. Every pointer note must resolve.
-Report flow findings with the screen or arrow label they're on (e.g. `arrow "Lỗi" → PW-01`).
-
-**`Mode: compare`** (variants) — several targets labelled A, B, C…, each a different design
-direction for the same brief, with each direction's name and bet. Judge every variant with the
-full procedure at the same widths and themes — a blocker is a blocker in every variant. Then,
-after the per-variant sections, add a **Ranking**:
-1. Order the variants by how well each serves the brief's intent for its user — not by which
-   has fewest blockers, and not by which you'd have designed. A bold direction with two fixable
-   blockers can outrank a safe one with none.
-2. For each, one line: what it does best, what would take a redesign (not a fix) to repair.
-3. **Worth taking:** specific elements from lower-ranked variants that would strengthen the
-   winner without breaking its direction.
-4. Your confidence in the ranking (high / medium / low), and what the user should look at
-   themselves because you can't judge it (usually: taste calls between close variants).
-Report each variant's VERDICT separately; there's no overall PASS in compare mode.
+The procedure above is written for a browser target (`web-app`). For **any other surface or
+mode** — `landing`, `funnel`, `figma`, `app`, `flow`, a **Reference** given, or
+`Mode: compare` — `Read` `~/.claude/skills/ui-loop/references/critic/modes.md` and follow the
+section for it (only that section) before step 4.
 
 ## Taste pass (after the universal checklist)
 
-Walk the taste profile's axes in order and run every `[đo]` check that applies to the surface.
+Walk the taste profile's axes in order and run every `[đo]` check that applies to the surface
+(`scoped`: within Scope; `verify`: skip). The profile is a core file; when the target touches an
+axis's listed **topics**, also `Read` that axis's section of `taste-archive.md` (same folder) for
+the precedents.
 For the measurable ones, take the number: count accents per block, read text-to-edge padding
 on chips and cards (two-line case included), compare icon and text centres, list outliers
 among same-type components, check which control in each action group is primary. Taste
@@ -251,4 +201,5 @@ Any item that rests on a value carries its selector and raw value (see Measureme
 **Not checked** — what you could not reach or measure, and why. Never omit this section; an
 honest gap is worth more than an implied all-clear.
 
-Keep the report under ~600 words. The builder reads it to act, not to admire it.
+Keep the report under ~600 words (`scoped` ~400, `verify` ~250: verdict, previous blockers,
+anything new, Not checked). The builder reads it to act, not to admire it.

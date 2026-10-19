@@ -7,30 +7,49 @@ description: Design or build UI — in Figma, as front-end code for a web app, a
 
 The user's time is the scarce resource. Every version you show them that has a cropped face,
 a wrapped button label or a grey placeholder costs them a round of feedback they shouldn't have
-had to give. This skill makes sure the first version they see has already survived a critic.
+had to give. This skill makes sure the first version they see has already been checked — with
+effort sized to the change, because tokens and minutes are the user's too.
 
 ```
-surface → brief → load rules → build → self-check → ui-critic → fix → (repeat ≤ 4) → hand off → learn
+lane → surface → brief → load rules → build → self-check → [ui-critic → fix]×≤4 → hand off → learn
 ```
 
-**Two folders.** This skill folder is the shared engine — the same for everyone who installs it.
-What belongs to one person lives in their **data folder `~/.ui-loop/`** (its own git repo, set up
-by `setup/install.sh`):
-
-| `~/.ui-loop/…` | What |
-|---|---|
-| `taste.md` | how this user judges UI, in every project (step 2) |
-| `projects.md` | where each project keeps its rules — repo paths, Figma fileKeys |
-| `USELOG.md` | one entry per run (step 9) |
-| `evals/` | this user's eval cases and results |
-
+**Two folders.** This skill folder is the shared engine, the same for everyone. What belongs to
+one person lives in their **data folder `~/.ui-loop/`** (its own git repo): `taste.md` (their
+eye, core — read every run), `taste-archive.md` (every quote behind it — read by topic),
+`projects.md` (where each project keeps its rules), `USELOG.md` (one entry per run), `evals/`.
 Never write a person's quotes, paths or run logs into the skill folder; never read another
-person's data folder. "USELOG <date>" citations in this file point at the maintainer's log.
+person's data folder. "USELOG <date>" citations here point at the maintainer's log.
+
+**Read on demand, not up front.** Files under `references/` are opened only at the step that
+names them, and `*-gotchas.md` / `taste-archive.md` only when the work touches one of their
+listed topics.
+
+## Lane — size the run first
+
+| Lane | When | What runs |
+|---|---|---|
+| **small** | One element, or a few properties of one component; the direction is already decided (a colour, gap, size, alignment, copy, icon, a spot the user pointed at). No new element, layout or state. | One-line brief → only the matching rules (below) → change → **self-check of the element and its neighbours** → hand off. **No critic.** One USELOG line. |
+| **medium** | One section, or one component across its states; a new element inside an existing layout. | Steps 1–4, then **one `scoped` critic round** on what changed; any further round is `verify`. |
+| **large** | New page or screen, redesign, funnel or flow, Figma frames, variants, or the user asks for a thorough check ("chấm kỹ", "rà hết"). | Every step; round 1 `full`, rounds 2+ `verify`. |
+
+- **Small-lane rules:** don't read the whole rule file — search the project's
+  `.claude/design-rules.md` and `~/.ui-loop/taste.md` for the component and property you touch
+  and read the matching rules. No surface reference, no build skill.
+- **Small-lane self-check:** screenshot the element at every width/theme where it renders
+  (default phone 390 + desktop 1440, both themes if the app has them); measure what its rules
+  name (padding, contrast, alignment within 1 px, wrap, overflow); look at its neighbours and at
+  every other place the same component renders. Console clean.
+- **Escalate** small → medium when the self-check finds anything outside the element, or the
+  component is shared and renders elsewhere; medium → large when scope grows. Never shrink a lane
+  to save tokens after the fact. The user can set it: "sửa nhanh" → small, "chấm kỹ" → large.
+- Say the lane in one line when you start ("làn nhỏ — sửa padding chip, tự kiểm, không gọi
+  critic"), so the user can bump it.
 
 ## 0. Surface
 
-Decide which one the work is on, then read its reference file in `references/` — it says which
-skills to load for building, how to capture for the critic, and what's specific to it:
+Decide which one the work is on; in medium/large lanes read its reference (build skills,
+capture, what's specific to it):
 
 | Surface | When | Reference |
 |---|---|---|
@@ -39,72 +58,45 @@ skills to load for building, how to capture for the critic, and what's specific 
 | `landing` | marketing site, launch page, app landing | `references/surfaces/landing.md` |
 | `funnel` | onboarding, paywall, checkout, wizard — the sequence matters | `references/surfaces/funnel.md` |
 | `app` | iOS / Android app screens — in Figma or a native build | `references/surfaces/app.md` |
-| `flow` | a whole user flow — Figma screens joined by arrows, a live multi-step journey, and/or conformance to a spec | `references/surfaces/flow.md` |
+| `flow` | a whole user flow — Figma screens + arrows, a live journey, conformance to a spec | `references/surfaces/flow.md` |
 
-Work that crosses surfaces runs the loop once per surface: design in Figma until the critic
-passes, then code it and run the loop again with the approved frames as the reference
-(`references/surfaces/figma.md`, "Handoff to code"). A funnel built in code also follows the web or
-landing reference for each page.
+Work that crosses surfaces runs the loop once per surface (Figma until it passes, then code
+with the approved frames as Reference — `figma.md`, "Handoff to code"). A coded funnel also
+follows the web or landing reference per page.
 
-### Mode: one design, or several directions
-
-Default is **one design** — the steps below as written.
-
-Switch to **variants** (`references/modes/variants.md`) when the user asks for options ("vài
-phương án", "3 hướng", "explore", "cho tôi chọn"), or when the brief is a new page or a
-redesign whose direction is genuinely open and the user hasn't picked one. Never for fixes,
-polish, or anything where the direction is already decided — there it only multiplies cost.
-Variants runs N builder agents in parallel on deliberately different directions, has the
-critic judge and rank them, polishes the winner through the normal loop, and shows the user
-all of them.
+**Variants mode** (`references/modes/variants.md`) when the user asks for options ("vài phương
+án", "3 hướng", "cho tôi chọn") or a new page's direction is genuinely open. Never for fixes or
+polish — there it only multiplies cost.
 
 ## 1. Brief
 
-Before touching code, write down (for yourself, in two to five lines):
-- **platform** (`web` · `ios` · `android`) and **medium** (`live` running build · `figma`
-  frames) — these decide which project rules apply (see the tags below),
-- what the page/section is for and who looks at it,
-- what "done" looks like — the change the user asked for, in concrete terms,
+Two to five lines, for yourself (small lane: one):
+- **platform** (`web` · `ios` · `android`) and **medium** (`live` · `figma`) — they decide which
+  rules apply;
+- what the page/section is for, and what "done" looks like in concrete terms;
 - which states matter: hover, empty, loading, error, logged-out, long text, phone width.
 
-Describe the page from what the code renders now, not from memory: a section you list that no
-longer exists, or a feature flag you forget to mention, becomes a phantom blocker in the
-critic's report and burns a round.
-
-If the request is too ambiguous to write that down, ask the user **now**, once. Do not ask
-mid-loop; the point is that the loop runs without them.
+Describe the page from what renders now, not from memory — a section that no longer exists
+becomes a phantom blocker. Too ambiguous to write down → ask the user **now**, once, never
+mid-loop.
 
 ## 2. Load the taste profile and the project's rules
 
-First the user's **taste profile**: `~/.ui-loop/taste.md`. It says how this user judges UI in
-every project, mined from their own corrections. Walk its axes yourself before the self-check
-(step 4); most first-round rejections in the past were on them. No file, or still the empty
-template → there is no profile yet: say so in the hand-off, run on the project rules and the
-critic's checklist, and let step 8 start filling it from this user's own feedback.
-
-Find the project's rules: in the repo root, or — for Figma-only work or rules kept elsewhere —
-by looking the repo path or Figma fileKey up in `~/.ui-loop/projects.md`. Read in
-full if present:
-- `DESIGN.md` (tokens and intent),
-- `.claude/design-rules.md` (rules learned from past corrections),
-- the UI sections of `CLAUDE.md`,
-- any `docs/design*.md`.
-
-**Scope tags.** Rules may carry platform tags — `[web]`, `[desktop]` (web ≥ 1024), `[app]` —
-and medium tags — `[live]` (needs a running build: hover, scroll, URL, playback, live data),
-`[figma]` (about the Figma file itself: components/instances, sections, flow arrows). No tag
-means everywhere. Apply only the rules that match the brief's platform and medium; pass both
-to the critic so it filters the same way. When you add a rule (steps 8 and 10), tag it.
-
-Project rules override the taste profile where they are more specific; both override general
-taste. If none exist, the critic's universal checklist still applies;
-general principles live in the `impeccable` / `ui-ux-pro-max` skills if you need them.
+- **Taste:** `~/.ui-loop/taste.md` (core). Walk its axes before the self-check. Missing or still
+  the template → no profile yet: say so at hand-off, run on project rules + the critic's
+  checklist, and let the retro start it from this user's feedback.
+- **Project rules:** in the repo root, or via `~/.ui-loop/projects.md` (Figma-only work, rules
+  kept elsewhere): `DESIGN.md`, `.claude/design-rules.md`, the UI sections of `CLAUDE.md`,
+  `docs/design*.md`.
+- **Scope tags:** `[web]`, `[desktop]` (web ≥ 1024), `[app]`; `[live]`, `[figma]`; untagged =
+  everywhere. Apply only rules matching the brief's platform and medium; pass both to the critic.
+- Project rules beat the taste profile where more specific. With neither, the critic's checklist
+  still applies; general principles are in the `impeccable` / `ui-ux-pro-max` skills.
 
 ## 3. Build
 
-**Load the surface's build skill first, with the `Skill` tool** — reading the surface reference
-that names it is not loading it. Until 2026-10-19 the references said "load X" and runs mostly
-didn't: 55 ui-loop runs, `frontend-design` loaded 3 times, `impeccable` 5.
+**Medium and large lanes: load the surface's build skill with the `Skill` tool** — naming it is
+not loading it (55 runs to 2026-10-19: `frontend-design` loaded 3 times, `impeccable` 5).
 
 | Surface | Load before building |
 |---|---|
@@ -113,218 +105,67 @@ didn't: 55 ui-loop runs, `frontend-design` loaded 3 times, `impeccable` 5.
 | `figma`, `app` in Figma, `flow` | `figma-use` before every `use_figma` (+ `figma-generate-design` for a new screen) |
 | `app` native iOS code | `swiftui-patterns`, `swiftui-layout-components` (+ `swiftui-liquid-glass`, `ios-accessibility`) |
 
-- Skip only for a fix of one or two properties the user named exactly (a colour, a gap, a
-  string). Anything that changes layout or adds an element loads the skill.
-- Not installed → carry on without it, and say so in the USELOG line (install hints:
-  `setup/skills.txt`).
-- Project rules and the taste profile still win where the skill disagrees with them.
-- Record what you loaded — the USELOG entry's **Skills loaded:** line (step 9).
+Not installed → carry on, say so in USELOG (hints: `setup/skills.txt`). Project rules and taste
+win over the skill. Reuse the project's components and tokens; a new colour, radius or shadow
+needs a reason. Real content, never placeholders — no real asset → say so at hand-off.
 
-- Reuse the project's components and tokens before writing new ones (DESIGN.md usually lists
-  them). New colours, radii or shadows outside the token set need a reason.
-- Real content over placeholders, always. If real assets don't exist, say so at hand-off
-  rather than shipping a grey box.
+## 4. Self-check (before spending a critic round)
 
-## 4. Self-check (cheap, before spending a critic round)
+- Code: preview running, reload, `read_console_messages` errors, a screenshot at desktop and at
+  390. Fire the main interaction **at 390** too — it runs at DPR 2, where canvas-sizing bugs show
+  (USELOG 2026-10-15).
+- Phone height: 390×664 (Safari with toolbars) as well as 390×844 — "fill the space left"
+  layouts break on the short one (USELOG 2026-10-16).
+- Anything reacting to leaving or waiting (background tab, notification, timer): test the path
+  people take — stay, then switch tab — not the easiest to script (USELOG 2026-10-15).
+- Figma: `get_screenshot` of each touched frame; nothing detached, no "Frame 123" names.
+- Build skill loaded (medium/large)? If not, load it now and re-check against it.
 
-- Code: make sure the preview is running (see the surface reference), reload, check
-  `read_console_messages` for errors, take one screenshot at desktop and one at 390px.
-  Fire the page's main interaction (the CTA, the toggle, the animation trigger) **at 390** too,
-  not only at desktop: the 390 preview runs at devicePixelRatio 2, which desktop doesn't, and
-  DPR bugs (a canvas sized in device pixels with no CSS size) only show there (USELOG 2026-10-15).
-- Phone height: shoot 390×664 (iPhone Safari with its toolbars) as well as 390×844. Layouts that
-  fill "the space left" (flex scenes, fixed CTAs) break on the short one — a ticket rode up over
-  the title and the title under the logo, only on the user's real phone (USELOG 2026-10-16).
-- Anything that reacts to the person leaving or waiting (background tab, notification, timer,
-  "you can leave"): test the path they actually take — stay on the screen, then switch tab —
-  not only the one that is easiest to script. A notification tested by navigating away first
-  never fired for someone who just switched tabs from the waiting screen (USELOG 2026-10-15).
-- Figma: `get_screenshot` of each frame you touched; check nothing is detached or left at
-  default "Frame 123" naming.
-- Build skill (step 3): loaded this run? If not and the change wasn't a named one-property fix,
-  load it now and re-check the build against it before the critic sees it.
+Fix what's obviously broken; don't try to be the critic.
 
-Fix anything obviously broken.
+## 5. Critic round (medium and large lanes)
 
-Do not skip straight to "looks good" here — but also don't try to be the critic. That's the
-next step's job.
-
-## 5. Critic round
-
-**Before round 1, check the critic can see.** `ui-critic` drives the page through the
-`Claude_Browser` MCP tools; when that server isn't connected in this session the agent starts
-with only `Read`/`Skill` and returns NOT REVIEWED — a whole round burned (USELOG 2026-10-14).
-If those tools aren't in your own tool list, don't dispatch with a URL: capture yourself
-(`references/surfaces/web.md` → "Capture without the browser tools") and pass the folder.
-
-**Every round gets a fresh capture folder.** Re-capture every state after the fixes, into a new
-folder; never carry a file over from before a fix — copy changes included (a label rename
-made one capture stale twice in one day). A stale screenshot cost a whole round as a
-false blocker (USELOG 2026-10-15, Motion Control variant).
-
-**Before every round, check each rule and taste path still exists.** Another session can merge
-or move a file mid-run; the critic then quietly runs without that profile (USELOG
-2026-10-15, runs tray: two taste files were merged into one between rounds 1 and 2).
-
-Dispatch the `ui-critic` agent, foreground (`run_in_background: false`), with a fresh call
-every round:
-
-```
-Surface: web-app | landing | funnel | figma | app | flow
-Platform: web | ios | android        Medium: live | figma
-Target: http://localhost:3000/kits/creator
-        (figma: fileKey + nodeIds;  funnel: the ordered steps;  native: screenshot paths)
-Reference: <optional — approved Figma nodeIds the code must match>
-Flow graph: <flow only — absolute path to the JSON from references/surfaces/flow-graph.js>
-Spec: <optional — absolute path to the spec/PO doc to check conformance against>
-Widths: 390, 820, 1440. Themes: dark, light.
-Intent: <the brief from step 1 — purpose, what changed, states to reach>
-Rule files: <absolute paths found in step 2, AND the taste file by full absolute path
-            (~/.ui-loop/taste.md expanded) — the critic has only Read and cannot list folders;
-            or "no taste profile yet">
-Measured: <computed values you already have — contrast ratios, geometry — so the critic
-          uses them instead of sampling pixels. Measure them on THIS round's capture: numbers
-          carried from an earlier capture contradict the pixels and send the critic hunting>
-Out of scope: <pre-existing defects this change doesn't touch, e.g. a site-wide header — and
-            any shared component the change only reuses (a toast, a sheet), with where it
-            lands, so a placement decided elsewhere isn't a blocker here>
-Previous blockers: <round 2+: paste the last Blockers list verbatim>
-```
-
-Give it the brief and the rules — **not** your reasoning about why the design is right, not the
-diff, not the code. Its value is that it hasn't been convinced yet.
+Read `references/loop/critic-round.md` before the first round: whether the critic can see,
+fresh captures, the round types (`full` · `scoped` · `verify`) and the dispatch template. Give
+the critic the brief and the rules — never your reasoning, the diff or the code.
 
 ## 6. Act on the verdict
 
-**A verdict is never where the turn ends while something is fixable.** Read it and keep going
-in the same turn — fix, re-capture, next critic round — without stopping to report or ask
-between rounds. The user sees the result at hand-off (step 7), not the intermediate FAILs.
-The same holds when the user called the critic directly ("chấm trang X", "review cái này"):
-report the verdict in a few lines, then go straight into fixing the blockers through this loop.
+**A verdict is never where the turn ends while something is fixable.** Fix, re-capture, next
+round (`verify`) in the same turn, without reporting or asking between rounds — also when the
+user called the critic directly ("chấm trang X"): report the verdict in a few lines, then fix.
 
 Stop and hand off without fixing only when:
-- the user ends the loop ("k cần loop", "deploy đi"): ship what passed self-check, list the open
-  round-1 notes and any unverified changes made since the last critic round in the hand-off;
+- the user ends the loop ("k cần loop", "deploy đi") — ship what passed self-check, list open
+  notes and unverified changes;
 - the user asked for a review only ("chỉ chấm", "đừng sửa", "review thôi");
-- it is an eval run (`evals/`) — fixing would contaminate the measurement;
-- the finding is listed under **Out of scope** (pre-existing, not this change) — list it in the
-  hand-off and offer, don't fix;
-- fixing needs a decision only the user can make (copy the PO owns, a direction change) — ask
-  that one question, fix everything else first;
-- the round cap below is hit.
+- it is an eval run — fixing would contaminate the measurement;
+- the finding is **Out of scope** (pre-existing) — list it and offer;
+- fixing needs a decision only the user can make — ask that one question, fix the rest first;
+- **4 rounds** are done — endless loops mean the brief or the rules are wrong; the user's call.
 
-- **Blockers**: fix every one, then go to step 4 and start the next round.
-- **Taste notes**: apply the high-confidence ones that fit the project rules, and the
-  medium ones that are cheap and inside the brief — this user answered a hand-off's "still
-  open" list with "làm ik" (do it). List only what you deliberately left, with why. For any you
-  reject, keep one line on why — it goes into the hand-off.
-- **A user decision mid-run that overturns a project rule:** rewrite the rule in
-  `.claude/design-rules.md` before the next critic round. Don't leave it to the retro, or
-  the critic blocks on the old rule again. Writing "judge its intent" in the brief
-  isn't enough (USELOG 2026-10-15: old rule 59 still described the abandoned pill version).
-- **Disagree with a blocker?** Only if a project rule explicitly allows it. Record the rule
-  number; don't argue the critic down by re-briefing it.
-- **Stop after 4 rounds** even if blockers remain. Endless loops mean the brief or the rules
-  are wrong, and that's the user's call.
-
-`VERDICT: PASS` with no high-confidence taste notes left → hand off.
+Blockers: fix all. Taste notes: apply high-confidence ones and cheap medium ones inside the
+brief (details: `critic-round.md`, "After the verdict"). `PASS` with no high-confidence notes
+left → hand off.
 
 ## 7. Hand off
 
-Show the user, in this order:
-1. The final state — screenshots at desktop and phone at minimum (`SendUserFile` or the
-   preview screenshot); for Figma, the frame links as well.
-2. What changed, short.
-3. Rounds run, and what the critic caught along the way (one line each) — so the user can see
-   the loop earned its keep.
-4. **What's still uncertain**: remaining taste notes, rejected suggestions with the reason,
-   anything the critic listed under "Not checked". Never drop this section.
+1. The final state — screenshots at desktop and phone (`SendUserFile`); Figma frame links.
+2. What changed, short. The lane.
+3. Rounds run and what the critic caught, one line each (small lane: what the self-check measured).
+4. **What's still uncertain** — remaining notes, rejected suggestions and why, "Not checked".
+   Never drop this section.
 
-Commit only if the user asked, following the repo's own commit conventions.
+Commit only if the user asked, in the repo's own conventions.
 
-## 8. Learn
+## 8–10. Learn, log, retro
 
-**Vague feedback gets one question back.** When the user says only "xấu", "chưa đẹp", "thô",
-"quê", "chưa ưng" — about a fifth of all their past feedback — don't guess and redo the whole
-thing. Ask once, in their vocabulary, offering the axes from the taste profile:
+Every run ends by updating what the loop knows — `references/loop/retro.md` has the procedure:
+the one question for vague feedback ("xấu" → which axis?), where each lesson goes, the quality
+bar, the **size caps** (core files stay short; overflow is merged, moved or demoted to an
+archive/topic file — never deleted; protected `🔒` rules never move), and the commit steps.
 
-> Xấu ở chỗ nào: **chìm** (chưa đủ nổi), **quá đà** (too much), **ríu** (chật, sát),
-> **lệch** (không cân đối), **không đồng bộ** với phần còn lại, **chưa rõ chính/phụ**, hay
-> **ảnh** (nhỏ, cắt, giống nhau)? Hay chỗ khác?
-
-If they've attached a screenshot and the problem is obvious from it, skip the question and say
-which axis you think it is while fixing it. Either way, the answer is data: record it in step 9.
-
-Then ask yourself whether it's a **rule** (would apply
-to the next card/page too) or a **one-off** (only this element). For a rule, append it to
-`.claude/design-rules.md` under the right section, in the file's existing format: a `[đo]` or
-`[gu]` tag, the rule, why, and the date or commit. Create the file if the project has none.
-Tell the user in one line that you added it, so they can strike it in the diff if it's wrong.
-
-**Where a lesson goes:**
-- About *this project* (a token, a component, a page's intent) → `.claude/design-rules.md`.
-- About *how this user sees* — would hold in another project too (dose, spacing, alignment,
-  consistency, imagery, light mode, wording, motion) → add the quote under the matching axis
-  in `~/.ui-loop/taste.md`, with the date; a new axis if none fits. Commit it in `~/.ui-loop`.
-
-This is how the critic gets better: it only knows what's written down.
-
-## 9. Log the run
-
-Append an entry to `~/.ui-loop/USELOG.md` (format at its top) at every hand-off — also for
-critic-only, partial and abandoned runs. The line that matters most is **what the user still
-flagged after hand-off**: that is what the loop missed. When a run exposes a gap in this skill
-(not in a project's rules), fix it, add a `CHANGELOG.md` entry (in this skill folder) with the
-eval score before and after if the user's `evals/` covers it, and commit — both folders are git
-repos so the history is provable. Edit the critic in `agents/ui-critic.md`, then run
-`setup/install.sh`.
-
-## 10. Retro — after every run, no exceptions
-
-Every run ends by updating what the loop knows. Not optional, not only when the user complains:
-after a full loop, a critic-only check, a variants run, a partial or abandoned run, and again
-whenever the user reacts later to something this run produced.
-
-**Evidence to walk** (all from this run):
-1. Blockers the critic raised — especially any that came back in a later round.
-2. Findings that were wrong, and their cause (rule gap, brief error, tool limit, capture artefact).
-3. Everything the user said about the result — corrections after hand-off above all.
-4. The builder's own stumbles: wrong assumption, tool gotcha, a fix that didn't apply.
-
-**Where each lesson goes:**
-
-| Lesson | Destination |
-|---|---|
-| About this project (a token, component, page intent, intentional exception) | the project's `.claude/design-rules.md` |
-| About how the user sees — would hold in another project | `~/.ui-loop/taste.md`, under its axis, with the quote and date |
-| A project with no repo yet (Figma only) | a row in `~/.ui-loop/projects.md` |
-| About how the loop should work (process, brief template, capture recipe, measurement trap, critic/builder behaviour) — true for any user | `SKILL.md`, `references/`, `agents/` + a `CHANGELOG.md` entry. No names, quotes or paths of one user: say "the user" and cite the USELOG date |
-| A one-off | nowhere — USELOG only |
-
-**Quality bar** — a rule only goes in if it is:
-- **evidenced** by something in this run (a quote, a measurement, a commit), cited next to it;
-- **general** enough to change what happens next time;
-- **new** — if an existing rule covers it, sharpen that rule instead of adding one. Merge
-  duplicates when you see them. Prefer editing to appending; these files are read every run,
-  so length costs.
-
-A rule that turned out wrong (it produced a false blocker, or the user overruled it) is
-narrowed or deleted in the same retro, with the reason.
-
-**Then:**
-- USELOG entry (step 9) includes a **Rules updated:** line listing every change and its file —
-  or `none`, with the reason. The line is never left out.
-- Data folder `~/.ui-loop`: commit; if it has a remote, `git pull --rebase` and push.
-- Skill folder (only if the engine changed): GitHub login (`gh api user --jq .login`) listed in
-  `setup/maintainers.txt` → commit, `git pull --rebase`, push to the default branch. Anyone
-  else → commit on a branch `proposal/<login>-<date>` and open a pull request: `gh repo fork
-  --remote` first if they can't push to the repo, then push the branch and `gh pr create`. No
-  `gh` → leave the commit on the branch and tell the user how to send it. Either way say a
-  maintainer has to merge it, and switch the folder back to the default branch afterwards so
-  the next run uses the shared version. Run
-  `setup/install.sh` if `agents/` changed.
-- Project repo: edit `.claude/design-rules.md` but don't commit on the user's branch unless they
-  ask — say it's there, uncommitted.
-- Last message to the user ends with a short **"Đã cập nhật luật:"** list (one line each), so
-  they can veto a lesson they disagree with.
-
+- **Every lane:** a USELOG entry in `~/.ui-loop/USELOG.md` (format at its top) with `Lane:` and a
+  **Rules updated:** line. Small lane: one line, and rules only if the user reacted.
+- **Medium/large:** the full retro from `retro.md`.
+- The last message ends with **"Đã cập nhật luật:"** (one line each), so the user can veto.

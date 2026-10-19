@@ -2,8 +2,9 @@
 
 <!-- ui-loop: empty template. Delete this line once the first axis has a real quote. -->
 
-How this user judges UI, across every project. Filled in by ui-loop step 8 and the retro from
-the user's own feedback — quotes verbatim, with the date. Project rules (`DESIGN.md`,
+How this user judges UI, across every project — the **core**, read every run: per axis the
+principle and its checks, ≤ 12 KB. The verbatim quotes, dated, go to `taste-archive.md` (read
+by topic). Filled by the retro from the user's own feedback. Project rules (`DESIGN.md`,
 `.claude/design-rules.md`) override this file where they are more specific.
 
 Each axis: what they say (quotes), what it means, and **checks** — `[đo]` measurable (the critic
