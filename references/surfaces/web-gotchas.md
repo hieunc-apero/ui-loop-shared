@@ -332,3 +332,10 @@ White text on a background-image banner: `background-size:cover` crops the image
 each width, so measure the worst pixel over the whole text column of the image, not one spot; bake
 a dark wash under the text into the PNG until it is >= 4.5:1. A short address needs the same
 `<wbr>` contract as a long one, or it splits mid-domain on a 320 phone (USELOG 2026-10-19).
+"Check forced light/dark" for a dark email means Gmail iOS full invert: it flips every colour
+(inline and embedded CSS) but never images. Simulate it by flipping HSL lightness of every hex /
+rgba in the file and wrapping the body as `<u></u><div class="body">`, then fix: surfaces, rims,
+hairlines and gradient buttons as background-image tiles (8px PNGs; rims = a 1px wrapper whose
+fill is an image), text inside `.gm-s/.gm-d` screen + difference wrappers (`u + .body`), no inset
+shadows. Also capture with `<style>` stripped (inline font-family and gutters on every element) and
+with images off (alt text styled). Keep "<body>" out of comments: it breaks such rewrites.
