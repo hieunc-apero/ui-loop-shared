@@ -343,3 +343,5 @@ Measure overflow with `document.documentElement.scrollWidth` per width AND per m
 its unit in two table cells can never wrap, so "+10,000 added" pushed a 320 page to 326 px (366 px
 with fallback fonts). Put them in one cell (number `nowrap`, unit may drop). Icon cells next to a
 long title need a fixed width the title can't squeeze, or the circle turns into a pill.
+Never put padding or margin on a `.gm-s` blend span: under inversion its black box shows as a white
+bar. Put spacing in a separate spacer span outside the blend pair (USELOG 2026-10-19).
