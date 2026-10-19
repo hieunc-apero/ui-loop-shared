@@ -358,3 +358,5 @@ inverts the light theme into a usable dark one by itself. Design the light theme
 darker than the page (they invert lighter), a logo in a mid tone that reads on white and black, icons in
 mid tones, the CTA label as an image (stretched gradient/rim backgrounds + fixed-size label PNG, so it
 never shrinks on narrow screens like a whole-button image does), alt text coloured per theme.
+Email images are cached by URL (Gmail's image proxy): give every changed image a new filename;
+re-uploading under the same name kept the old logo in a real Gmail send (USELOG 2026-10-19).
