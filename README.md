@@ -6,7 +6,7 @@ kết quả như người dùng thật. Chưa đạt thì tự sửa, tối đa 
 Mỗi lần chạy xong nó tự rút kinh nghiệm thành luật.
 
 👉 **Mới vào? Đọc [`docs/how-it-works.md`](docs/how-it-works.md)** — 10 phút là hiểu hết.
-👉 **Cài đặt: [`setup/README.md`](setup/README.md).**
+👉 **Cài đặt (máy mới, tài khoản mới, Windows/macOS, gỡ cài): [`INSTALL.md`](INSTALL.md).**
 
 ## Dùng thế nào
 
@@ -29,6 +29,7 @@ Gu của người này không bao giờ được dùng để chấm cho người
 ui-loop/
 │
 ├── README.md            ← bạn đang đọc
+├── INSTALL.md           ← cài đặt từng bước, kiểm tra, cập nhật, gỡ, lỗi thường gặp
 ├── SKILL.md             ← hướng dẫn chính Claude làm theo (phải nằm ở gốc)
 ├── CHANGELOG.md         ← lịch sử thay đổi của bộ máy, có điểm eval trước/sau
 │
@@ -64,7 +65,8 @@ git clone https://github.com/hieunc-apero/ui-loop-shared ~/.claude/skills/ui-loo
 sh ~/.claude/skills/ui-loop/setup/install.sh
 ```
 
-Đã có repo dữ liệu riêng từ máy khác: thêm `--data <url repo của bạn>`.
+Đã có repo dữ liệu riêng từ máy khác: thêm `--data <url repo của bạn>`. Chi tiết, Windows và
+lỗi thường gặp: [`INSTALL.md`](INSTALL.md).
 
 ## Trạng thái
 

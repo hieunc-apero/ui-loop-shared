@@ -12,6 +12,17 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## v0.24 — 2026-10-19 — INSTALL.md + uninstall
+**Changed:** `INSTALL.md` at the root: prerequisites, three cases (first time · new machine with
+existing data via `--data` · another Claude account on the same machine), commands for
+macOS/Linux/Git Bash, PowerShell and cmd, how to verify (installer output, `/agents`, `/ui-loop`,
+a "chỉ chấm" test), optional tools, moving `~/.ui-loop` to a private repo, update, uninstall,
+and a table of the errors seen so far. `install.sh --uninstall [dirs]` removes the skill link,
+the agents (only if they are ui-loop's) and the CLAUDE.md block; never the clone or `~/.ui-loop`.
+**Why:** the user asked for an install guide that works on another machine or account as is.
+The cmd line was tested from a real `.bat`, the PowerShell line from powershell, uninstall on
+a scratch account (CLAUDE.md's own content kept, clone untouched).
+
 ## v0.23 — 2026-10-19 — public
 **Changed:** `hieunc-apero/ui-loop-shared` made public, MIT (same as `building-landing-pages`). Before
 that, project and client names were replaced throughout (the first project → "project A" / "the

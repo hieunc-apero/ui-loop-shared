@@ -4,6 +4,8 @@
 #   sh setup/install.sh                      # $CLAUDE_CONFIG_DIR, or ~/.claude
 #   sh setup/install.sh ~/.claude ~/.claude-trung
 #   sh setup/install.sh --data <git url>     # also clone your personal data repo to ~/.ui-loop
+#   sh setup/install.sh --uninstall [dirs]   # undo 1–3 below for these accounts (default: this
+#                                            # one); keeps the clone and ~/.ui-loop
 #
 # Safe to re-run. First, the personal data folder ~/.ui-loop (taste, projects, USELOG, evals —
 # see SKILL.md "Two folders"): cloned from --data, or started from setup/data-template/ as a
@@ -18,7 +20,41 @@ set -e
 REPO=$(cd "$(dirname "$0")/.." && pwd -P)
 DATA="$HOME/.ui-loop"
 DATA_URL=""
-if [ "$1" = "--data" ]; then DATA_URL="$2"; shift 2; fi
+UNINSTALL=no
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --data) DATA_URL="$2"; shift 2 ;;
+    --uninstall) UNINSTALL=yes; shift ;;
+    *) break ;;
+  esac
+done
+
+if [ "$UNINSTALL" = yes ]; then
+  [ $# -eq 0 ] && set -- "${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+  list="$REPO/.git/ui-loop-config-dirs"
+  for cfg in "$@"; do
+    [ -d "$cfg" ] || { echo "== $cfg: no such folder"; continue; }
+    cfg=$(cd "$cfg" && pwd -P); echo "== $cfg"
+    # skill: only ever a link here — never delete a real folder (it may be the clone itself)
+    if [ -L "$cfg/skills/ui-loop" ]; then rm -f "$cfg/skills/ui-loop"; echo "skill   link removed"
+    else echo "skill   $cfg/skills/ui-loop is a real folder (the clone?) — left alone"; fi
+    for f in "$REPO"/agents/*.md; do
+      head -5 "$f" | grep -q "^name:" || continue
+      a="$cfg/agents/$(basename "$f")"
+      if [ -L "$a" ] || { [ -f "$a" ] && cmp -s "$f" "$a"; }; then rm -f "$a"; echo "agent   $(basename "$f" .md) removed"
+      elif [ -e "$a" ]; then echo "agent   $(basename "$f" .md): differs from this repo — left alone"; fi
+    done
+    if [ -f "$cfg/CLAUDE.md" ] && grep -q '^<!-- ui-loop:start' "$cfg/CLAUDE.md"; then
+      awk '/^<!-- ui-loop:start/{skip=1;next} /^<!-- ui-loop:end -->/{skip=0;next} !skip' \
+        "$cfg/CLAUDE.md" > "$cfg/CLAUDE.md.tmp" && mv "$cfg/CLAUDE.md.tmp" "$cfg/CLAUDE.md"
+      echo "CLAUDE  block removed"
+    fi
+    [ -f "$list" ] && { grep -vxF "$cfg" "$list" > "$list.tmp" || true; mv "$list.tmp" "$list"; }
+  done
+  echo
+  echo "Kept: this clone ($REPO) and your data ($DATA). Delete them yourself if you want them gone."
+  exit 0
+fi
 
 if [ -d "$DATA" ]; then
   echo "data    $DATA exists — left as is"

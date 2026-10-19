@@ -1,5 +1,8 @@
 # setup/ — cài đặt
 
+**Muốn cài? Đọc [`../INSTALL.md`](../INSTALL.md)** — từng bước theo trường hợp. File này giải thích
+các file trong `setup/` và trình cài làm gì bên trong.
+
 | File | Làm gì |
 |---|---|
 | `install.sh` | tạo thư mục dữ liệu riêng `~/.ui-loop` (nếu chưa có), rồi cài ui-loop vào một hay nhiều tài khoản Claude Code: nối skill, nối/chép agent, thêm khối tự gọi + retro vào `CLAUDE.md`. Chạy lại bao nhiêu lần cũng được; chạy sau mỗi lần sửa agent. |
