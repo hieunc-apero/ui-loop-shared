@@ -352,3 +352,9 @@ keep text neutral and carry colour in images/icons. Gmail and iOS also auto-link
 number in their own blue, which Gmail then inverts to brown-orange: wrap such values in your own
 `<a style="color:...;text-decoration:none">` and add `a[x-apple-data-detectors]{color:inherit!important}`.
 The lightness-flip simulator matched the real device on all of this; trust it for colours too.
+Better than defending a dark-only mail: ship light as the inline default and dark through
+`@media (prefers-color-scheme: dark)` + `[data-ogsc]/[data-ogsb]` (class per dark colour). Gmail then
+inverts the light theme into a usable dark one by itself. Design the light theme for that: cards a step
+darker than the page (they invert lighter), a logo in a mid tone that reads on white and black, icons in
+mid tones, the CTA label as an image (stretched gradient/rim backgrounds + fixed-size label PNG, so it
+never shrinks on narrow screens like a whole-button image does), alt text coloured per theme.
