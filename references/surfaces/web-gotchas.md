@@ -360,3 +360,9 @@ mid tones, the CTA label as an image (stretched gradient/rim backgrounds + fixed
 never shrinks on narrow screens like a whole-button image does), alt text coloured per theme.
 Email images are cached by URL (Gmail's image proxy): give every changed image a new filename;
 re-uploading under the same name kept the old logo in a real Gmail send (USELOG 2026-10-19).
+A logo that must flip with Gmail's inversion (black-led on light, white-led on Gmail dark): Gmail
+recolours the cell behind an image but never the image, so split it into a background-image layer
+(the coloured part, identical in both modes) under an `<img style="mix-blend-mode:difference">`
+layer fitted per pixel against the page colour (#FFF light, #202124 Gmail iOS dark); show it only
+under `u + .body`, keep the plain logo as the default so stripped-<style> clients fall back.
+White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
