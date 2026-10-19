@@ -12,6 +12,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+
+## 2026-10-19 — step 3: verify before/after pairs
+
+**Changed:** `SKILL.md` step 3 — diff a before/after pair before building on it. A pair from
+an edit showcase was two different framings; the critic caught it a round later (USELOG
+2026-10-19). No eval covers it.
+
 ## v0.25 — 2026-10-19 — cost: lanes, scoped/verify rounds, core vs archive, size caps
 **Changed:**
 - **A. Lanes** (SKILL.md "Lane"): small (one element, direction decided → self-check of the element

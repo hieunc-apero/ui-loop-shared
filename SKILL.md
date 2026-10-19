@@ -108,6 +108,8 @@ not loading it (55 runs to 2026-10-19: `frontend-design` loaded 3 times, `impecc
 Not installed → carry on, say so in USELOG (hints: `setup/skills.txt`). Project rules and taste
 win over the skill. Reuse the project's components and tokens; a new colour, radius or shadow
 needs a reason. Real content, never placeholders — no real asset → say so at hand-off.
+A before/after pair must be one frame with only the tool's change: diff the two files before
+building on them (an edit showcase's pair was two framings; USELOG 2026-10-19).
 
 ## 4. Self-check (before spending a critic round)
 
