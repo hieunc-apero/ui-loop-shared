@@ -32,6 +32,17 @@ của người vẽ — nên nhìn giống người dùng.
 Vì sao người vẽ là skill chứ không phải agent: agent con không gọi được agent con khác, và không
 nói chuyện được với bạn giữa chừng. Phiên chính thì làm được cả hai.
 
+**Làm một phương án (mặc định): không có agent nào vẽ** — chính phiên chat của bạn vẽ/code, và
+chỉ gọi `ui-critic` để chấm (làn vừa, lớn; làn nhỏ không gọi agent nào). `ui-builder` chỉ xuất
+hiện khi cần nhiều hướng chạy song song.
+
+| Làn / chế độ | Ai vẽ | Ai chấm |
+|---|---|---|
+| Nhỏ | phiên chính | không agent — phiên chính tự chụp + đo |
+| Vừa | phiên chính | `ui-critic`, 1 vòng `scoped` |
+| Lớn | phiên chính | `ui-critic`, vòng 1 `full`, sau đó `verify` |
+| Nhiều phương án | N × `ui-builder` song song | `ui-critic` `compare` → phương án thắng về phiên chính sửa tiếp |
+
 ### Người chấm `ui-critic` làm việc thế nào
 
 Mỗi vòng chấm là **một Claude mới tinh**, không nhớ gì vòng trước ngoài danh sách lỗi được
