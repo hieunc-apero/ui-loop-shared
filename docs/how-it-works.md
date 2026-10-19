@@ -32,6 +32,78 @@ của người vẽ — nên nhìn giống người dùng.
 Vì sao người vẽ là skill chứ không phải agent: agent con không gọi được agent con khác, và không
 nói chuyện được với bạn giữa chừng. Phiên chính thì làm được cả hai.
 
+### Người chấm `ui-critic` làm việc thế nào
+
+Mỗi vòng chấm là **một Claude mới tinh**, không nhớ gì vòng trước ngoài danh sách lỗi được
+dán vào. Nó **không bao giờ sửa** gì và **không đọc code** — chỉ nhìn cái hiện ra.
+
+**Nhận vào** (phiên chính gửi, mẫu ở `references/loop/critic-round.md`):
+
+| Mục | Ví dụ |
+|---|---|
+| Bề mặt + nền tảng + hình thức | `web-app`, `web`, `live` |
+| Kiểu vòng | `full` (chấm hết) · `scoped` (chỉ vùng vừa đổi) · `verify` (vòng 2+: soát lại lỗi cũ) |
+| Đích | URL đang chạy · fileKey + nodeId Figma · thư mục ảnh chụp (đường dẫn từng file) |
+| Ý đồ | trang để làm gì, vừa đổi gì, trạng thái nào cần xem |
+| Luật | đường dẫn `DESIGN.md`, `design-rules.md`, gu `~/.ui-loop/taste.md` |
+| Số đã đo sẵn | độ tương phản, kích thước… để nó không phải đoán từ pixel |
+| Ngoài phạm vi | lỗi có sẵn từ trước, không phải của lần đổi này — không được chặn |
+| Lỗi vòng trước | (vòng 2+) dán nguyên văn |
+
+**Các bước:**
+
+1. **Đọc luật** + gu, **lọc theo nhãn**: chấm frame iOS thì bỏ luật `[web]`, `[live]`…
+2. **Tìm trình duyệt** trong công cụ của nó (khung trình duyệt của app, hoặc Claude in Chrome),
+   mở **tab riêng**. Không có trình duyệt → chấm từ ảnh chụp; không có cả hai → trả
+   `NOT REVIEWED` chứ không đoán.
+3. **Chứng minh trang đã tải**: ảnh hỏng, lỗi console.
+4. **Nhìn** ở các độ rộng (mặc định 390 / 820 / 1440) × sáng/tối × các trạng thái — `scoped`/`verify`
+   thì chỉ những chỗ trong phạm vi.
+5. **Nhìn trước, đo sau**: ghi ấn tượng đầu (mắt dừng ở đâu, chỗ nào trông dở), rồi xác nhận hoặc
+   bác từng ấn tượng bằng số đo. Ảnh luôn **phóng to** mới chấm; thanh dính (sticky) luôn thử
+   **đè lên nội dung**.
+6. **Checklist chung** — chặn: ảnh hỏng, tràn ngang, chữ bị cắt/xuống dòng ở nút, lớp dính đè nhau,
+   tương phản dưới chuẩn AA, nội dung giả (ô xám, lorem, `undefined`), mặt người bị cắt, thẻ cùng
+   cấp lệch cỡ, nút < 44px trên điện thoại, sheet che kín màn mà không có nút đóng.
+7. **Lượt gu**: đi từng trục trong `taste.md`, đo cái đo được (đếm điểm nhấn mỗi khối, padding
+   chữ–mép, độ lệch icon–chữ…), gắn số trục vào từng nhận xét.
+8. Bề mặt khác web (landing, funnel, figma, app, flow, so sánh phương án) → mở thêm đúng mục
+   trong `references/critic/modes.md` (ví dụ funnel: đi từng bước, không bao giờ bấm thanh toán thật).
+9. **Kiểm lỗi vòng trước** từng cái: đã sửa / chưa / sửa nhưng làm hỏng chỗ khác.
+
+**Trả về** (≤ ~600 chữ, `verify` ~250):
+
+```
+VERDICT: PASS | FAIL | NOT REVIEWED
+Blockers     — lỗi chặn: sai gì · ở đâu (độ rộng, theme, selector) · số đo · luật nào
+Taste notes  — góp ý gu, kèm độ chắc chắn (cao/vừa/thấp) và một gợi ý cụ thể
+Previous     — lỗi vòng trước: đã sửa / chưa / làm hỏng chỗ khác
+Clean        — đã kiểm gì thấy đúng (kèm selector + giá trị đo, để không "tưởng là đúng")
+Not checked  — không kiểm được gì, vì sao (không bao giờ bỏ trống mục này)
+```
+
+`[đo]` vượt ngưỡng = **chặn**; `[gu]` = **góp ý**. Còn một lỗi chặn là `FAIL`. Phiên chính đọc
+kết quả, sửa hết lỗi chặn rồi gọi vòng tiếp — không dừng hỏi bạn giữa chừng (tối đa 4 vòng).
+
+### Người vẽ phụ `ui-builder` làm việc thế nào
+
+Chỉ dùng ở **chế độ nhiều phương án** (`references/modes/variants.md`). Phiên chính viết N hướng
+thiết kế cố tình khác nhau, rồi gọi N `ui-builder` **chạy song song**, mỗi cái một hướng:
+
+1. **Nhận vào**: brief chung + **brief hướng của mình** (tên, đặt cược vào gì, chịu bỏ gì) + luật +
+   chỗ làm (code: một git worktree riêng; Figma: một page riêng). Nó không thấy hướng của người khác.
+2. **Đọc luật + gu**, nạp skill dựng của bề mặt (ví dụ `frontend-design`, `figma-use`).
+3. **Đi hết hướng của mình** — không lén kéo về "an toàn ở giữa". Hướng thất bại thì vẫn làm xong và
+   nói rõ vì sao: một hướng hỏng rõ ràng có ích hơn một hướng nhạt.
+4. **Tự kiểm** (không tự chấm): đi trục gu 1–6, chạy/type-check được, không lỗi console, đủ trạng
+   thái, điện thoại không tràn. Code thì commit trên nhánh worktree của nó — không push, không merge.
+5. **Báo cáo**: hướng gì · ở đâu (worktree + commit, hoặc page + nodeId) · cách mở từng trạng thái ·
+   đã bỏ gì · chưa làm gì.
+
+Sau đó **một** `ui-critic` chấm cả N cùng lúc ở chế độ `compare`: từng phương án có verdict riêng,
+rồi **xếp hạng** theo mức phục vụ ý đồ (không theo ít lỗi nhất), kèm "đáng lấy" từ các phương án
+thua. Chỉ phương án thắng được đưa qua vòng sửa bình thường; bạn nhận cả N để so.
+
 ## 3. Một lần chạy, từ đầu tới cuối
 
 ```
