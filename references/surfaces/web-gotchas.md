@@ -324,3 +324,7 @@ Long addresses wrap wherever `break-word` lands, mid-domain ("…@ou / tlook.com
 in the MERGE FIELDS comment to insert `<wbr>` after "@" and before dots, and to format numbers with
 a thousands separator. Headless Chrome's `--window-size` crops narrow viewports; Playwright from
 any repo's `node_modules` gives true 320/390 captures (USELOG 2026-10-19).
+Icons for an email from Figma: `download_assets` PNG exports bake the parent's fill in (a
+grey square behind the gem); take the node's SVG / raw image and render a transparent PNG at 3x
+with Playwright (`omitBackground`, loaded from a file page, not `setContent`, or file:// images
+come out broken). Pre-mix the app's rgba fills to solid hex for Outlook (USELOG 2026-10-19).
