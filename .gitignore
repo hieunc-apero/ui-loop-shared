@@ -1,0 +1,5 @@
+# Personal data never lives in the shared skill — it goes to ~/.ui-loop/ (SKILL.md, "Two folders").
+# These are the pre-v0.22 paths; a session still running the old instructions may write here.
+/USELOG.md
+/knowledge/
+/evals/*/
