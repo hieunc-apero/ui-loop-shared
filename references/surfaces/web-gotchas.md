@@ -328,3 +328,7 @@ Icons for an email from Figma: `download_assets` PNG exports bake the parent's f
 grey square behind the gem); take the node's SVG / raw image and render a transparent PNG at 3x
 with Playwright (`omitBackground`, loaded from a file page, not `setContent`, or file:// images
 come out broken). Pre-mix the app's rgba fills to solid hex for Outlook (USELOG 2026-10-19).
+White text on a background-image banner: `background-size:cover` crops the image differently at
+each width, so measure the worst pixel over the whole text column of the image, not one spot; bake
+a dark wash under the text into the PNG until it is >= 4.5:1. A short address needs the same
+`<wbr>` contract as a long one, or it splits mid-domain on a 320 phone (USELOG 2026-10-19).
