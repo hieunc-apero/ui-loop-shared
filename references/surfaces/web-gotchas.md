@@ -345,3 +345,10 @@ with fallback fonts). Put them in one cell (number `nowrap`, unit may drop). Ico
 long title need a fixed width the title can't squeeze, or the circle turns into a pill.
 Never put padding or margin on a `.gm-s` blend span: under inversion its black box shows as a white
 bar. Put spacing in a separate spacer span outside the blend pair (USELOG 2026-10-19).
+Confirmed on a real Gmail iOS dark send (19/10): image-locked surfaces stay dark and the blend pair
+keeps white/grey text light (a touch greyer), but it can't keep a coloured text: Gmail flips its
+lightness (bright green -> dark green) and the blend would turn it complementary. So in a dark email
+keep text neutral and carry colour in images/icons. Gmail and iOS also auto-link an address or
+number in their own blue, which Gmail then inverts to brown-orange: wrap such values in your own
+`<a style="color:...;text-decoration:none">` and add `a[x-apple-data-detectors]{color:inherit!important}`.
+The lightness-flip simulator matched the real device on all of this; trust it for colours too.
