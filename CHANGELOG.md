@@ -13,6 +13,12 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-20 — fork restyle: prop image sizing, open/close by halves
+**Changed:** `web-gotchas.md` → "Forking a funnel into another brand": a prop `<img>` keeps its height attribute
+when CSS sizes only the width (set the other side `auto`); open/close a photo prop by sliding halves, never `scaleX`.
+**Why:** a funnel fork restyled from two poster refs: both props mis-sized silently (caught by a DOM probe), and a
+stretched-curtain intro distorted the hands (caught in self-check before the critic).
+
 ## 2026-10-20 — iPhone gotchas round 2, design-file placement, funnel delivery checks
 **Changed:** `web-gotchas.md`: corrected "Scale-up reveals stay sharp" (CSS `zoom` broke the card's rounded
 clip on iPhone — lay the copy out in px at final size, no zoom, no scale; keep glow room inside clipping

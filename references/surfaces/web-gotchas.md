@@ -417,6 +417,11 @@ White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
   A critic whose browser can't reach this machine returns NOT REVIEWED: give it capture files instead.
 - **Two fixed `z-index:-1` layers paint in DOM order.** A new decor layer inserted before the old
   atmosphere layer was painted over and invisible on every step. Give the base `-2`.
+- **A prop `<img>` keeps its `height` attribute when CSS sets only `width`.** Two keyed props rendered at their
+  natural pixel height (708 / 638 px) — one stretched, one pushed behind the clip — and only a DOM probe showed
+  it. Give every prop image `height:auto` (or `width:auto`) alongside the side you size.
+- **Open/close a photo prop by moving halves, not `scaleX`.** Stretching keyed curtains to "close" them also
+  stretched the hands into long arms. Split the ref's own closed frame into two halves and slide them apart.
 - **A keyed AI prop with a `drop-shadow` shows a box.** Chroma keys leave alpha 1–10% in the
   "transparent" area, so the shadow (and a CSS mask) outlines the whole canvas. Zero alpha below ~0.1 in the
   file, and bake fades into the file instead of masking in CSS.
