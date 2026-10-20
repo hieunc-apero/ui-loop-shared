@@ -13,6 +13,16 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-20 — engine mirror in the data repo (`--mirror`)
+**Changed:** `setup/mirror-engine.sh` copies the engine's committed tree into `~/.ui-loop/engine/` and
+commits it there ("engine mirror: <sha> <subject>"), then pushes. `setup/hooks.sh` is now the single
+hook body for `post-commit`, `post-merge`, `post-rewrite` (re-copy agents after a pull where they
+are copies; refresh the mirror if `~/.ui-loop/engine/` exists). `install.sh --mirror` opts in; hooks
+are now always installed. The mirror is read-only: SKILL.md says never read or edit it.
+**Why:** the user wanted the private repo to hold everything, engine included. A hand-kept copy would
+drift (it just did with CHANGELOG); an automatic one can't. Tested in a scratch HOME: install
+→ first mirror commit; an engine commit → hook → second mirror commit.
+
 ## 2026-10-20 — every engine change is logged in two CHANGELOGs
 **Changed:** `references/loop/retro.md` — an engine change gets an entry here (no names, quotes or
 paths) **and** the same entry with the real context (project, run, the user's words) in the user's

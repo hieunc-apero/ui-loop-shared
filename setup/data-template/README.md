@@ -10,6 +10,7 @@ giữ những gì **chỉ thuộc về bạn** — ui-loop đọc và ghi vào �
 | `projects.md` | mỗi dự án để luật ở đâu (repo, Figma fileKey) — cần cho dự án chỉ có Figma |
 | `CHANGELOG.md` | mỗi thay đổi bộ máy sinh ra từ các lần chạy của bạn, có ngữ cảnh thật (dự án, lời bạn nói) |
 | `USELOG.md` | nhật ký mỗi lần chạy: critic bắt được gì, bạn còn chê gì sau bàn giao |
+| `engine/` | *(nếu bật `install.sh --mirror`)* bản chép tự động của cả bộ máy, mỗi phiên bản một commit — đừng sửa ở đây |
 | `evals/` | bài đo critic bằng lỗi thật của bạn (cách đo: `~/.claude/skills/ui-loop/evals/README.md`) |
 
 Đây là một git repo riêng. Muốn dùng trên máy khác: tạo một repo **private** trên GitHub,

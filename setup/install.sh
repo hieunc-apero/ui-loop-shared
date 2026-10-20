@@ -4,6 +4,7 @@
 #   sh setup/install.sh                      # $CLAUDE_CONFIG_DIR, or ~/.claude
 #   sh setup/install.sh ~/.claude ~/.claude-trung
 #   sh setup/install.sh --data <git url>     # also clone your personal data repo to ~/.ui-loop
+#   sh setup/install.sh --mirror             # also keep a copy of the engine in ~/.ui-loop/engine/
 #   sh setup/install.sh --uninstall [dirs]   # undo 1–3 below for these accounts (default: this
 #                                            # one); keeps the clone and ~/.ui-loop
 #
@@ -21,10 +22,14 @@ REPO=$(cd "$(dirname "$0")/.." && pwd -P)
 DATA="$HOME/.ui-loop"
 DATA_URL=""
 UNINSTALL=no
+MIRROR=no
+HOOKS=yes
 while [ $# -gt 0 ]; do
   case "$1" in
     --data) DATA_URL="$2"; shift 2 ;;
     --uninstall) UNINSTALL=yes; shift ;;
+    --mirror) MIRROR=yes; shift ;;
+    --no-hooks) HOOKS=no; shift ;;   # used by setup/hooks.sh itself
     *) break ;;
   esac
 done
@@ -163,23 +168,31 @@ for cfg in "$@"; do
   fi
 done
 
-# Copies go stale on the next pull; re-run this script after every pull/rebase in this repo.
-# The list of config dirs accumulates across runs, so installing accounts one at a time works.
-if [ "$copied" = yes ] && [ -d "$REPO/.git" ]; then
+# Git hooks (setup/hooks.sh): after a pull/rebase, re-copy agents where they are copies; after any
+# commit/pull, refresh the engine mirror in ~/.ui-loop/engine/ if opted in. The list of config dirs
+# accumulates across runs, so installing accounts one at a time works.
+if [ -d "$REPO/.git" ] && [ "$HOOKS" = yes ]; then
   list="$REPO/.git/ui-loop-config-dirs"
-  for cfg in "$@"; do (cd "$cfg" && pwd -P); done | cat - "$list" 2>/dev/null | sort -u > "$list.tmp"
-  mv "$list.tmp" "$list"
-  for h in post-merge post-rewrite; do
-    cat > "$REPO/.git/hooks/$h" <<EOF
-#!/bin/sh
-# installed by setup/install.sh: agents are copies in these config dirs, keep them fresh
-while IFS= read -r d; do [ -d "\$d" ] && set -- "\$@" "\$d"; done < "$list"
-[ \$# -gt 0 ] && sh "$REPO/setup/install.sh" "\$@" >/dev/null
+  if [ "$copied" = yes ]; then
+    for cfg in "$@"; do (cd "$cfg" && pwd -P); done | cat - "$list" 2>/dev/null | sort -u > "$list.tmp"
+    mv "$list.tmp" "$list"
+  fi
+  for h in post-commit post-merge post-rewrite; do
+    printf '#!/bin/sh
+# installed by setup/install.sh
+sh "%s/setup/hooks.sh" %s
 exit 0
-EOF
+' "$REPO" "$h" > "$REPO/.git/hooks/$h"
     chmod +x "$REPO/.git/hooks/$h"
   done
-  echo "hooks   agents re-copied after every git pull, for: $(tr '\n' ' ' < "$list")"
+  [ -f "$list" ] && echo "hooks   agents re-copied after every git pull, for: $(tr '
+' ' ' < "$list")"
+fi
+if [ "$MIRROR" = yes ]; then
+  mkdir -p "$DATA/engine" && sh "$REPO/setup/mirror-engine.sh" --push
+  echo "mirror  the engine is copied to $DATA/engine/ after every commit and pull (read-only copy)"
+elif [ -d "$DATA/engine" ]; then
+  echo "mirror  on ($DATA/engine/)"
 fi
 
 # Build skills ui-loop loads (setup/skills.txt): report the missing ones, install nothing.

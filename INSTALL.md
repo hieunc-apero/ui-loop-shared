@@ -154,6 +154,18 @@ git push -u origin HEAD
 Từ đó, sau mỗi lần chạy ui-loop tự commit và đẩy dữ liệu lên. Máy mới cài theo
 [3b](#3b-máy-mới-đã-có-dữ-liệu-từ-máy-khác).
 
+### Giữ cả bộ máy trong repo dữ liệu (tuỳ chọn)
+
+Muốn repo private của bạn chứa **đủ mọi thứ** — cả bộ máy, không chỉ dữ liệu:
+
+```sh
+sh ~/.claude/skills/ui-loop/setup/install.sh --mirror
+```
+
+Từ đó mỗi lần bộ máy có commit mới hay được `git pull`, nó tự chép sang `~/.ui-loop/engine/`,
+commit (ghi rõ commit gốc) và đẩy repo dữ liệu. `engine/` chỉ để giữ — sửa bộ máy ở
+`~/.claude/skills/ui-loop`.
+
 ## 7. Cập nhật
 
 ```sh
