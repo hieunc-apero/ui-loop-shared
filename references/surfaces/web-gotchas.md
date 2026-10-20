@@ -430,3 +430,16 @@ White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
   keyframes in the cascade. A restyle set `transform:none !important` on a marquee track and the reel stopped
   scrolling, and nobody noticed because every check used stills (USELOG 2026-10-20). After restyling anything
   animated, measure motion: read its position twice, two seconds apart.
+- **A swapped asset inherits the old one's box.** The re-themed offer kept the parent's `aspect-ratio:483/566` for
+  a new 560/545 image: the box ran 40 px under a phone's pinned button and ate its taps (USELOG 2026-10-20, DOTD).
+  When an image is replaced, grep its class for `aspect-ratio`, `width`/`height` and keyframe offsets.
+- **An invisible animated element still takes taps.** A pass at `opacity:0`, parked in its start position, sat
+  over the CTA at 1366×640, so the click never reached the button. Give hidden animated parts
+  `pointer-events:none` until they show, and check `elementFromPoint` at the CTA's centre at short heights.
+- **Sample motion over time, not one frame.** A `--pop` overshoot lifted the rising pass 4 px into the headline
+  and a lid flew across it mid-flight, while the 2.2 s frame looked clean. Read every moving part's rect every
+  ~150 ms through the animation, against the title's bottom and the CTA's top.
+- **`animation:none` on an element with an entry class (`.rise`) leaves it at the keyframe's start (opacity 0).**
+  A title lockup that reused a neon sign's class sat invisible; only a computed-style probe showed it.
+- **Particle layers (petals, embers, sparks) go behind content**, never `z-index` above it: the critic found
+  them on option labels, inputs and copy across four steps.

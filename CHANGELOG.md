@@ -13,6 +13,14 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-20 — fork restyle: swapped assets, invisible tap-eaters, motion sampling
+**Changed:** `web-gotchas.md` → "Forking a funnel into another brand": a replaced image inherits the old one's
+aspect-ratio; hidden animated parts get `pointer-events:none`; sample moving parts every ~150 ms; `animation:none`
+on an entry-animated element leaves it invisible; particle layers sit behind content.
+**Why:** a funnel re-themed from one poster ref: the offer box overlapped the pinned CTA on short phones and a
+hidden pass blocked the CTA on a short desktop (both found by DOM probes, not screenshots); critic round 1 blocked
+on petals over text; a pop overshoot touched the headline only between frames.
+
 ## 2026-10-20 — fork restyle: prop image sizing, open/close by halves
 **Changed:** `web-gotchas.md` → "Forking a funnel into another brand": a prop `<img>` keeps its height attribute
 when CSS sizes only the width (set the other side `auto`); open/close a photo prop by sliding halves, never `scaleX`.
