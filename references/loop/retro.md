@@ -28,6 +28,7 @@ Small lane: only 3 — and only if the user reacted. Otherwise the USELOG line i
 | About this project (a token, component, page intent, intentional exception) | the project's `.claude/design-rules.md` (create it if missing), in its format — tagged `[đo]`/`[gu]` + scope, with the date or commit. Tell the user in one line |
 | About how the user sees — would hold in another project | the quote, dated, under its axis in `~/.ui-loop/taste-archive.md`; and edit the axis in `~/.ui-loop/taste.md` (core) only if the quote changes a principle or a threshold |
 | A project with no repo yet (Figma only) | a row in `~/.ui-loop/projects.md` |
+| A `[đo]` rule a DOM measurement can decide (from any destination above) | also a check in `tools/ui-check/ui-check.js` — next `U` number, fixture-tested, see its README "Growing it" |
 | How the loop should work, true for any user | `SKILL.md`, `references/`, `agents/` + a `CHANGELOG.md` entry. No names, quotes or paths of one user: "the user", cite the USELOG date. A one-situation trick goes in the topic file (e.g. `web-gotchas.md`), not in a core file |
 | A one-off | nowhere — USELOG only |
 

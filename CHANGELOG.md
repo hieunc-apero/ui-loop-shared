@@ -25,6 +25,26 @@ claim/release protocol between parallel sessions; verify production serves each 
 Chrome captures didn't show; the earlier `zoom` advice caused one of them; an asset placed by a design
 file's x/y missed twice; about one deploy in six had to be repeated.
 
+## v0.26 — 2026-10-20 — ui-check: the measurable rules, checked while building
+**Changed:** `tools/ui-check/` — `ui-check.js` measures 19 script-measurable rules in the page (U1–U19:
+broken images, overflow, clipped text, wrapped button labels, tap targets, contrast incl. through
+gradients and over media, translucent fixed/sticky layers incl. `::before/::after`, overlapping fixed
+layers, placeholder/raw names, lone last words, icon/text centres, unequal siblings, chip padding,
+small text, display type, line length, native scrollbars, card in card, two primaries) in ~30–120 ms;
+`run.js` runs it headless (playwright-core + installed Chrome, bypasses CSP, no tokens) with widths,
+themes, scope and localStorage presets. SKILL.md step 4: run it after every change, fix every
+`block`, zoom on every `?`; small lane scopes it to the element. Its output goes to the critic as
+Measured; `ui-critic` treats it as leads (blocks become blockers once zoomed, `?` judged by eye,
+no re-measuring). Retro: a new `[đo]` rule a DOM measurement can decide becomes the next U check.
+**Why:** the user asked to improve during design instead of waiting for the critic. Of 322
+findings the critic made in real runs, ~31 % were fully script-measurable and ~20 % locatable by
+script for an eye to confirm. Tested on a fixture with planted defects (every check fires, clean
+controls don't) and on two real pages of the first project at 390/1440: after fixing four
+false-positive sources (whole-page gradient wash, two-tier button labels, ::before veils, repeat
+noise) it reported real defects only (truncated tile titles, a 19 px "View all", 36 px primary CTA,
+a lone last word). A local static server was tried for in-pane injection and dropped: page CSPs
+block it.
+
 ## 2026-10-20 — engine mirror in the data repo (`--mirror`)
 **Changed:** `setup/mirror-engine.sh` copies the engine's committed tree into `~/.ui-loop/engine/` and
 commits it there ("engine mirror: <sha> <subject>"), then pushes. `setup/hooks.sh` is now the single

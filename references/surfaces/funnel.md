@@ -42,6 +42,15 @@ and where a user can leave or go back. Write that list into the brief — the cr
   390×844, 375×667 — sampling the top of every moving part through the animation against the
   title's bottom and the CTA's top. One screenshot at 1440×900 hid an overlap at 720 tall
   (seasonal funnel 2, rounds 3–4). Size the moving object from the viewport height, not a fixed px.
+- **Forking a funnel into a new brand or brief: grep the parent's `display:none !important` decor kill-lists
+  against the new brief's add-ons.** The parent had hidden every cobweb and spider as a concept split between
+  its own sibling funnels; the new brief asked for both, and only the critic's spec check noticed they were
+  missing (USELOG 2026-10-20, Artimind funnel 1). The parent's concept decisions don't bind a new brief; its
+  craft rules do.
+- **Before capturing, confirm the server is yours:** `curl` the port and check the `<title>`. A dev server
+  started on a busy port fails quietly, and the old server on that port (a sibling funnel) answers every
+  capture (USELOG 2026-10-20). A critic whose browser can't reach this machine's localhost returns
+  NOT REVIEWED: give it fresh capture files instead, plus the offer's frozen mid/lit frames.
 - **Capture hygiene for scripted runs:** never let a partial re-capture overwrite the full run's
   `metrics.json` (name it per run), and log `document.fonts.check(...)`, failed requests and
   broken images in the continuous-flow run too — a run that lost its web fonts and logo cost a

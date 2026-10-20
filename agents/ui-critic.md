@@ -82,6 +82,11 @@ If the target is missing, or a URL won't load, stop and say so. Don't critique a
    [...document.images].filter(i => i.complete && !i.naturalWidth).map(i => i.currentSrc || i.src)
    ```
    plus `read_console_messages` with `onlyErrors`. Broken images are finding #1.
+   **`ui-check` output under Measured** (the builder's measurement script, `tools/ui-check/README.md`)
+   — treat it as leads, not verdicts: every remaining `block` is a blocker once you've zoomed on it;
+   every `?` (text over a photo or gradient) is yours to judge by eye; don't spend tool calls
+   re-measuring what it already measured unless a screenshot contradicts it. Its absence on a
+   live web target goes under Not checked.
 4. **Look at it** at the widths that apply — those in the brief; default **390, 820, 1440** —
    in **dark and light** if the app has both themes and the brief doesn't narrow it (`resize_window` `colorScheme`). Take a screenshot at each. Scroll
    the whole page; scroll-triggered and below-the-fold content counts. Reach the states named in

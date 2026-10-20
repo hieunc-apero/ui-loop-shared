@@ -152,6 +152,16 @@ Chi tiết từng bước: [`SKILL.md`](../SKILL.md), mục `## 0` tới `## 10`
 Nó nói làn khi bắt đầu. Muốn đổi: *"sửa nhanh"* → nhỏ, *"chấm kỹ"* → lớn. Tự kiểm ở làn nhỏ thấy
 vấn đề lan ra ngoài phần tử thì tự lên làn vừa.
 
+### Kiểm ngay lúc dựng — `ui-check`
+
+Một script đo các luật **đo được** ngay trên trang trong vài chục mili-giây, không tốn token:
+tràn ngang, chữ bị cắt, nút xuống dòng, nút bấm < 44px, tương phản (kể cả chữ trên gradient), lớp
+dính trong suốt đè nội dung, padding chip, chữ mồ côi ở tiêu đề, thẻ cùng cấp lệch cỡ… (19 phép
+đo, danh sách ở `tools/ui-check/README.md`). Người vẽ chạy nó **sau mỗi lần sửa**, sửa hết `block`
+trước khi gọi critic; kết quả được dán cho critic để nó dành vòng chấm cho việc **nhìn** (gu, ảnh,
+mặt người, cảm giác) thay vì đo lại. Khoảng 1/3 lỗi critic từng bắt là loại script đo được.
+Luật `[đo]` mới mà đo được bằng script thì retro thêm thành một phép đo — script giỏi dần lên.
+
 ### Đọc khi cần, không đọc hết
 
 Mỗi lần chạy chỉ đọc **file lõi** (ngắn, có trần dung lượng): `SKILL.md`, gu lõi `taste.md`,

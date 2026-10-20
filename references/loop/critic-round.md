@@ -46,8 +46,9 @@ Intent: <the brief from step 1 — purpose, what changed, states to reach>
 Rule files: <absolute paths found in step 2, AND the taste file by full absolute path
             (~/.ui-loop/taste.md expanded) — the critic has only Read and cannot list folders;
             or "no taste profile yet">
-Measured: <computed values you already have — contrast ratios, geometry — so the critic
-          uses them instead of sampling pixels. Measure them on THIS round's capture: numbers
+Measured: <the final ui-check output for each width/theme (tools/ui-check) + any other
+          computed values — contrast ratios, geometry — so the critic uses them instead of
+          sampling pixels. Measure them on THIS round's capture: numbers
           carried from an earlier capture contradict the pixels and send the critic hunting>
 Out of scope: <pre-existing defects this change doesn't touch, e.g. a site-wide header — and
             any shared component the change only reuses (a toast, a sheet), with where it

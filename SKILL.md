@@ -38,9 +38,9 @@ listed topics.
 - **Small-lane rules:** don't read the whole rule file — search the project's
   `.claude/design-rules.md` and `~/.ui-loop/taste.md` for the component and property you touch
   and read the matching rules. No surface reference, no build skill.
-- **Small-lane self-check:** screenshot the element at every width/theme where it renders
-  (default phone 390 + desktop 1440, both themes if the app has them); measure what its rules
-  name (padding, contrast, alignment within 1 px, wrap, overflow); look at its neighbours and at
+- **Small-lane self-check:** `ui-check --scope <the element's container>` at every width/theme
+  where it renders (default 390 + 1440, both themes if the app has them) — zero `block`; screenshot
+  it; measure what its rules name (padding, contrast, alignment within 1 px, wrap, overflow); look at its neighbours and at
   every other place the same component renders. Console clean.
 - **Escalate** small → medium when the self-check finds anything outside the element, or the
   component is shared and renders elsewhere; medium → large when scope grows. Never shrink a lane
@@ -115,6 +115,12 @@ building on them (an edit showcase's pair was two framings; USELOG 2026-10-19).
 
 ## 4. Self-check (before spending a critic round)
 
+- **Code: run `ui-check` after every change** — `node ~/.claude/skills/ui-loop/tools/ui-check/run.js
+  <url> --widths 390,1440 [--themes dark,light] [--scope <sel>] [--ls <json>]` from the project
+  folder. It measures the script-measurable `[đo]` rules (overflow, clipping, wrapped buttons, tap
+  targets, contrast through gradients, translucent sticky layers, chip padding, lone words…) in
+  seconds, no tokens. Fix every `block`; zoom on every `?`; decide each `warn`. Paste the final
+  output into the critic brief as **Measured**. IDs and setup: `tools/ui-check/README.md`.
 - Code: preview running, reload, `read_console_messages` errors, a screenshot at desktop and at
   390. Fire the main interaction **at 390** too — it runs at DPR 2, where canvas-sizing bugs show
   (USELOG 2026-10-15).
