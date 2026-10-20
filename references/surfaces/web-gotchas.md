@@ -289,7 +289,12 @@ children (`.reveal > i`), or a generic `.reveal span{transform:…}` will wreck 
 and doesn't re-raster when it settles, so an upscaled card stays soft on iPhone while Chrome
 screenshots look sharp. Lay the copy out at its final size (CSS `zoom:k`, with the cqw sizes checked)
 rather than `transform:scale(k)`, drop `will-change`, and on `finished` commit the end transform and
-cancel the animation (USELOG 2026-10-18).
+cancel the animation (USELOG 2026-10-18). **Correction (2026-10-19): not CSS `zoom` either** — on iPhone a
+zoomed card lost its rounded clip and showed its back face as a square behind it, and clip-path patches
+didn't hold. Lay the copy out at its final size in plain px: JS sets the card's width/height to the stub's
+size × k and its type basis (the custom property the `cqw` sizes read) in px; no zoom, no scale. Snap the
+landed position to whole pixels. Keep room for the card's glow inside any clipping parent (~50px below,
+~30px elsewhere), or stop the parent clipping once the reveal has happened.
 
 ## iPhone Safari layer budget
 A reveal that works in desktop Chrome can break on an iPhone ("bị lỗi, hỏng") with no console error:
@@ -308,6 +313,29 @@ so timed CSS transitions completed off-screen and the reveal "jumped". Render su
 once (Playwright screenshot of the data-URI) and ship the files. A screen recording sampled at
 2–4 frames apart locates this in minutes — ask for one first.
 
+## What Chrome screenshots hide on an iPhone (round 2, 2026-10-19)
+Each of these looked right in headless Chrome and was reported from the user's iPhone:
+- **A blurred `<video>` smears into colour blobs** (rings of red/green). Behind a blurred hero use a
+  still (the user's photo or the clip's poster) with `filter:blur()`, inside the box (`inset:0` +
+  `scale`), not the playing video.
+- **A `mask-image` fade on a container fades everything in it, text included** — a title placed inside
+  a fading hero went grey and "k rõ". Put the fade on the backdrop layer, not the box that holds copy.
+- **Full-bleed by negative margin wider than the page gutter scrolls the whole page sideways** (−20px
+  in a 16px gutter = 4px of sideways scroll on every paywall). After any full-bleed change measure
+  `document.documentElement.scrollWidth` at 375 and 390; clip with `overflow-x:clip` on the page
+  wrapper (not `hidden`, which breaks sticky).
+- **A fixed band left behind by an old sticky button** covered content after the button stopped being
+  sticky. When a sticky element goes, search for its companion layers (fade bands, bottom padding).
+- **`drop-shadow`/`box-shadow` on a decoration inside a scaled or clipped box got cut.** Give the
+  glow and the contact shadow their own layers (radial-gradient elements behind the object) instead.
+
+## Placing an asset exactly as a design file shows it
+A design tool reports a rotated node's corner, not its bounding box, so copying x/y misplaces it. Render
+the design node, then fit the asset onto it: composite the asset at candidate (width, centre x/y,
+angle) over the base and minimise the pixel difference with a coarse-to-fine search (a few seconds in
+numpy). Convert the result to percentages of the host element and check it beside the reference
+(2026-10-18: a hat on an app icon matched to within a few px after two guesses had missed).
+
 ## Cutting a subject out of a photo, and filling the hole
 Tools that work on this machine: `rembg` with the `u2net` session (+ `alpha_matting=True`) for the
 matte — isnet-general-use left haze; a polygon or GrabCut left background on the subject. For the
@@ -315,6 +343,12 @@ hole left behind: LaMa (`pip install simple-lama-inpainting`, ~200 MB model, CPU
 crop around the hole, scale so the long side is 1024, inpaint, scale back, feather 3 px.
 OpenCV Telea/blurred fills leave smears the user rejects ("nền bị xóa trông không ổn"). Always
 preview a cut on magenta and on the real page background before shipping (USELOG 2026-10-17).
+Also seen (2026-10-19): with numpy 1.x, `rembg` fails on `np.long`/`np.ulong` — set `np.long=int;
+np.ulong=np.uint64` before importing. Glass and other see-through parts come out as holes (a lantern lost
+its panes): fill the enclosed holes and tint them. A pale object on a white ground (pink tape) is cut
+to its dark print only; key it by distance from white + morphological close instead. On a plain
+white ground `isnet-general-use` gave clean edges; the white-ground prompt is easier to key than green
+when the subject has no white.
 
 ## HTML emails: judge with real merge values
 A template full of `{{credits}}` / `{{email}}` renders at the placeholder's length, not the real

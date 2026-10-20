@@ -13,6 +13,18 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-20 — iPhone gotchas round 2, design-file placement, funnel delivery checks
+**Changed:** `web-gotchas.md`: corrected "Scale-up reveals stay sharp" (CSS `zoom` broke the card's rounded
+clip on iPhone — lay the copy out in px at final size, no zoom, no scale; keep glow room inside clipping
+parents); new "What Chrome screenshots hide on an iPhone" (blurred video blobs, a container mask fading
+its text, full-bleed sideways scroll + `scrollWidth` check, orphaned sticky bands, filter shadows cut);
+new "Placing an asset exactly as a design file shows it" (fit by pixel difference); rembg notes (numpy
+shim, see-through holes, pale-on-white keying). `funnel.md`: "like the original" = its arrangement;
+claim/release protocol between parallel sessions; verify production serves each deploy.
+**Why:** a seasonal funnel project over 17–19/10: four iPhone-only defects reported from screenshots that
+Chrome captures didn't show; the earlier `zoom` advice caused one of them; an asset placed by a design
+file's x/y missed twice; about one deploy in six had to be repeated.
+
 ## 2026-10-20 — engine mirror in the data repo (`--mirror`)
 **Changed:** `setup/mirror-engine.sh` copies the engine's committed tree into `~/.ui-loop/engine/` and
 commits it there ("engine mirror: <sha> <subject>"), then pushes. `setup/hooks.sh` is now the single

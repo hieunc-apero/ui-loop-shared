@@ -64,6 +64,18 @@ and where a user can leave or go back. Write that list into the brief — the cr
   start each new clip at the song's position. In the capture script, measure the track time
   before and after Continue (seasonal funnel 1, 16/10: "đừng play lại từ đầu").
 
+- **"Like the original" means its arrangement, exactly.** When the user points at a live source funnel
+  ("sửa cho đúng bản gốc, style giữ nguyên"), open it and copy its order, its single CTA and where it
+  sits, its price layout, and what is or isn't sticky; read its real prices from its offer endpoint
+  rather than guessing. Keep only your styling (2026-10-19, a paywall rebuilt twice).
+- **Several sessions on sibling funnels at once:** claim a funnel before editing ("claiming funnel N for
+  X, hold off"), release with a one-line summary of what changed and where, and build on what is on
+  disk. Never redeploy a sibling you didn't claim — the deploy ships whatever is on disk.
+- **After every deploy, prove production serves it:** fetch the cache-busted CSS/JS URL the page
+  references and grep for a marker from this change; static hosts sometimes report "ready" while the
+  old build still serves. Redeploy once if the marker is missing (2026-10-17 → 19: about one deploy in
+  six needed a second try).
+
 ## Capture for the critic
 
 Pass `Surface: funnel` and the steps as an ordered list, each with its URL (or the action that
