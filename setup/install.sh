@@ -24,15 +24,23 @@ DATA_URL=""
 UNINSTALL=no
 MIRROR=no
 HOOKS=yes
+# flags may come before or after the config dirs
+dirs=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --data) DATA_URL="$2"; shift 2 ;;
     --uninstall) UNINSTALL=yes; shift ;;
     --mirror) MIRROR=yes; shift ;;
     --no-hooks) HOOKS=no; shift ;;   # used by setup/hooks.sh itself
-    *) break ;;
+    -*) echo "unknown option: $1" >&2; exit 1 ;;
+    *) dirs="$dirs$1
+"; shift ;;
   esac
 done
+set --
+while IFS= read -r d; do [ -n "$d" ] && set -- "$@" "$d"; done <<DIRS
+$dirs
+DIRS
 
 if [ "$UNINSTALL" = yes ]; then
   [ $# -eq 0 ] && set -- "${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
