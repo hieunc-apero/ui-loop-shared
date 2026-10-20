@@ -425,3 +425,8 @@ White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
 - **A keyed AI prop with a `drop-shadow` shows a box.** Chroma keys leave alpha 1–10% in the
   "transparent" area, so the shadow (and a CSS mask) outlines the whole canvas. Zero alpha below ~0.1 in the
   file, and bake fades into the file instead of masking in CSS.
+
+- **`!important` on a property that an animation drives freezes the animation.** Important declarations beat
+  keyframes in the cascade. A restyle set `transform:none !important` on a marquee track and the reel stopped
+  scrolling, and nobody noticed because every check used stills (USELOG 2026-10-20). After restyling anything
+  animated, measure motion: read its position twice, two seconds apart.
