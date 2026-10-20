@@ -13,6 +13,26 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-20 — every engine change is logged in two CHANGELOGs
+**Changed:** `references/loop/retro.md` — an engine change gets an entry here (no names, quotes or
+paths) **and** the same entry with the real context (project, run, the user's words) in the user's
+`~/.ui-loop/CHANGELOG.md`. `setup/data-template/CHANGELOG.md` added. Also back-filled the entry
+below for ten `web-gotchas` commits that had none.
+**Why:** after the split (v0.22) the user's own readable history had only the anonymised copy; the
+real-name history survived only in git. The user wants their changelog kept and continued.
+
+## 2026-10-19 — web-gotchas: HTML email (Gmail)
+**Changed:** `references/surfaces/web-gotchas.md` (10 commits `d017ee1` → `78037d6`): judge HTML
+emails with real merge values; Figma icons re-rendered transparent; banner text contrast and `<wbr>`
+for short addresses; Gmail dark-mode inversion simulated and defended; overflow per client mode,
+number+unit cells, fixed icon cells; no spacing on blend spans; findings from a real send in Gmail
+iOS dark (coloured text, auto-links); light default + dark media, a Gmail-proof light theme;
+versioned image filenames (Gmail proxy cache); a logo that follows Gmail's inversion via a
+difference-blend split.
+**Why:** a transactional email (USELOG 2026-10-19, ten versions with user reactions): long addresses
+breaking mid-domain at 700 px, numbers without separators, orphans; the dark-mode defects only showed
+in a real send. Logged late (2026-10-20).
+
 ## 2026-10-19 — step 3: verify before/after pairs
 
 **Changed:** `SKILL.md` step 3 — diff a before/after pair before building on it. A pair from

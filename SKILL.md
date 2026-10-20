@@ -17,7 +17,8 @@ lane → surface → brief → load rules → build → self-check → [ui-criti
 **Two folders.** This skill folder is the shared engine, the same for everyone. What belongs to
 one person lives in their **data folder `~/.ui-loop/`** (its own git repo): `taste.md` (their
 eye, core — read every run), `taste-archive.md` (every quote behind it — read by topic),
-`projects.md` (where each project keeps its rules), `USELOG.md` (one entry per run), `evals/`.
+`projects.md` (where each project keeps its rules), `USELOG.md` (one entry per run),
+`CHANGELOG.md` (engine changes with their real context), `evals/`.
 Never write a person's quotes, paths or run logs into the skill folder; never read another
 person's data folder. "USELOG <date>" citations here point at the maintainer's log.
 

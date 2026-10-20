@@ -78,8 +78,11 @@ now proved it matters.
 - USELOG entry (step 9) — also for critic-only, partial and abandoned runs. The line that matters
   most is **what the user still flagged after hand-off**: that is what the loop missed. Record
   the build skills loaded (`Skills loaded:`). When a run exposes a gap in the engine, fix it and
-  add a `CHANGELOG.md` entry, with the eval score before and after if the user's `evals/` covers
-  it. The entry includes a **Rules updated:** line — every change and its file, or
+  add a **CHANGELOG entry in both places**, with the eval score before and after if the user's
+  `evals/` covers it — every engine change, topic files (`*-gotchas.md`) included:
+  - `CHANGELOG.md` in the skill folder: no names, quotes or paths ("the user", "project A");
+  - `~/.ui-loop/CHANGELOG.md`: the same entry with the real context — project, run, the user's
+    words — so the user's own history stays complete. The entry includes a **Rules updated:** line — every change and its file, or
   `none` with the reason. Never left out. Add `Lane:` and `Cost:` (tokens if known).
 - Data folder `~/.ui-loop`: commit; if it has a remote, `git pull --rebase` and push.
 - Skill folder (only if the engine changed): GitHub login (`gh api user --jq .login`) listed in

@@ -8,6 +8,7 @@ giữ những gì **chỉ thuộc về bạn** — ui-loop đọc và ghi vào �
 | `taste.md` | gu của bạn (bản lõi, ngắn): mỗi trục một nguyên tắc + cách đo — critic chấm theo đó ở mọi dự án. Bắt đầu trống, tự đầy dần từ góp ý của bạn |
 | `taste-archive.md` | nguyên văn mọi lời góp ý đứng sau `taste.md`, có ngày — chỉ mở khi đụng đúng chủ đề; không bao giờ bị xoá |
 | `projects.md` | mỗi dự án để luật ở đâu (repo, Figma fileKey) — cần cho dự án chỉ có Figma |
+| `CHANGELOG.md` | mỗi thay đổi bộ máy sinh ra từ các lần chạy của bạn, có ngữ cảnh thật (dự án, lời bạn nói) |
 | `USELOG.md` | nhật ký mỗi lần chạy: critic bắt được gì, bạn còn chê gì sau bàn giao |
 | `evals/` | bài đo critic bằng lỗi thật của bạn (cách đo: `~/.claude/skills/ui-loop/evals/README.md`) |
 
