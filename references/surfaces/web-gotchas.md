@@ -400,3 +400,23 @@ recolours the cell behind an image but never the image, so split it into a backg
 layer fitted per pixel against the page colour (#FFF light, #202124 Gmail iOS dark); show it only
 under `u + .body`, keep the plain logo as the default so stripped-<style> clients fall back.
 White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
+
+
+## Forking a funnel into another brand
+
+- **Grep the parent's `display:none !important` decor kill-lists against the new brief's add-ons.** The
+  parent hid every cobweb and spider as a concept split between its sibling funnels. The new brief asked
+  for both, and only the critic's spec check noticed (USELOG 2026-10-20). Concept decisions don't carry
+  over to a new brief; craft rules do.
+- **A new brand needs a restyle, not a recolour.** A hue-shift of the parent's tokens kept its fonts,
+  radii, glass cards, fog and pill CTA. The user said it "still looks like the old funnel" (USELOG
+  2026-10-20). Take type, corner shape, surfaces, CTA shape and decor from the new refs, and load the
+  restyle as its own stylesheet last, so the parent's layered overrides stay intact.
+- **Confirm the server is yours before capturing.** `curl` the port and check the `<title>`. A dev server
+  started on a busy port fails quietly, and the sibling funnel already on that port answers every capture.
+  A critic whose browser can't reach this machine returns NOT REVIEWED: give it capture files instead.
+- **Two fixed `z-index:-1` layers paint in DOM order.** A new decor layer inserted before the old
+  atmosphere layer was painted over and invisible on every step. Give the base `-2`.
+- **A keyed AI prop with a `drop-shadow` shows a box.** Chroma keys leave alpha 1–10% in the
+  "transparent" area, so the shadow (and a CSS mask) outlines the whole canvas. Zero alpha below ~0.1 in the
+  file, and bake fades into the file instead of masking in CSS.
