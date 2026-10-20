@@ -13,7 +13,7 @@ a face). The rest is taste and drawing — still the critic's job.
 ```sh
 # from the project folder (uses its node_modules/playwright-core if present)
 node ~/.claude/skills/ui-loop/tools/ui-check/run.js http://localhost:3000/styles \
-     --widths 390,1440 --themes dark,light --ls '{"lensie.hasSeenOnboarding":"true"}'
+     --widths 390,1440 --themes dark,light --ls '{"app.onboardingSeen":"true"}'
 # only the part you changed (small lane):
 node …/run.js http://localhost:3000/ --widths 390 --scope ".site-bar"
 ```
