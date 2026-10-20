@@ -13,6 +13,12 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-20 — fork restyle: class collisions, per-width CTA fit, hard-coded shell colours
+**Changed:** `web-gotchas.md` → "Forking a funnel into another brand": prefix added classes; measure CTA label vs
+arrow at every width after width/label changes; sample computed backgrounds at the top bar and pinned CTA.
+**Why:** two sibling re-themes of one funnel shell: a new `.fl` class broke the paywall footer; a phone-only label
+fix regressed on desktop; a hard-coded maroon in the shell outlived three re-themes.
+
 ## 2026-10-20 — fork restyle: swapped assets, invisible tap-eaters, motion sampling
 **Changed:** `web-gotchas.md` → "Forking a funnel into another brand": a replaced image inherits the old one's
 aspect-ratio; hidden animated parts get `pointer-events:none`; sample moving parts every ~150 ms; `animation:none`

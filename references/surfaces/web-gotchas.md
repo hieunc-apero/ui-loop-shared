@@ -443,3 +443,12 @@ White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
   A title lockup that reused a neon sign's class sat invisible; only a computed-style probe showed it.
 - **Particle layers (petals, embers, sparks) go behind content**, never `z-index` above it: the critic found
   them on option labels, inputs and copy across four steps.
+- **Prefix every class a restyle adds.** A corner-ornament class `.fl` collided with the shell's footer-logo `.fl`,
+  pulled the logo out of flow and laid it over the paywall links (USELOG 2026-10-20, DOTD 2). Grep the shell for a
+  new class name before using it.
+- **A CTA label's fit is a per-width measurement.** Wrapping a long label on phones and then narrowing the desktop
+  column put it back under the arrow at 1440. Measure the text range (`Range.getClientRects`) against the arrow's
+  left edge at 360/375/390/1024/1280/1440 after any change to the button's width, label or font.
+- **The parent shell hard-codes its palette outside the tokens** (a top-bar gradient, the pinned-button fade). After
+  a re-theme, sample the computed background at the top bar and behind the pinned CTA, not only the tokens — the
+  old maroon survived three re-themed funnels until a critic noticed a warm band (USELOG 2026-10-20, DOTD 3).
