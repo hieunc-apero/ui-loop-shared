@@ -480,6 +480,23 @@ White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
 - **A value JS sets inline loses to an inherited `!important`.** A per-step figure set `style.aspectRatio` from JS while an older
   stylesheet had `aspect-ratio … !important`: the figure rendered 75% wider than the layout maths and covered the CTA. Use
   `el.style.setProperty(prop, value, "important")`, and measure the rendered rect, not the computed intent (USELOG 2026-10-21).
+- **A dark shell forked to a light theme leaks dark in places no token reaches.** On 21/10 (a paper-collage fork of
+  a night funnel) the critic and ui-check found: white wordmark/award/press-logo images invisible on paper (print
+  them with `filter:brightness(0)`), phone review cards with a hard-coded navy background under ink text, a
+  "Most Popular" ribbon whose text colour a later shell rule re-set, and `::before/::after` corner props with
+  `mix-blend-mode:screen` that vanish on a light page. Walk every step at phone and desktop after the re-theme.
+- **Never clip a box of die-cut stickers with `overflow:hidden`.** It sliced every sticker on one straight line
+  above the pinned button, on blank paper, where it reads as an unfinished crop (critic round 2, 21/10). Position
+  each sticker so its tilt and soft shadow end inside the free band instead.
+- **`filter` on a `transform-style:preserve-3d` element flattens it.** A drop-shadow on a compact's hinged lid
+  meant its back face (the mirror) never showed when the lid flipped open. Put the shadow on the front face.
+- **A scene sized from a JS measurement of itself is a feedback loop.** `--free = button.top − subhead.bottom`,
+  with the button flowing after the scene, keeps whatever height the scene started with: the CTA sat at 715 px on a
+  664 px screen. Make the column one screen tall (`height:100svh` flex), let the scene `flex:1`, and size the object
+  from the scene with container units (`container-type:size`, `100cqh`).
+- **A rule string-inserted "just before the next block" can land outside its `@media`.** Phone-only offer spacing
+  inserted after a phone block's closing brace applied at 1440 too. After inserting into a media block, probe a
+  computed value at a width outside it.
 
 ## Decor above a vertically centred column
 

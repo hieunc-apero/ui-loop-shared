@@ -13,6 +13,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-21 — dark→light fork leaks, sticker clipping, 3D flattening, self-measured scenes
+**Changed:** `web-gotchas.md` → "Forking a funnel into another brand": five bullets — what a dark shell leaks into a
+light re-theme; never `overflow:hidden` a sticker box; `filter` flattens `preserve-3d`; size a scene from a one-screen
+flex column + container units, not from a JS measurement of itself; probe media-block insertions outside their width.
+**Why:** a light paper-collage fork of a night funnel: critic rounds 1–2 found dark review cards and a sliced sticker
+band; the builder hit a lid whose mirror never showed, a CTA pushed below a short screen, and phone rules applied at 1440.
+
 ## 2026-10-21 — funnel forks: remap hard-coded colour triples; CTA vs viewport in the reveal probe
 **Changed:** `funnel.md`: a re-themed fork greps the parent's old-accent rgba/hex triples across every file and
 remaps them in one pass, then hue-checks AI-generated props; the reveal clearance probe also measures the CTA's
