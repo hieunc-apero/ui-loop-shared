@@ -37,10 +37,16 @@ and where a user can leave or go back. Write that list into the brief — the cr
   `.claude/design-rules.md` before every critic round and port the rules added since the fork
   (seasonal funnel 2: rounds 1–2 blocked on parent rules 14–17 written after the fork — real webs,
   no success webs, the "Need help?" pill). Diff the parent's rule numbers, not your memory.
+- **A re-themed fork keeps the parent's colours in hard-coded triples, not only tokens.** Remapping the
+  tokens left ~40 `rgba(r,g,b,…)` / hex uses of the old accent (a halo, a card border, a fade band) and the
+  critic found them screen by screen. Grep the old accent's triples and hexes across every file and remap
+  them in one pass; then sample the hues of every AI-generated prop too (a generated bunting carried one
+  off-palette flag) (2026-10-21).
 - **Anything that rises or swings on a step (a card out of an envelope, a lid, a flap) gets its
   clearance measured in the DOM across viewport heights** — 1440×900/800, 1280×720, 1366×640,
   390×844, 375×667 — sampling the top of every moving part through the animation against the
-  title's bottom and the CTA's top. One screenshot at 1440×900 hid an overlap at 720 tall
+  title's bottom and the CTA's top. Measure the CTA's own bottom against the viewport in the same probe — a scene
+  that fits its gap can still push the CTA below the fold (2026-10-21). One screenshot at 1440×900 hid an overlap at 720 tall
   (seasonal funnel 2, rounds 3–4). Size the moving object from the viewport height, not a fixed px.
 - **Forking a funnel into a new brand, and checking the capture server:** `web-gotchas.md` →
   "Forking a funnel into another brand" (kill-lists vs the new brief, restyle not recolour, busy ports).

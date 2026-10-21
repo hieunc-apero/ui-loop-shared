@@ -73,6 +73,25 @@ there — generate a photo and key it:
   layer below an ellipse fitted to the inner lip, in Python, same canvas size, so both layers share
   one CSS position.
 
+- **When image generation is blocked, hand the user the prompt instead of shipping a stand-in.** Figma AI
+  credits were exhausted mid-run (they reset monthly), so a drawn SVG locket went in to keep the round
+  moving — and it read flat next to the photographic candles. Offering the user a ready-to-paste prompt plus
+  a spec (aspect ratio, flat chroma-green background, object centred with margin, the exact filename and
+  path, and whether a second "open" frame helps) got the real asset back within minutes, and they volunteered
+  to generate it ("đưa prompt đây t gen locket cho", 21/10). Keep the stand-in in place while you wait, and
+  say in the hand-off which one shipped.
+
+- **`width:auto` on a REPLACED element (`img`, `video`) does not stretch between opposing insets.** With
+  `left:14px;right:14px;width:auto` an `<img>` keeps its intrinsic width, capped only by `max-width`, so a
+  600px photo rendered 340px wide in a 312px opening and spilled out of its frame. Set the size explicitly
+  (`width:calc(100% - 28px)`), and measure the rendered rect — the computed `width` reads as the used value,
+  not as `auto`, which hides the cause (21/10, two rounds).
+
+- **A shell that sets `img{max-width:100%}` silently clamps every prop sized past its box.** A garland at
+  `width:112%`, a bed of flowers at `136%` and a bunting at `108%` all rendered at exactly 100% and ended on
+  a hard vertical edge that read as a cropping bug. Give decor images `max-width:none` alongside the width
+  (21/10).
+
 ## Cursors, stickers and tiny icons
 
 Screenshots never capture the OS pointer, so a custom cursor gets its own **asset sheet**
@@ -422,7 +441,10 @@ White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
   it. Give every prop image `height:auto` (or `width:auto`) alongside the side you size.
 - **Open/close a photo prop by moving halves, not `scaleX`.** Stretching keyed curtains to "close" them also
   stretched the hands into long arms. Split the ref's own closed frame into two halves and slide them apart.
-- **`drop-shadow` plus a CSS `mask` on the same prop paints its box** even when the file's alpha is clean (every
+- **`drop-shadow` plus a CSS `mask`, `clip-path` or `overflow:hidden` on the same element paints that
+  element's BOX** — it bit three times in one run on 21/10 (a masked wreath, two clipped halves and a
+  clipped chain each drew a pale rectangle). Put the filter on an unclipped wrapper so the shadow traces
+  the clipped silhouette, or drop it and light the object with a radial glow behind. The original case: even when the file's alpha is clean (every
   corner 0, < 2 % of pixels at 1–25). It stayed invisible on a dark room and showed once the room behind was blurred
   lighter. Keep the grade (`brightness/sepia/…`) and drop the shadow, or put the shadow on a wrapper.
 - **A keyed AI prop with a `drop-shadow` shows a box.** Chroma keys leave alpha 1–10% in the

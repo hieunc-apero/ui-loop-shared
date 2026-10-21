@@ -13,6 +13,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-21 — funnel forks: remap hard-coded colour triples; CTA vs viewport in the reveal probe
+**Changed:** `funnel.md`: a re-themed fork greps the parent's old-accent rgba/hex triples across every file and
+remaps them in one pass, then hue-checks AI-generated props; the reveal clearance probe also measures the CTA's
+bottom against the viewport.
+**Why:** a seasonal fork's critic rounds 1–2 found ~40 leftover old-accent colours and a violet flag inside a
+generated bunting, and a desktop CTA below the fold that the object↔CTA probe didn't see.
+
 ## 2026-10-20 — fork restyle: class collisions, per-width CTA fit, hard-coded shell colours
 **Changed:** `web-gotchas.md` → "Forking a funnel into another brand": prefix added classes; measure CTA label vs
 arrow at every width after width/label changes; sample computed backgrounds at the top bar and pinned CTA.
