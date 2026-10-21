@@ -37,7 +37,8 @@ Platform: web | ios | android        Medium: live | figma
 Round: full | scoped | verify
 Scope: <scoped/verify — regions or selectors, and the widths/themes they show in>
 Target: http://localhost:3000/kits/creator
-        (figma: fileKey + nodeIds;  funnel: the ordered steps;  native: screenshot paths)
+        (figma: fileKey + nodeIds;  funnel: the ordered steps;  native/screenshots: every file's
+        absolute path — the critic cannot list a folder, and a folder alone burned a round)
 Reference: <optional — approved Figma nodeIds the code must match>
 Flow graph: <flow only — absolute path to the JSON from references/surfaces/flow-graph.js>
 Spec: <optional — absolute path to the spec/PO doc to check conformance against>
