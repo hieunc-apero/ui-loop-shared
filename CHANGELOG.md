@@ -45,6 +45,22 @@ claim/release protocol between parallel sessions; verify production serves each 
 Chrome captures didn't show; the earlier `zoom` advice caused one of them; an asset placed by a design
 file's x/y missed twice; about one deploy in six had to be repeated.
 
+## v0.27 — 2026-10-21 — one sentence sets up a new machine
+**Changed:** `setup/BOOTSTRAP.md` — instructions for Claude on a new machine/account: ask only the
+data repo URL, check git/node/Chrome/repo access, clone or update the engine, run
+`install.sh --data … --mirror --with-skills`, verify (install rerun clean, plugin list, data folder,
+a ui-check smoke test on a `data:` page, agents present), list what only the user can do (Figma
+`/mcp` login, a browser for the critic, a new session), report a ✅/⚠️ table. `install.sh
+--with-skills` runs each missing build skill's install command once (`setup/skills.txt` now holds
+shell commands: `claude plugin install …`, `claude plugin marketplace add …`, `npx skills add …@… -g
+-y`) and installs playwright-core for ui-check; `--dry-run` prints them. INSTALL.md opens with the
+sentence to paste.
+**Why:** the user asked what to tell Claude on a new machine so it installs everything and is ready.
+Tested: dry run on an empty account (13 missing skills → 9 commands, the Figma plugin once);
+`claude plugin install` on an installed plugin is a clean no-op; `--with-skills` for real on this
+machine installed playwright-core and the rerun reported the runner ready; the smoke test fires
+U4 + U5.
+
 ## v0.26.1 — 2026-10-21 — anonymise two leftover names
 
 **Changed:** `references/surfaces/landing.md` and one older CHANGELOG entry named a personal landing

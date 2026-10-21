@@ -5,6 +5,8 @@
 #   sh setup/install.sh ~/.claude ~/.claude-trung
 #   sh setup/install.sh --data <git url>     # also clone your personal data repo to ~/.ui-loop
 #   sh setup/install.sh --mirror             # also keep a copy of the engine in ~/.ui-loop/engine/
+#   sh setup/install.sh --with-skills        # also install the missing build skills (setup/skills.txt)
+#                                            # and playwright-core for tools/ui-check; --dry-run: print only
 #   sh setup/install.sh --uninstall [dirs]   # undo 1–3 below for these accounts (default: this
 #                                            # one); keeps the clone and ~/.ui-loop
 #
@@ -24,6 +26,8 @@ DATA_URL=""
 UNINSTALL=no
 MIRROR=no
 HOOKS=yes
+WITH_SKILLS=no
+DRY=no
 # flags may come before or after the config dirs
 dirs=""
 while [ $# -gt 0 ]; do
@@ -31,6 +35,8 @@ while [ $# -gt 0 ]; do
     --data) DATA_URL="$2"; shift 2 ;;
     --uninstall) UNINSTALL=yes; shift ;;
     --mirror) MIRROR=yes; shift ;;
+    --with-skills) WITH_SKILLS=yes; shift ;;
+    --dry-run) DRY=yes; shift ;;
     --no-hooks) HOOKS=no; shift ;;   # used by setup/hooks.sh itself
     -*) echo "unknown option: $1" >&2; exit 1 ;;
     *) dirs="$dirs$1
@@ -203,24 +209,42 @@ elif [ -d "$DATA/engine" ]; then
   echo "mirror  on ($DATA/engine/)"
 fi
 
-# Build skills ui-loop loads (setup/skills.txt): report the missing ones, install nothing.
+# Build skills ui-loop loads (setup/skills.txt): report the missing ones; with --with-skills, run
+# each missing one's install command (a command shared by several skills runs once).
+run() { if [ "$DRY" = yes ]; then echo "        would run: $1"; else echo "        running: $1"; sh -c "$1" || echo "        ! failed: $1" >&2; fi; }
 echo
+done_cmds=""
 for cfg in "$@"; do
-  missing=""
+  missing=""; cmds=""
   while IFS='|' read -r name use how; do
     name=$(echo "$name" | tr -d ' ')
     case "$name" in ''|'#'*) continue ;; esac
     [ -f "$cfg/skills/$name/SKILL.md" ] && continue
     find "$cfg/plugins/cache" -path "*/skills/$name/SKILL.md" 2>/dev/null | grep -q . && continue
+    how=$(echo "$how" | sed 's/^ *//;s/ *$//')
     missing="$missing
-  - $name ($(echo "$use" | sed 's/^ *//;s/ *$//')):$how"
+  - $name ($(echo "$use" | sed 's/^ *//;s/ *$//')): $how"
+    case "$cmds" in *"|$how|"*) ;; *) cmds="$cmds|$how|" ;; esac
   done < "$REPO/setup/skills.txt"
   if [ -z "$missing" ]; then
     echo "skills  $cfg: all build skills present"
+  elif [ "$WITH_SKILLS" = yes ]; then
+    echo "skills  $cfg: installing the missing ones:$missing"
+    IFS='|'; for c in $cmds; do [ -z "$c" ] && continue
+      case "$done_cmds" in *"|$c|"*) continue ;; esac; done_cmds="$done_cmds|$c|"
+      CLAUDE_CONFIG_DIR="$cfg" run "$c"; done; unset IFS
   else
-    echo "skills  $cfg: missing — ui-loop still runs, with less build guidance. Install:$missing"
+    echo "skills  $cfg: missing — ui-loop still runs, with less build guidance. Install with --with-skills, or:$missing"
   fi
 done
+
+# ui-check's headless runner needs playwright-core (it drives the installed Chrome, no download)
+UC="$REPO/tools/ui-check"
+if [ -d "$UC/node_modules/playwright-core" ]; then echo "tools   ui-check runner ready"
+elif [ "$WITH_SKILLS" = yes ]; then
+  if command -v npm >/dev/null; then run "npm i --silent --no-audit --no-fund --prefix \"$UC\" playwright-core"
+  else echo "tools   ! npm not found — install Node.js, then: npm i --prefix \"$UC\" playwright-core" >&2; fi
+else echo "tools   ui-check runner: uses a project's playwright-core, or run with --with-skills to add one"; fi
 
 echo
 echo "Done. Skills/agents: picked up by running sessions after a short delay."

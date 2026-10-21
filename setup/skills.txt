@@ -1,18 +1,19 @@
-# Skills ui-loop loads while building (SKILL.md step 3). Not part of this repo — install.sh only
-# checks they are there and prints how to get the missing ones. ui-loop still runs without them;
-# the build just has less guidance. ui-critic needs none of them.
+# Skills ui-loop loads while building (SKILL.md step 3). Not part of this repo. install.sh checks
+# they are there and prints the command for each missing one; `install.sh --with-skills` runs those
+# commands (each one once). ui-loop still runs without them; the build just has less guidance.
+# ui-critic needs none of them.
 #
-# name | used for | how to install
-figma-use | figma, app (Figma), flow — mandatory before every use_figma | /plugin install figma@claude-plugins-official
-figma-generate-design | figma: a new screen from a page or a design system | /plugin install figma@claude-plugins-official
-figma-generate-library | figma: building a component library | /plugin install figma@claude-plugins-official
-figma-design-to-code | figma → code handoff, before get_design_context | /plugin install figma@claude-plugins-official
-figma-code-connect | figma → code, when components map 1:1 | /plugin install figma@claude-plugins-official
-frontend-design | web-app, funnel: a new page or section | /plugin install frontend-design@claude-plugins-official
-impeccable | web-app, funnel: refining an existing page | /plugin marketplace add pbakaus/impeccable  then  /plugin install impeccable@impeccable
-ui-ux-pro-max | general UI/UX principles, only when the project has no rules | /plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill  then  /plugin install ui-ux-pro-max@ui-ux-pro-max-skill
-building-landing-pages | landing | npx skills add hieunc-apero/building-landing-pages@building-landing-pages -g -y   (-g is required; the repo is the public, anonymised copy — this machine's USELOG stays local)
-swiftui-patterns | app (native iOS code) | npx skills add dpearson2699/swift-ios-skills
-swiftui-layout-components | app (native iOS code) | npx skills add dpearson2699/swift-ios-skills
-swiftui-liquid-glass | app (native iOS code, glass) | npx skills add dpearson2699/swift-ios-skills
-ios-accessibility | app (native iOS code) | npx skills add dpearson2699/swift-ios-skills
+# name | used for | shell command that installs it (runs from any folder)
+figma-use | figma, app (Figma), flow — mandatory before every use_figma | claude plugin install figma@claude-plugins-official
+figma-generate-design | figma: a new screen from a page or a design system | claude plugin install figma@claude-plugins-official
+figma-generate-library | figma: building a component library | claude plugin install figma@claude-plugins-official
+figma-design-to-code | figma → code handoff, before get_design_context | claude plugin install figma@claude-plugins-official
+figma-code-connect | figma → code, when components map 1:1 | claude plugin install figma@claude-plugins-official
+frontend-design | web-app, funnel: a new page or section | claude plugin install frontend-design@claude-plugins-official
+impeccable | web-app, funnel: refining an existing page | claude plugin marketplace add pbakaus/impeccable && claude plugin install impeccable@impeccable
+ui-ux-pro-max | general UI/UX principles, only when the project has no rules | claude plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill && claude plugin install ui-ux-pro-max@ui-ux-pro-max-skill
+building-landing-pages | landing | npx --yes skills add hieunc-apero/building-landing-pages@building-landing-pages -g -y
+swiftui-patterns | app (native iOS code) | npx --yes skills add dpearson2699/swift-ios-skills@swiftui-patterns -g -y
+swiftui-layout-components | app (native iOS code) | npx --yes skills add dpearson2699/swift-ios-skills@swiftui-layout-components -g -y
+swiftui-liquid-glass | app (native iOS code, glass) | npx --yes skills add dpearson2699/swift-ios-skills@swiftui-liquid-glass -g -y
+ios-accessibility | app (native iOS code) | npx --yes skills add dpearson2699/swift-ios-skills@ios-accessibility -g -y

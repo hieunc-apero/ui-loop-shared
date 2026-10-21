@@ -1,5 +1,21 @@
 # Cài đặt ui-loop
 
+## Cách nhanh nhất: nói với Claude
+
+Trên máy mới (đã có Claude Code, git, Node.js, Chrome), mở Claude Code ở thư mục bất kỳ và dán:
+
+> Cài ui-loop cho máy này: clone https://github.com/hieunc-apero/ui-loop-shared vào
+> `~/.claude/skills/ui-loop` rồi làm theo `~/.claude/skills/ui-loop/setup/BOOTSTRAP.md`.
+> Dữ liệu của tôi: `<url repo dữ liệu private của bạn>` *(người mới: "chưa có")*.
+
+Claude tự kiểm điều kiện, cài bộ máy + dữ liệu + agent + luật tự gọi + **mọi skill dựng còn thiếu**
++ công cụ ui-check, tự kiểm lại, rồi báo bảng ✅/⚠️ và mấy việc chỉ bạn làm được (đăng nhập Figma,
+cài Claude in Chrome, mở phiên mới).
+
+Muốn tự làm bằng tay: phần dưới.
+
+---
+
 Làm theo từ trên xuống, khoảng 5 phút. Mọi lệnh đều chạy lại được nhiều lần mà không hỏng gì.
 
 - [1. Cần có trước](#1-cần-có-trước)
@@ -64,6 +80,10 @@ git clone https://github.com/hieunc-apero/ui-loop-shared "$HOME\.claude\skills\u
 git clone https://github.com/hieunc-apero/ui-loop-shared "%USERPROFILE%\.claude\skills\ui-loop"
 "%ProgramFiles%\Git\bin\bash.exe" "%USERPROFILE%/.claude/skills/ui-loop/setup/install.sh"
 ```
+
+Thêm `--with-skills` vào dòng `install.sh` để nó **tự cài mọi skill dựng còn thiếu** (plugin Figma,
+frontend-design, impeccable, ui-ux-pro-max, building-landing-pages, SwiftUI) và `playwright-core` cho
+ui-check. `--dry-run` chỉ in ra các lệnh sẽ chạy.
 
 Lần đầu bạn chưa có hồ sơ gu: `~/.ui-loop/taste.md` được tạo trống. ui-loop vẫn chạy đủ vòng
 (luật của dự án cộng checklist của người chấm). Mỗi lần bạn góp ý, nó ghi thêm vào đó, nên gu
