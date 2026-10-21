@@ -452,3 +452,6 @@ White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
 - **The parent shell hard-codes its palette outside the tokens** (a top-bar gradient, the pinned-button fade). After
   a re-theme, sample the computed background at the top bar and behind the pinned CTA, not only the tokens — the
   old maroon survived three re-themed funnels until a critic noticed a warm band (USELOG 2026-10-20, DOTD 3).
+- **A value JS sets inline loses to an inherited `!important`.** A per-step figure set `style.aspectRatio` from JS while an older
+  stylesheet had `aspect-ratio … !important`: the figure rendered 75% wider than the layout maths and covered the CTA. Use
+  `el.style.setProperty(prop, value, "important")`, and measure the rendered rect, not the computed intent (USELOG 2026-10-21).
