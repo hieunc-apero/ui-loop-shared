@@ -422,6 +422,9 @@ White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
   it. Give every prop image `height:auto` (or `width:auto`) alongside the side you size.
 - **Open/close a photo prop by moving halves, not `scaleX`.** Stretching keyed curtains to "close" them also
   stretched the hands into long arms. Split the ref's own closed frame into two halves and slide them apart.
+- **`drop-shadow` plus a CSS `mask` on the same prop paints its box** even when the file's alpha is clean (every
+  corner 0, < 2 % of pixels at 1–25). It stayed invisible on a dark room and showed once the room behind was blurred
+  lighter. Keep the grade (`brightness/sepia/…`) and drop the shadow, or put the shadow on a wrapper.
 - **A keyed AI prop with a `drop-shadow` shows a box.** Chroma keys leave alpha 1–10% in the
   "transparent" area, so the shadow (and a CSS mask) outlines the whole canvas. Zero alpha below ~0.1 in the
   file, and bake fades into the file instead of masking in CSS.
