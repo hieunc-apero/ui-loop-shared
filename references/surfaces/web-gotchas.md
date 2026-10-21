@@ -480,3 +480,13 @@ White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
 - **A value JS sets inline loses to an inherited `!important`.** A per-step figure set `style.aspectRatio` from JS while an older
   stylesheet had `aspect-ratio … !important`: the figure rendered 75% wider than the layout maths and covered the CTA. Use
   `el.style.setProperty(prop, value, "important")`, and measure the rendered rect, not the computed intent (USELOG 2026-10-21).
+
+## Decor above a vertically centred column
+
+A phone screen whose content column is centred vertically moves its title with the viewport
+height. A prop pinned to the screen top (absolute, `top:-Npx`) then crosses the title's first line
+on short phones and leaves a hole above it on tall ones, and fixing it with padding only moves
+the clash to another height. Anchor the prop to the title instead (a `::before` in flow, or a
+wrapper), give it height steps so the pinned CTA stays on screen at the shortest phone, and
+measure title-top against prop-bottom at 360×640, 390×664, 390×844 and 430×932, not just one
+height (USELOG 2026-10-21, DOTD funnel 3 offer bunting).

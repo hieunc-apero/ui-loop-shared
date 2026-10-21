@@ -10,6 +10,11 @@ whole round burned (USELOG 2026-10-14). If those tools aren't in your own tool l
 dispatch with a URL: capture yourself (`references/surfaces/web.md` → "Capture without the
 browser tools") and pass the files.
 
+A local URL must be served by a process that outlives your shell call: a `python -m http.server
+&` started inside one Bash call can be dead by the time the critic loads it — a round came back
+NOT REVIEWED on `ERR_CONNECTION_REFUSED` (USELOG 2026-10-21). Start it with `run_in_background`,
+curl it right before dispatch, or point the critic at a deploy.
+
 ## Every round
 
 - **A fresh capture folder.** Re-capture every state after the fixes, into a new folder; never
