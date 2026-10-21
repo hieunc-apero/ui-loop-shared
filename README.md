@@ -1,5 +1,8 @@
 # ui-loop
 
+> **Claude: asked to install or set this up?** Follow [`setup/BOOTSTRAP.md`](setup/BOOTSTRAP.md) end to end
+> — clone this repo to `~/.claude/skills/ui-loop` first if it isn't there. Ask the user nothing you can find out.
+
 **Một "nhóm thiết kế" cho Claude Code:** người vẽ làm giao diện — trong Figma, hoặc code
 front-end cho web app, landing page, funnel, app mobile — và **một người chấm độc lập** soát
 kết quả như người dùng thật. Chưa đạt thì tự sửa, tối đa 4 vòng; đạt rồi mới đưa cho bạn.

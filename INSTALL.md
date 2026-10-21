@@ -2,15 +2,20 @@
 
 ## Cách nhanh nhất: nói với Claude
 
-Trên máy mới (đã có Claude Code, git, Node.js, Chrome), mở Claude Code ở thư mục bất kỳ và dán:
+Trên máy mới (đã có Claude Code, git, Node.js, Chrome; nên đăng nhập GitHub trước —
+`gh auth login` — để Claude tự tìm thấy repo dữ liệu của bạn), mở Claude Code ở thư mục bất kỳ và
+nói một câu:
 
-> Cài ui-loop cho máy này: clone https://github.com/hieunc-apero/ui-loop-shared vào
-> `~/.claude/skills/ui-loop` rồi làm theo `~/.claude/skills/ui-loop/setup/BOOTSTRAP.md`.
-> Dữ liệu của tôi: `<url repo dữ liệu private của bạn>` *(người mới: "chưa có")*.
+> cài ui-loop: https://github.com/hieunc-apero/ui-loop-shared
 
-Claude tự kiểm điều kiện, cài bộ máy + dữ liệu + agent + luật tự gọi + **mọi skill dựng còn thiếu**
+Không cần gõ lệnh, không cần trả lời gì thêm: Claude đọc README → `setup/BOOTSTRAP.md`, chạy
+`setup/check.sh` để xem máy có gì, **tự tìm repo dữ liệu private của bạn** (repo có `taste.md` +
+`USELOG.md`; không có thì tạo hồ sơ mới), rồi tự kiểm điều kiện, cài bộ máy + dữ liệu + agent + luật tự gọi + **mọi skill dựng còn thiếu**
 + công cụ ui-check, tự kiểm lại, rồi báo bảng ✅/⚠️ và mấy việc chỉ bạn làm được (đăng nhập Figma,
 cài Claude in Chrome, mở phiên mới).
+
+Cách thứ hai: clone repo này về rồi mở Claude Code **trong thư mục đó** — `CLAUDE.md` ở gốc repo
+bảo Claude tự cài ngay ở tin nhắn đầu tiên, nói gì cũng được ("hi").
 
 Muốn tự làm bằng tay: phần dưới.
 

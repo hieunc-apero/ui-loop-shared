@@ -8,6 +8,7 @@ các file trong `setup/` và trình cài làm gì bên trong.
 | `install.sh` | tạo thư mục dữ liệu riêng `~/.ui-loop` (nếu chưa có), rồi cài ui-loop vào một hay nhiều tài khoản Claude Code: nối skill, nối/chép agent, thêm khối tự gọi + retro vào `CLAUDE.md`. Chạy lại bao nhiêu lần cũng được; chạy sau mỗi lần sửa agent. |
 | `data-template/` | mẫu `~/.ui-loop` cho người mới: hồ sơ gu trống, bảng dự án trống, USELOG trống. |
 | `hooks.sh`, `mirror-engine.sh` | git hook của repo này: sau mỗi pull chép lại agent (nếu là bản chép); sau mỗi commit/pull, nếu bật `--mirror`, chép cả bộ máy sang `~/.ui-loop/engine/` và commit + đẩy repo dữ liệu. |
+| `check.sh` | in `ok` / `MISSING` cho từng phần (bộ máy, dữ liệu, skill, agent, CLAUDE.md, skill dựng, ui-check, git/node/Chrome); không đổi gì. |
 | `BOOTSTRAP.md` | hướng dẫn **cho Claude**: trên máy mới, bạn bảo Claude làm theo file này là nó tự cài hết, tự kiểm, rồi báo. |
 | `skills.txt` | các skill dựng mà ui-loop nạp (Figma, frontend-design, impeccable, landing, SwiftUI…), dùng cho việc gì, cài ở đâu. `install.sh` đối chiếu và in ra cái nào còn thiếu; `--with-skills` thì tự cài (mỗi lệnh một lần). |
 | `maintainers.txt` | tên GitHub của người duy trì — được đẩy thẳng thay đổi bộ máy. Người khác gửi pull request (fork nếu cần). |

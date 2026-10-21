@@ -45,6 +45,20 @@ claim/release protocol between parallel sessions; verify production serves each 
 Chrome captures didn't show; the earlier `zoom` advice caused one of them; an asset placed by a design
 file's x/y missed twice; about one deploy in six had to be repeated.
 
+## v0.28 — 2026-10-21 — install with no commands and no questions
+**Changed:** `setup/check.sh` prints `ok`/`MISSING` per part (engine, data, mirror, skill link, agents,
+CLAUDE.md block, build skills, ui-check runner, git/node/npm/Chrome) and changes nothing; exit 1 if
+anything is missing. `CLAUDE.md` at the repo root: a session started in this folder runs it on the
+first message (any message) and, if anything is missing, follows `setup/BOOTSTRAP.md` to the end.
+README's first line tells Claude the same when it is handed the repo URL. BOOTSTRAP step 0 now
+finds out instead of asking: an existing `~/.ui-loop`, else a URL the user gave, else the user's
+one private repo with `taste.md` + `USELOG.md` at the root (via `gh`), else a new profile; the
+user's other accounts on the machine by a shared `skills` link; mirror on with a data repo.
+**Why:** the user wanted a new machine to set itself up by reading a file, without typing commands.
+Claude still needs one message to act; that message can be anything. Tested: check.sh on this
+machine (all ok, exit 0) and on an empty account (every part MISSING, 13 build skills listed); the
+data-repo search finds exactly the maintainer's data repo.
+
 ## v0.27 — 2026-10-21 — one sentence sets up a new machine
 **Changed:** `setup/BOOTSTRAP.md` — instructions for Claude on a new machine/account: ask only the
 data repo URL, check git/node/Chrome/repo access, clone or update the engine, run
