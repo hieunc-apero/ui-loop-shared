@@ -29,7 +29,7 @@ end, before deploy, if the user wants a ship/no-ship verdict separate from the d
 `vercel link` writes `.env.local` (a `VERCEL_OIDC_TOKEN`) into the project folder. Put `.env*`,
 `.vercel` and any preview/asset-sheet pages in `.vercelignore` before the first deploy, then
 `curl` the live URL for `/.env.local` and the preview pages and expect 404 (USELOG 2026-10-15,
-happy-23-babichi). A folder deployed with the CLI is not git-connected: every later change needs
+a personal landing project). A folder deployed with the CLI is not git-connected: every later change needs
 `vercel deploy --prod` again; say so at hand-off.
 
 ## Language switch

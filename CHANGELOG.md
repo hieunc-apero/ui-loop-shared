@@ -45,6 +45,13 @@ claim/release protocol between parallel sessions; verify production serves each 
 Chrome captures didn't show; the earlier `zoom` advice caused one of them; an asset placed by a design
 file's x/y missed twice; about one deploy in six had to be repeated.
 
+## v0.26.1 — 2026-10-21 — anonymise two leftover names
+
+**Changed:** `references/surfaces/landing.md` and one older CHANGELOG entry named a personal landing
+project; both now say "a personal landing project".
+**Why:** the engine is public and keeps project and person names out (v0.22). Found by scanning
+the tree for known private names. Earlier commits still contain the name; history was not rewritten.
+
 ## v0.26 — 2026-10-20 — ui-check: the measurable rules, checked while building
 **Changed:** `tools/ui-check/` — `ui-check.js` measures 19 script-measurable rules in the page (U1–U19:
 broken images, overflow, clipped text, wrapped button labels, tap targets, contrast incl. through
@@ -417,7 +424,7 @@ reference. No eval covers it.
 **Changed:** `references/surfaces/landing.md` → "Deploying a static page to Vercel" (.vercelignore
 `.env*`/`.vercel`, curl-check they 404, CLI deploys aren't git-connected) and "Language switch"
 (state in data, stagger animation not state; critic switches mid-state).
-**Why:** happy-23-babichi run: `vercel link` dropped an OIDC token file into the deploy folder;
+**Why:** A personal landing run: `vercel link` dropped an OIDC token file into the deploy folder;
 the critic found a switch during "open all" lost card state. No eval covers it.
 
 
