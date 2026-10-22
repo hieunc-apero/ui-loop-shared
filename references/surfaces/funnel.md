@@ -55,6 +55,9 @@ and where a user can leave or go back. Write that list into the brief — the cr
   after `waitUntil:"load"` — `load` waits for images, while the step's own 300ms timer ran at DOM
   ready. Let the page settle, then take the state off (remove the class) and shoot that; three
   captures of a "closed" curtain came back open before this was noticed (2026-10-22).
+- **A fix is done when its element is on a screenshot, not when the CSS is written.** A lock decor aimed at
+  `.knock`, a class the fork never had, shipped as done and the PO asked again. Also scope every per-step
+  override to its steps: an unscoped `.dd-mari` rule pulled the story props onto two headlines (2026-10-22).
 - **Capture hygiene for scripted runs:** never let a partial re-capture overwrite the full run's
   `metrics.json` (name it per run), and log `document.fonts.check(...)`, failed requests and
   broken images in the continuous-flow run too — a run that lost its web fonts and logo cost a
