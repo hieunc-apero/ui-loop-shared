@@ -83,6 +83,13 @@ and where a user can leave or go back. Write that list into the brief — the cr
   maracas animated with standalone `rotate`/`translate` ran in desktop Chrome but stood still on the user's phone — write
   phone animations as `transform` keyframes. Chrome in the pane is not proof a phone moves (2026-10-22).
 
+- **Per-step rooms: find the layer that actually paints.** A fixed `.atmo` may sit behind an opaque framed fill
+  (`.panel::after`) plus an inset band and a button scrim of the same colour; recolour all of them, and outrank the old
+  selector's specificity (`!important` alone lost to (0,3,1)). Use `elementsFromPoint` — it skips `pointer-events:none`
+  layers, so read the pseudo-elements too. Never a room in the CTA's hue (2026-10-22, DOTD f2).
+- **No AI image credits? Cut the prop from the photos you already have.** Real rose leaves lifted from a rose photo
+  (green mask → opening to drop the stem → components → soft alpha) replaced a stock leaf the PO called fake (2026-10-22).
+
 - **Media that runs across steps (a song, an ambient loop) gets its own element outside the
   per-step markup.** Changing step swaps only the picture. If the clips share the soundtrack,
   start each new clip at the song's position. In the capture script, measure the track time
