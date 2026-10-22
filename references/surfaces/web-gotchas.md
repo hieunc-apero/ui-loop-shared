@@ -524,3 +524,12 @@ the clash to another height. Anchor the prop to the title instead (a `::before` 
 wrapper), give it height steps so the pinned CTA stays on screen at the shortest phone, and
 measure title-top against prop-bottom at 360×640, 390×664, 390×844 and 430×932, not just one
 height (USELOG 2026-10-21, DOTD funnel 3 offer bunting).
+
+## Swapping a CSS drawing for an image
+- Overriding `background` is not enough: the old drawing's `::before/::after`, `border-radius`, masks and filters
+  still render on top of the new art. A leftover 16px fold-shading `::after` showed as a dark block under the new
+  velvet drapes (2026-10-22). List every rule on the selector and its pseudo-elements, and turn them off.
+- A shell's image helper may prefix a CDN base (`el.src = A + src`); a local asset set through it 404s silently.
+- Keying a white-backdrop render: a border flood-fill misses enclosed holes (a padlock's shackle) and grey floor
+  shadows. Add a pass for enclosed light regions and low-saturation light pixels, then look at it on the page's own
+  background before shipping.
