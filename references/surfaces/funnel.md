@@ -50,6 +50,11 @@ and where a user can leave or go back. Write that list into the brief — the cr
   (seasonal funnel 2, rounds 3–4). Size the moving object from the viewport height, not a fixed px.
 - **Forking a funnel into a new brand, and checking the capture server:** `web-gotchas.md` →
   "Forking a funnel into another brand" (kill-lists vs the new brief, restyle not recolour, busy ports).
+- **An entrance that fires on a timer has already fired by `load`.** A probe that wants the
+  "before" frame of a curtain, a card dealing in or a hero animating cannot just screenshot early
+  after `waitUntil:"load"` — `load` waits for images, while the step's own 300ms timer ran at DOM
+  ready. Let the page settle, then take the state off (remove the class) and shoot that; three
+  captures of a "closed" curtain came back open before this was noticed (2026-10-22).
 - **Capture hygiene for scripted runs:** never let a partial re-capture overwrite the full run's
   `metrics.json` (name it per run), and log `document.fonts.check(...)`, failed requests and
   broken images in the continuous-flow run too — a run that lost its web fonts and logo cost a

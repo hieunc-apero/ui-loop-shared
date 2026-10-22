@@ -132,6 +132,16 @@ wrapped its neighbour to a new row, jumping the page 70px on every shot. Keep th
 constant (dim the control instead) or give the row a fixed width, and measure section
 height before vs during the state (USELOG 2026-10-15, photobooth).
 
+**A burst's spread is capped by the air it has, on both axes separately.** A radial fan sized
+from one number fills a tall viewport and flies over the heading on a short one (143px of air at
+1280×720 against 260 at 1440×900): take the distance from the emitter to the first thing above it,
+and cap the width at ~1.45× that, or a short scene turns the burst into a flat horizontal bar
+(2026-10-22, funnel stage).
+**Two controls that replace each other swap in the same frame.** Hiding the trigger at the tap and
+showing the reward's button after its animation left the CTA row empty for a full second — it reads
+as a dead screen (2026-10-22).
+
+
 ## Modals, embeds and audio
 
 - A modal ships with all of this from the first build: a real close button in its chrome
@@ -295,6 +305,13 @@ Figma's `generate_image` (Figma AI credits) into a scratch file and `download_as
 holding something 6× its width reads fake; ~4–5× is natural), lay its edge exactly on the
 placeholder's edge line, and cut the overlay only from pixels above that line — excluding the
 model's own shadow on the placeholder, which turns into a dark blob.
+
+## Tiling across a full-bleed edge
+
+Any motif repeated across the whole width — frame teeth, a scalloped valance, a hem, a bunting —
+uses `background-repeat: round` / `mask-repeat: round`, never a fixed tile size. A fixed tile never
+divides an arbitrary viewport evenly, so the last one on every edge is cut; `round` scales each tile
+so a whole number fits. A PO saw it as "viền xung quanh đang không đều ở tất cả các màn" (2026-10-22).
 
 ## Scale-up reveals stay sharp
 Chrome rasterises a transform animation at the scale it can see up front. A small element grown with
