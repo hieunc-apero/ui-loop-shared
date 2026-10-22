@@ -78,6 +78,11 @@ and where a user can leave or go back. Write that list into the brief — the cr
 - **Measure positions at rest:** finish every entrance animation first (`el.getAnimations().forEach(a=>a.finish())`,
   in a try — infinite ones throw). A header read mid-rise was reported 14px low and the user asked to move it (2026-10-22).
 
+- **Keyframes name both ends, and phone motion uses `transform`.** A `@keyframes` with only `to` starts from the element's
+  own transform: a film strip's `rotate(-3deg)` turned to 0° every loop and cropped a sprocket row on all 3 funnels. And
+  maracas animated with standalone `rotate`/`translate` ran in desktop Chrome but stood still on the user's phone — write
+  phone animations as `transform` keyframes. Chrome in the pane is not proof a phone moves (2026-10-22).
+
 - **Media that runs across steps (a song, an ambient loop) gets its own element outside the
   per-step markup.** Changing step swaps only the picture. If the clips share the soundtrack,
   start each new clip at the song's position. In the capture script, measure the track time
