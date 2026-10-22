@@ -67,6 +67,9 @@ and where a user can leave or go back. Write that list into the brief — the cr
   space *inside* the grid area (padding on the long column, not the grid). Otherwise the rail
   is pushed up under the header at the end of the page and its heading gets cut (2026-10-16).
 
+- **Measure positions at rest:** finish every entrance animation first (`el.getAnimations().forEach(a=>a.finish())`,
+  in a try — infinite ones throw). A header read mid-rise was reported 14px low and the user asked to move it (2026-10-22).
+
 - **Media that runs across steps (a song, an ambient loop) gets its own element outside the
   per-step markup.** Changing step swaps only the picture. If the clips share the soundtrack,
   start each new clip at the song's position. In the capture script, measure the track time
