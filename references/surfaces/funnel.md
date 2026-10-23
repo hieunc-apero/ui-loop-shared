@@ -106,7 +106,7 @@ and where a user can leave or go back. Write that list into the brief — the cr
   references and grep for a marker from this change; static hosts sometimes report "ready" while the
   old build still serves. Redeploy once if the marker is missing (2026-10-17 → 19: about one deploy in
   six needed a second try). If the log has no "Aliased" line, read its head: on 22/10 `npx vercel` pulled a broken
-  new CLI (65.1.0, npm 404); pin the last good one (`npx -y vercel@65.0.0 deploy --prod --yes`).
+  new CLI (65.1.0, npm 404); pin the last good one (`npx -y vercel@65.0.0 deploy --prod --yes`). If the stamp is still old after a "ready" deploy, redeploy with `--force` (23/10: twice in a row the new files were up but `index.html` was the previous build).
 
 ## Capture for the critic
 
