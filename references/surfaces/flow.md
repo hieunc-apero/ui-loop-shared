@@ -47,6 +47,14 @@ What the script computes (`checks`):
 Notes ("chip · ghi chú") are treated as **pass-through steps**: an arrow screen → note → screen
 is one transition with a condition written on the note.
 
+**Finding screens that duplicate each other** (the user asks you to remove duplicates or regroup by feature): first fingerprint
+each screen by its visible text (digits normalised), then screenshot every pair with Jaccard ≥ 0.9 before calling it a
+duplicate. Equal text is often a state variant: the button turns enabled, only the image changes, or a price badge
+is drawn as an icon rather than text. The real duplicates were the same sheet copied onto another
+feature's background (diff the texts and ignore the background's own strings). Before deleting a screen,
+repoint its arrows to the copy you keep, and drop any arrow that then duplicates an existing one. Endpoint ids
+can be a child of the screen, so match on the subtree, not the frame id (USELOG 2026-10-26).
+
 ## C. Spec conformance
 
 Give the critic the spec (Confluence page exported to text, PDF, or md) by absolute path. It:
