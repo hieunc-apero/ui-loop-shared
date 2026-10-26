@@ -894,3 +894,16 @@ first proposal:
 ## 2026-10-16 — self-check at 390×664
 SKILL step 4: shoot phones at 390×664 (Safari with toolbars) as well as 390×844. Funnel 3's offer
 passed at 844 and broke on the user's iPhone (ticket over title, title under logo). No eval covers it.
+
+## 2026-10-26 — figma.md: reskinning a whole flow into another product's language
+
+A large Figma run redrew about 60 screens of one app's sign-in/account flow in another app's
+design language. Lessons added to `references/surfaces/figma.md`:
+- build a local kit from the target's own components and art first;
+- rebuild inside the existing main components so instances and arrows follow, and detach the
+  instances whose main component was deleted;
+- a `use_figma` call that throws is rolled back entirely;
+- a TEXT property's default leaks into variants meant to be empty;
+- `resize()` resets hug.
+
+Critic: round 1 FAIL with 4 blockers, round 2 PASS.

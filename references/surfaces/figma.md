@@ -77,3 +77,21 @@ When the Figma design is approved and the user wants it built:
 
 The reverse (existing page → Figma, e.g. to iterate on design before coding) uses
 `figma-generate-design`.
+
+## Reskinning a whole flow into another product's design language (USELOG 2026-10-26)
+
+- Read the target product first and build a small local kit from **its own** pieces (its sheet,
+  button, field, 3D art set, background) before touching any screen. Redrawing them by hand drifts.
+- Rebuild each screen **inside the existing main component** (clear children, rebuild) so its node
+  ID is kept: every instance in the flow diagrams updates and connector arrows stay attached.
+  Instances whose main component was deleted from the file (`getMainComponentAsync()` resolves to
+  a node with no page) can't be edited that way: detach, then rebuild the frame.
+- A `use_figma` call that throws is rolled back **entirely**. After an error, re-read the canvas
+  before assuming the screens built before the throw are there.
+- Guard label setters: some variants have no text (a button's Loading state).
+- A TEXT component property's default leaks into variants meant to be empty (an empty OTP cell
+  showed the default digit "4"). On such variants, unbind the property and leave the text empty.
+- `resize()` on an auto-layout frame you want to hug resets it to FIXED (a column collapsed to
+  10px): set `primaryAxisSizingMode = 'AUTO'` again after every resize.
+- Brief the critic with the product's reference screens. Its blockers here were reference drift
+  (rows and cards the original Settings had) and 36px buttons under the 44pt tap target.
