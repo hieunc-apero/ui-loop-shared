@@ -16,7 +16,13 @@ node ~/.claude/skills/ui-loop/tools/ui-check/run.js http://localhost:3000/styles
      --widths 390,1440 --themes dark,light --ls '{"app.onboardingSeen":"true"}'
 # only the part you changed (small lane):
 node …/run.js http://localhost:3000/ --widths 390 --scope ".site-bar"
+# a local file or folder: served over http://127.0.0.1 for the run; theme by attribute, not media query:
+node …/run.js ./out/index.html --themes dark,light --theme-attr data-theme
 ```
+
+**For the critic** — it can't open `file://`. Serve the folder first and give it the URL:
+`node ~/.claude/skills/ui-loop/tools/ui-check/serve.js <folder|file.html> --port 8765` (run in the
+background, curl the URL, then dispatch).
 
 First time on a machine without playwright-core anywhere: `npm i --prefix ~/.claude/skills/ui-loop/tools/ui-check playwright-core`
 (no browser download — it drives the installed Chrome; `CHROME=<path>` if it's elsewhere).
@@ -56,6 +62,25 @@ In a browser pane instead: paste `ui-check.js` once per page load, then call `__
 | U17 | a native scrollbar visible (doesn't show in headless captures) | warn |
 | U18 | card inside a card | warn |
 | U19 | two filled/accent buttons side by side | warn |
+| U20 | more than one kind of saturated fill / glow / coloured shadow in one block (taste 1) | warn |
+| U21 | resting chip/pill shadow alpha > 0.35 (taste 1) | warn |
+| U22 | the same component (same classes) in different looks — height, radius, fill, text (taste 3) | warn |
+| U23 | native select / checkbox / radio / date control inside a styled UI (taste 3) | warn |
+| U24 | body line-height outside ~1.35–1.6 (taste 4) | warn |
+| U25 | card text closer than 16 px to the card's edge (taste 4) | warn |
+| U26 | columns in a row not top-aligned, or a label pushing one column's card down (taste 5) | warn |
+| U27 | more than one hero-size gradient in a viewport (taste 8) | warn |
+| U28 | a filled CTA on a panel of its own hue and lightness (taste 8) | warn |
+| U29 | a text input that starts filled in (taste 10) | warn |
+| U30 | more than one headline-size heading in a fold (taste 10) | warn |
+| U31 | a fixed/sticky layer covering a control on first load (taste 13) | warn |
+| U32 | desktop: the first viewport is a narrow centred column (taste 14) | warn |
+| U33 | desktop: no primary action in the first viewport (taste 14) | warn |
+| U34 | endless animations still running under prefers-reduced-motion (run.js only; taste 11) | warn |
+
+U20–U34 came from the taste profile's `[đo]` lines (2026-10-27) and were tuned on 10 real pages; they
+are leads, not verdicts — selected states, status colours in app screens and timeline blocks can
+trip U20/U22/U31.
 
 Thresholds are options: `__uiCheck({ tap: 48, chipV: 6 })` or `window.UI_CHECK_CONFIG` set by the
 project. Project rules beat the defaults; the taste profile's numbers are the defaults here.

@@ -115,6 +115,7 @@ section for it (only that section) before step 4.
 ## Taste pass (after the universal checklist)
 
 Walk the taste profile's axes in order and run every `[đo]` check that applies to the surface
+(those ui-check measures — U13, U15, U20–U34 — are in **Measured**: confirm by looking, don't re-measure)
 (`scoped`: within Scope; `verify`: skip). The profile is a core file; when the target touches an
 axis's listed **topics**, also `Read` that axis's section of `taste-archive.md` (same folder) for
 the precedents.

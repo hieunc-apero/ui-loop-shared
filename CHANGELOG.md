@@ -13,6 +13,21 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-27 — ui-check U20–U34 from the taste profile; local pages served for the critic
+**Changed:** `tools/ui-check/ui-check.js` gains U20–U33, `run.js` U34 — the taste profile's `[đo]` lines a
+DOM measurement can decide: accent dose per block, chip shadow, same component in different looks, native
+controls, body line-height, card inset, column tops, hero gradients per viewport, CTA on its own hue,
+pre-filled inputs, one headline per fold, fixed layer over a control, narrow centred desktop, no primary
+action in the first desktop viewport, endless motion under reduced-motion. New `serve.js` serves a local
+folder over http; `run.js` takes a local path (served for the run) and `--theme-attr` for pages that
+switch theme by attribute. `critic-round.md`: serve local targets automatically before every dispatch.
+`ui-critic.md`: taste `[đo]` checks that ui-check measures are taken from Measured, not re-measured.
+**Why:** the critic re-measured by eye what a script can count, and judged a file:// comparison from
+screenshots only. Tuned on 10 pages from the build-skill comparison: the new checks re-found the
+comparison critic's own findings (two looks of one add-to-cart button, native selects, a sticky tray over
+a link, a label pushing a column down) without a critic round. Builders also could not switch an
+attribute-themed page with `--themes`.
+
 ## 2026-10-27 — pages that persuade: impeccable only
 **Changed:** SKILL.md step 3 — `landing` and code `funnel` load `impeccable` for new and refined pages,
 brand or no brand; `design-taste-frontend` stays for product screens. web.md, skills.txt follow;

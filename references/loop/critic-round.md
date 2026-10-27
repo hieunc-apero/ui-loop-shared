@@ -15,7 +15,9 @@ A local URL must be served by a process that outlives your shell call: a `python
 NOT REVIEWED on `ERR_CONNECTION_REFUSED` (USELOG 2026-10-21). Start it with `run_in_background`,
 curl it right before dispatch, or point the critic at a deploy. Never hand it a `file://` URL: Claude in Chrome refuses them ("Can't interact with
 browser-internal or unparseable URLs") and the critic falls back to screenshots, unable to fire any
-state — serve the folder over `http://127.0.0.1` first.
+state. **A local file or folder is served automatically, before every dispatch:** `node
+~/.claude/skills/ui-loop/tools/ui-check/serve.js <folder|file.html> --port 8765` with
+`run_in_background`, curl the printed URL, put that URL in Target. Variants: one port each.
 
 ## Every round
 

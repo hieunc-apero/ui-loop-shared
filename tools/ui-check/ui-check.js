@@ -135,6 +135,89 @@ window.__uiCheck = function (opt) {
       const gap = Math.max(b.left - a.right, a.left - b.right, b.top - a.bottom, a.top - b.bottom);
       if (gap < 48) { add('U19', 'warn', p, `two filled/accent buttons ${Math.round(gap)}px apart — one primary per group`); break; } } }
 
+  // ---- U20+: taste-profile [đo] rules (~/.ui-loop/taste.md axes 1, 3, 4, 5, 8, 10, 13, 14) ----
+  const sat = c => { const mx = Math.max(...c.slice(0, 3)), mn = Math.min(...c.slice(0, 3)); return mx > 40 ? (mx - mn) / mx : 0; };
+  const hue = c => { const [r, g, b] = c.slice(0, 3).map(v => v / 255), mx = Math.max(r, g, b), d = mx - Math.min(r, g, b); if (!d) return 0;
+    const h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; return (h * 60 + 360) % 360; };
+  const shadowCols = s => (s.boxShadow === 'none' ? [] : (s.boxShadow.match(/rgba?\([^)]*\)/g) || []).map(rgb));
+  const glow = s => shadowCols(s).some(c => c[3] > 0.15 && sat(c) > 0.35);
+  const accent = e => { const s = cs(e), b = rgb(s.backgroundColor), r = R(e); if (r.width * r.height < 600) return false;
+    return filledBtn(e) && (isBtn(e) || r.height <= 64) || b[3] > 0.8 && sat(b) > 0.35 && r.height <= 64 && textOf(e) || glow(s); };
+  const chip = (e, s, r) => r.height <= 48 && r.height >= 16 && parseFloat(s.borderTopLeftRadius) >= r.height / 2 - 2 && (rgb(s.backgroundColor)[3] > 0.05 || parseFloat(s.borderTopWidth) > 0) && textOf(e);
+  const blockOf = e => { for (let p = e.parentElement; p && p !== document.body; p = p.parentElement)
+      if (/^(SECTION|ARTICLE|HEADER|FOOTER|ASIDE|DIALOG|FORM|NAV)$/.test(p.tagName) || p.getAttribute('role') === 'dialog' || card(p)) return p; return document.body; };
+  // U20 emphasis dose: > 1 saturated fill / glow / coloured shadow in one block (axis 1)
+  const acc = visEls.filter(accent).filter((e, i, a) => !a.some(o => o !== e && o.contains(e)));
+  const byBlock = new Map(); for (const e of acc) { const b = blockOf(e); (byBlock.get(b) || byBlock.set(b, []).get(b)).push(e); }
+  for (const [b, list] of byBlock) { const kinds = [...new Map(list.map(e => [e.className + '|' + cs(e).backgroundColor + cs(e).backgroundImage, e])).values()];  // a repeated item counts once
+    if (kinds.length > 1 && b !== document.body) add('U20', 'warn', b, `${kinds.length} different accent fills/glows in one block (${kinds.slice(0, 3).map(sel).join(', ')}) — one focal point per block`); }
+  for (const e of visEls) { const s = cs(e), r = R(e);
+    // U21 resting chip/pill shadow too heavy (axis 1)
+    if (chip(e, s, r)) { const a = Math.max(0, ...shadowCols(s).map(c => c[3])); if (a > 0.35) add('U21', 'warn', e, `chip shadow alpha ${a.toFixed(2)} > 0.35`); }
+    // U23 native browser chrome inside a styled UI (axis 3)
+    if (/^(SELECT)$/.test(e.tagName) && s.appearance !== 'none' || e.tagName === 'INPUT' && /^(checkbox|radio|range|file|date|time|color)$/.test(e.type) && s.appearance !== 'none')
+      add('U23', 'warn', e, `native ${e.tagName === 'SELECT' ? 'select' : e.type} control — style it like its siblings`);
+    // U24 body line-height (axis 4)
+    if (/^(P|LI|DD)$/.test(e.tagName) && textOf(e).length > 60 && parseFloat(s.fontSize) < 24) { const lh = parseFloat(s.lineHeight) / parseFloat(s.fontSize);
+      if (lh && (lh < 1.3 || lh > 1.7)) add('U24', 'warn', e, `body line-height ${lh.toFixed(2)} outside 1.35–1.6`); }
+    // U29 an input that starts filled in (axis 10)
+    if ((e.tagName === 'TEXTAREA' || e.tagName === 'INPUT' && /^(text|email|search|tel|url|number|)$/.test(e.type)) && !e.readOnly && !e.disabled && e.value.trim())
+      add('U29', 'warn', e, `input starts filled ("${e.value.slice(0, 24)}") — start empty with a placeholder`);
+  }
+  // U25 card text inset < 16 px (axis 4)
+  for (const e of visEls) if (card(e) && R(e).width >= 120 && !isBtn(e)) {
+    const r = R(e), rg = document.createRange(); let t = null;
+    const w = document.createTreeWalker(e, NodeFilter.SHOW_TEXT);
+    for (let n; (n = w.nextNode());) { if (!n.textContent.trim() || !vis(n.parentElement)) continue; const p = n.parentElement;
+      let inner = false; for (let q = p; q && q !== e; q = q.parentElement) if (card(q) || isBtn(q) || chip(q, cs(q), R(q))) { inner = true; break; } if (inner) continue;
+      rg.selectNodeContents(n); for (const x of rg.getClientRects()) if (x.width > 1) t = t ? { l: Math.min(t.l, x.left), r: Math.max(t.r, x.right), t: Math.min(t.t, x.top), b: Math.max(t.b, x.bottom) } : { l: x.left, r: x.right, t: x.top, b: x.bottom }; }
+    if (t) { const d = Math.min(t.l - r.left, r.right - t.r, t.t - r.top, r.bottom - t.b); if (d < 15.5 && d > -1) add('U25', 'warn', e, `card text ${d.toFixed(1)}px from its edge (want ≥ 16)`); } }
+  // U22 same component, different look (axis 3)
+  const stateful = '[aria-pressed="true"],[aria-selected="true"],[aria-current]:not([aria-current="false"]),[aria-checked="true"],[aria-expanded="true"],.active,.is-active,.selected,.is-selected,.on,[data-active="true"],[data-state="active"],[data-state="on"],[data-state="checked"],:disabled,:has(input:checked)';
+  const kinds = new Map(); for (const e of visEls) { const s = cs(e), r = R(e); if (!(isBtn(e) || chip(e, s, r)) || !(e.className + '').trim() || e.matches(stateful)) continue;
+    const k = e.tagName + '.' + [...e.classList].sort().join('.'); (kinds.get(k) || kinds.set(k, []).get(k)).push(e); }
+  for (const list of kinds.values()) if (list.length > 1) {
+    const sig = e => { const s = cs(e); return [s.position === 'absolute' ? '' : Math.round(R(e).height / 2), s.borderTopLeftRadius, s.backgroundColor, s.backgroundImage === 'none' ? '' : 'g', s.color, s.fontSize].join('|'); };
+    const sigs = new Set(list.map(sig)); if (sigs.size > 1) add('U22', 'warn', list[0], `${list.length}× the same component in ${sigs.size} looks (height/radius/fill/text) — one style everywhere`); }
+  // U26 columns not top-aligned (axis 5)
+  for (const p of new Set(visEls.map(e => e.parentElement))) { if (!p) continue; const ps = cs(p);
+    if (!(/grid/.test(ps.display) || /flex/.test(ps.display) && ps.flexDirection.startsWith('row'))) continue;
+    const cols = [...p.children].filter(vis).filter(k => R(k).height > 120); if (cols.length < 2) continue;
+    const rows = {}; cols.forEach(k => (rows[Math.round(R(k).top / 40)] ||= []).push(k));
+    for (const row of Object.values(rows)) { if (row.length < 2) continue;
+      const tops = row.map(k => R(k).top), d = Math.max(...tops) - Math.min(...tops);
+      if (d > 2 && d < 80) { add('U26', 'warn', p, `columns' tops differ by ${Math.round(d)}px`); continue; }
+      const first = row.map(k => [...k.querySelectorAll('*')].find(c => vis(c) && card(c))); if (first.some(x => !x)) continue;
+      const ft = first.map(x => R(x).top), fd = Math.max(...ft) - Math.min(...ft);
+      if (fd > 2 && fd < 80) add('U26', 'warn', p, `the first card in each column starts ${Math.round(fd)}px apart — a label pushes one down`); } }
+  // U27 more than one hero-size gradient per viewport (axis 8)
+  const grads = visEls.filter(e => { const bi = cs(e).backgroundImage, r = R(e); return /gradient/.test(bi) && !/url\(/.test(bi) && r.width * Math.min(r.height, H) > 0.2 * W * H; });
+  const gtop = [...new Map(grads.filter((e, i, a) => !a.some(o => o !== e && o.contains(e))).map(e => [e.parentElement && [...e.parentElement.children].filter(c => c.className === e.className).length > 1 ? 'rep:' + e.className : e, e])).values()];
+  for (const g of gtop) { const y = R(g).top, inView = gtop.filter(o => R(o).bottom > y + 40 && R(o).top < y + H - 40);
+    if (inView.length > 1) { add('U27', 'warn', inView[1], `${inView.length} hero-size gradients in one viewport (from y=${Math.round(y + scrollY)}) — at most one`); break; } }
+  // U28 primary CTA sinks into a panel of its own hue (axis 8)
+  for (const e of visEls.filter(x => isBtn(x) && filledBtn(x))) { const c = rgb(cs(e).backgroundColor); if (c[3] < 0.8 || sat(c) < 0.35) continue;
+    for (let p = e.parentElement; p; p = p.parentElement) { const b = rgb(cs(p).backgroundColor); if (b[3] < 0.9) continue;
+      if (sat(b) > 0.3) { const d = Math.abs(hue(c) - hue(b)); if (Math.min(d, 360 - d) < 20 && ratio(c, b) < 2) add('U28', 'warn', e, `CTA hue ${Math.round(hue(c))}° on a panel of hue ${Math.round(hue(b))}° — it sinks in`); } break; } }
+  // U30 more than one headline in a fold (axis 10)
+  const repeated = e => e.parentElement && e.parentElement.parentElement && [...e.parentElement.parentElement.children].filter(c => c.className === e.parentElement.className).length > 2;
+  const heads = visEls.filter(e => (/^H[1-3]$/.test(e.tagName) || e.getAttribute('role') === 'heading') && (e.innerText || '').trim() && parseFloat(cs(e).fontSize) >= (W <= 480 ? 26 : 32) && !repeated(e));
+  const folds = {}; heads.forEach(e => (folds[Math.floor((R(e).top + scrollY) / H)] ||= []).push(e));
+  for (const [f, list] of Object.entries(folds)) if (list.length > 1) add('U30', 'warn', list[1], `${list.length} headline-size texts in fold ${+f + 1} (${list.map(e => Math.round(parseFloat(cs(e).fontSize)) + 'px').join(', ')}) — one headline per fold; the brief's main one largest`);
+  // U31 a fixed layer covers a control at rest (axis 13)
+  for (const f of fixed) { const q = R(f); if (q.height > H * 0.6) continue;
+    const hit = visEls.find(e => isCtl(e) && !fixed.some(x => x.contains(e)) && (r => r.top < H && r.bottom > 0 && (r.left + r.width / 2) > q.left && (r.left + r.width / 2) < q.right && (r.top + r.height / 2) > q.top && (r.top + r.height / 2) < q.bottom)(R(e)));
+    if (hit) add('U31', 'warn', f, `fixed layer covers ${sel(hit)} on first load`); }
+  if (W >= 1024) {
+    // U32 desktop: narrow centred column (axis 14)
+    const tx = visEls.filter(e => textOf(e).length > 20 && R(e).top < H && R(e).bottom > 0 && !fixed.some(x => x.contains(e)));
+    if (tx.length > 3) { const l = Math.min(...tx.map(e => R(e).left)), rr = Math.max(...tx.map(e => R(e).right));
+      if (rr - l < 0.55 * W && Math.abs((l + rr) / 2 - W / 2) < 60) add('U32', 'warn', null, `first viewport's content is a ${Math.round(rr - l)}px centred column on a ${W}px screen — design the desktop, don't stretch the phone`); }
+    // U33 desktop: no primary action in the first viewport (axis 14)
+    const prim = visEls.filter(e => isBtn(e) && filledBtn(e));
+    if (prim.length && !prim.some(e => R(e).top < H && R(e).bottom > 0)) add('U33', 'warn', prim[0], `main action first appears at y=${Math.round(R(prim[0]).top + scrollY)} — below the first viewport`);
+  }
+
   const groups = new Map(); for (const x of out) { const k = x[0] + x[1] + x[2]; if (groups.has(k)) groups.get(k).n++; else groups.set(k, { x, n: 1 }); }
   const rank = { block: 0, warn: 1, '?': 2 };
   const f = [...groups.values()].map(g => g.n > 1 ? [g.x[0], g.x[1], g.x[2], g.x[3] + ` (×${g.n})`] : g.x).sort((a, b) => rank[a[1]] - rank[b[1]]).slice(0, C.max);
