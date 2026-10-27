@@ -13,6 +13,12 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-27 — pages that persuade: impeccable only
+**Changed:** SKILL.md step 3 — `landing` and code `funnel` load `impeccable` for new and refined pages,
+brand or no brand; `design-taste-frontend` stays for product screens. web.md, skills.txt follow;
+`building-landing-pages` v0.16 drops `design-taste-frontend` the same way.
+**Why:** the maintainer's call — the one persuade brief in the comparison went to `impeccable`.
+
 ## 2026-10-27 — build skill split by kind of page, not by "has a design system"
 **Changed:** SKILL.md step 3 — product screens (`web-app`) → `design-taste-frontend`, brand or no brand;
 pages that persuade (`landing`, code `funnel`) → `design-taste-frontend` inside an existing brand,

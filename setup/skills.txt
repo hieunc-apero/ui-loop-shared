@@ -9,8 +9,8 @@ figma-generate-design | figma: a new screen from a page or a design system | cla
 figma-generate-library | figma: building a component library | claude plugin install figma@claude-plugins-official
 figma-design-to-code | figma → code handoff, before get_design_context | claude plugin install figma@claude-plugins-official
 figma-code-connect | figma → code, when components map 1:1 | claude plugin install figma@claude-plugins-official
-design-taste-frontend | web-app: product screens, with or without a brand; landing/funnel: a new page inside an existing brand | npx --yes skills add Leonxlnx/taste-skill@design-taste-frontend -g -y
-impeccable | any surface: refining an existing page; landing/funnel with no brand yet | claude plugin marketplace add pbakaus/impeccable && claude plugin install impeccable@impeccable
+design-taste-frontend | web-app: product screens, with or without a brand | npx --yes skills add Leonxlnx/taste-skill@design-taste-frontend -g -y
+impeccable | landing, funnel: every page that persuades; any surface: refining an existing page | claude plugin marketplace add pbakaus/impeccable && claude plugin install impeccable@impeccable
 building-landing-pages | landing | npx --yes skills add hieunc-apero/building-landing-pages@building-landing-pages -g -y
 swiftui-patterns | app (native iOS code) | npx --yes skills add dpearson2699/swift-ios-skills@swiftui-patterns -g -y
 swiftui-layout-components | app (native iOS code) | npx --yes skills add dpearson2699/swift-ios-skills@swiftui-layout-components -g -y

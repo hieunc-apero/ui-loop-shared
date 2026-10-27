@@ -103,7 +103,7 @@ not loading it (55 runs to 2026-10-19: `frontend-design` loaded 3 times, `impecc
 | Surface | Load before building |
 |---|---|
 | `web-app` — screens people work in (dashboard, admin, wallet, settings…) | `design-taste-frontend` (its app-screen run), brand or no brand · `impeccable` to refine an existing screen |
-| `landing`, code `funnel` — pages that persuade | `building-landing-pages` (landing) + inside an existing brand `design-taste-frontend` · no brand yet `impeccable` (its direction roll) · refining `impeccable` |
+| `landing`, code `funnel` — pages that persuade | `building-landing-pages` (landing) + `impeccable` — new or refined, brand or no brand |
 | `figma`, `app` in Figma, `flow` | `figma-use` before every `use_figma` (+ `figma-generate-design` for a new screen) |
 | `app` native iOS code | `swiftui-patterns`, `swiftui-layout-components` (+ `swiftui-liquid-glass`, `ios-accessibility`) |
 
