@@ -13,6 +13,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-27 — critic: serve local files over http, never file://
+**Changed:** `references/loop/critic-round.md` → "Before round 1": never give the critic a `file://`
+URL; serve the folder over `http://127.0.0.1` first.
+**Why:** a skill-comparison eval (same brief, one build skill per variant, compare-mode critic):
+both critics got `file://` targets, Claude in Chrome refused them, and they judged from captures
+only — no hover, filter, add-to-cart or payment state could be checked.
+
 ## 2026-10-21 — dark→light fork leaks, sticker clipping, 3D flattening, self-measured scenes
 **Changed:** `web-gotchas.md` → "Forking a funnel into another brand": five bullets — what a dark shell leaks into a
 light re-theme; never `overflow:hidden` a sticker box; `filter` flattens `preserve-3d`; size a scene from a one-screen

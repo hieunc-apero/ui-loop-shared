@@ -13,7 +13,9 @@ browser tools") and pass the files.
 A local URL must be served by a process that outlives your shell call: a `python -m http.server
 &` started inside one Bash call can be dead by the time the critic loads it — a round came back
 NOT REVIEWED on `ERR_CONNECTION_REFUSED` (USELOG 2026-10-21). Start it with `run_in_background`,
-curl it right before dispatch, or point the critic at a deploy.
+curl it right before dispatch, or point the critic at a deploy. Never hand it a `file://` URL: Claude in Chrome refuses them ("Can't interact with
+browser-internal or unparseable URLs") and the critic falls back to screenshots, unable to fire any
+state — serve the folder over `http://127.0.0.1` first.
 
 ## Every round
 
