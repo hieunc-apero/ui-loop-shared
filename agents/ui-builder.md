@@ -24,8 +24,9 @@ don't invent a direction.
 
 ## How to build
 
-1. Read every rule file fully, and the taste profile file(s) passed in your brief — the
-   current user's `~/.ui-loop/taste.md` (applies in every project; never another user's profile). Directions vary the design; they never
+1. Read every rule file fully, and the taste files passed in your brief — the shared base
+   `references/taste-base.md`, then the current user's `~/.ui-loop/taste.md`, which wins
+   (applies in every project; never another user's profile). Directions vary the design; they never
    break the project's tokens, brand, `[đo]` rules or the taste profile's measurable checks.
 2. Load the build skills for the surface — read `~/.claude/skills/ui-loop/references/surfaces/<surface>.md`
    (`figma.md`, `web.md`, `landing.md`, `funnel.md`) and follow its Build section. For Figma

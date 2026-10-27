@@ -5,7 +5,9 @@
 How this user judges UI, across every project — the **core**, read every run: per axis the
 principle and its checks, ≤ 12 KB. The verbatim quotes, dated, go to `taste-archive.md` (read
 by topic). Filled by the retro from the user's own feedback. Project rules (`DESIGN.md`,
-`.claude/design-rules.md`) override this file where they are more specific.
+`.claude/design-rules.md`) override this file where they are more specific. It sits on top of the
+shared base, `~/.claude/skills/ui-loop/references/taste-base.md`: write here only what differs from
+the base or is yours alone.
 
 Each axis: what they say (quotes), what it means, and **checks** — `[đo]` measurable (the critic
 may block) or `[gu]` judgement (the critic advises with a confidence).

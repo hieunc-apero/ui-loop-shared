@@ -26,7 +26,7 @@ Small lane: only 3 — and only if the user reacted. Otherwise the USELOG line i
 | Lesson | Destination |
 |---|---|
 | About this project (a token, component, page intent, intentional exception) | the project's `.claude/design-rules.md` (create it if missing), in its format — tagged `[đo]`/`[gu]` + scope, with the date or commit. Tell the user in one line |
-| About how the user sees — would hold in another project | the quote, dated, under its axis in `~/.ui-loop/taste-archive.md`; and edit the axis in `~/.ui-loop/taste.md` (core) only if the quote changes a principle or a threshold |
+| About how the user sees — would hold in another project | the quote, dated, under its axis in `~/.ui-loop/taste-archive.md`; and edit the axis in `~/.ui-loop/taste.md` (core) only if the quote changes a principle or a threshold — if that principle is general (not one product's theme), also the same axis in `references/taste-base.md`, anonymised: no quotes, names or projects |
 | A project with no repo yet (Figma only) | a row in `~/.ui-loop/projects.md` |
 | A `[đo]` rule a DOM measurement can decide (from any destination above) | also a check in `tools/ui-check/ui-check.js` — next `U` number, fixture-tested, see its README "Growing it" |
 | How the loop should work, true for any user | `SKILL.md`, `references/`, `agents/` + a `CHANGELOG.md` entry. No names, quotes or paths of one user: "the user", cite the USELOG date. A one-situation trick goes in the topic file (e.g. `web-gotchas.md`), not in a core file |
@@ -49,6 +49,7 @@ are read only when the work touches their topic, so they have no cap.
 | `agents/ui-critic.md` | 17 KB | `references/critic/*.md` |
 | `references/surfaces/<surface>.md` | 8 KB each | `references/surfaces/<surface>-gotchas.md` |
 | `~/.ui-loop/taste.md` | 12 KB | `~/.ui-loop/taste-archive.md` |
+| `references/taste-base.md` | 11 KB | merge lines; a theme-only rule goes back to the person's `taste.md` |
 
 `sh tools/size-check.sh` prints every core file against its cap. Run it in every retro that
 edited a core file. **Project `design-rules.md` files have no cap** — they are the user's

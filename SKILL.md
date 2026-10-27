@@ -36,7 +36,7 @@ listed topics.
 | **large** | New page or screen, redesign, funnel or flow, Figma frames, variants, or the user asks for a thorough check ("chấm kỹ", "rà hết"). | Every step; round 1 `full`, rounds 2+ `verify`. |
 
 - **Small-lane rules:** don't read the whole rule file — search the project's
-  `.claude/design-rules.md` and `~/.ui-loop/taste.md` for the component and property you touch
+  `.claude/design-rules.md`, `~/.ui-loop/taste.md` and `references/taste-base.md` for the component and property you touch
   and read the matching rules. No surface reference, no build skill.
 - **Small-lane self-check:** `ui-check --scope <the element's container>` at every width/theme
   where it renders (default 390 + 1440, both themes if the app has them) — zero `block`; screenshot
@@ -84,9 +84,10 @@ mid-loop.
 
 ## 2. Load the taste profile and the project's rules
 
-- **Taste:** `~/.ui-loop/taste.md` (core). Walk its axes before the self-check. Missing or still
-  the template → no profile yet: say so at hand-off, run on project rules + the critic's
-  checklist, and let the retro start it from this user's feedback.
+- **Taste:** the shared base `references/taste-base.md` (15 axes everyone starts from), then
+  `~/.ui-loop/taste.md` on top — the person's own eye, which wins where they differ. Walk the axes
+  before the self-check. Profile missing or still the template → run on the base, say so at
+  hand-off, and let the retro start the profile from this user's feedback.
 - **Project rules:** in the repo root, or via `~/.ui-loop/projects.md` (Figma-only work, rules
   kept elsewhere): `DESIGN.md`, `.claude/design-rules.md`, the UI sections of `CLAUDE.md`,
   `docs/design*.md`.

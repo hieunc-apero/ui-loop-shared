@@ -15,4 +15,5 @@ for f in references/surfaces/*.md; do
   case "$f" in *-gotchas.md) ;; *) check "$f" 8 ;; esac
 done
 check "$HOME/.ui-loop/taste.md" 12
+check references/taste-base.md 11
 exit $over

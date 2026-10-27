@@ -56,7 +56,7 @@ dán vào. Nó **không bao giờ sửa** gì và **không đọc code** — ch�
 | Kiểu vòng | `full` (chấm hết) · `scoped` (chỉ vùng vừa đổi) · `verify` (vòng 2+: soát lại lỗi cũ) |
 | Đích | URL đang chạy · fileKey + nodeId Figma · thư mục ảnh chụp (đường dẫn từng file) |
 | Ý đồ | trang để làm gì, vừa đổi gì, trạng thái nào cần xem |
-| Luật | đường dẫn `DESIGN.md`, `design-rules.md`, gu `~/.ui-loop/taste.md` |
+| Luật | đường dẫn `DESIGN.md`, `design-rules.md`, gu nền `references/taste-base.md` + gu riêng `~/.ui-loop/taste.md` |
 | Số đã đo sẵn | độ tương phản, kích thước… để nó không phải đoán từ pixel |
 | Ngoài phạm vi | lỗi có sẵn từ trước, không phải của lần đổi này — không được chặn |
 | Lỗi vòng trước | (vòng 2+) dán nguyên văn |

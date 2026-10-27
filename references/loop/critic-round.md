@@ -54,7 +54,7 @@ Spec: <optional — absolute path to the spec/PO doc to check conformance agains
 Widths: 390, 820, 1440. Themes: dark, light.   (scoped/verify: only those in Scope)
 Intent: <the brief from step 1 — purpose, what changed, states to reach>
 Rule files: <absolute paths found in step 2, AND the taste file by full absolute path
-            (~/.ui-loop/taste.md expanded) — the critic has only Read and cannot list folders;
+            (~/.ui-loop/taste.md expanded) plus the base ~/.claude/skills/ui-loop/references/taste-base.md — the critic has only Read and cannot list folders;
             or "no taste profile yet">
 Measured: <the final ui-check output for each width/theme (tools/ui-check) + any other
           computed values — contrast ratios, geometry — so the critic uses them instead of

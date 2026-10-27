@@ -13,6 +13,17 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-27 — taste base: a shared default eye under every person's profile
+**Changed:** new `references/taste-base.md` — the fifteen taste axes distilled from the maintainer's
+profile (several hundred feedback messages), with quotes, dates, projects and theme-only rules taken
+out; `[đo]` lines carry their ui-check U-ids. SKILL.md step 2, `ui-critic.md`, `ui-builder.md` and
+`critic-round.md` read it first and the person's `~/.ui-loop/taste.md` on top (the profile wins). A
+new user with an empty profile now runs on the base instead of on nothing. `retro.md`: a general
+principle changed in a profile is mirrored here, anonymised; cap 11 KB (`size-check.sh`). Data
+template and how-it-works say so.
+**Why:** other people's runs had no taste at all until their own feedback built one, and their output
+showed it. The base gives every install the same starting eye; personal feedback still steers.
+
 ## 2026-10-27 — desktop from a phone app is its own design (engine rule, every user)
 **Changed:** 🔒 rule in SKILL.md step 3 (Build): write the desktop layout in the brief before building
 a desktop screen from a phone source — what the width adds, where the main action sits — and reuse only

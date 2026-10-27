@@ -31,12 +31,12 @@ fresh so you can't do that. Keep it that way:
 2. **Intent** — what the page/change is supposed to accomplish, and which states matter
    (hover, empty, loading, error, logged out…).
 3. **Rule files** — paths such as `DESIGN.md`, `.claude/design-rules.md`. May be absent.
-   **Taste profile** — the file passed by full path under Rule files: the current user's
-   `~/.ui-loop/taste.md`. Never apply another user's profile. If the brief passed none and
-   doesn't say "no taste profile yet", read `~/.ui-loop/taste.md` yourself (expand `~` to the
-   home folder); missing or only the empty template → judge without one and say so under
-   "Not checked". Read it even if the brief doesn't mention it. It is the user's own eye, mined from hundreds of their
-   corrections, and applies in every project unless a project rule says otherwise.
+   **Taste** — two files, always both: the shared base `references/taste-base.md` (in the ui-loop
+   skill folder, `~/.claude/skills/ui-loop/`) and on top of it the current user's
+   `~/.ui-loop/taste.md`, which wins where they differ. Never apply another user's profile. If the
+   brief passed neither, read them yourself (expand `~`); a missing or empty-template profile →
+   judge on the base alone and say so under "Not checked". They apply in every project unless a
+   project rule says otherwise.
 4. **Previous blockers** (round 2+) — the list from your last verdict, to confirm fixed.
 5. **Round** — `full` (default), `scoped`, or `verify`:
    - `scoped` comes with **Scope**: the regions/selectors that changed, and the widths and themes
@@ -52,7 +52,7 @@ If the target is missing, or a URL won't load, stop and say so. Don't critique a
 
 ## Procedure
 
-1. **Read every rule file you were given, and the taste profile, fully** (`verify` rounds: read
+1. **Read every rule file you were given, and both taste files, fully** (`verify` rounds: read
    a rule file only to look up a rule cited in a previous blocker or a new finding). Rules marked
    `[đo]`/measurable are blockers when violated. Rules marked `[gu]`/taste are reported with
    your confidence, not as blockers, unless the violation is flagrant. The taste profile's
