@@ -13,6 +13,14 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-27 — build skill split by kind of page, not by "has a design system"
+**Changed:** SKILL.md step 3 — product screens (`web-app`) → `design-taste-frontend`, brand or no brand;
+pages that persuade (`landing`, code `funnel`) → `design-taste-frontend` inside an existing brand,
+`impeccable` when there is no brand yet; refining anything → `impeccable`. web.md and skills.txt follow.
+**Why:** the previous split sent every no-design-system page to `impeccable`, but the only evidence for
+that was a shop home page (a persuade page); on the app day-view brief `design-taste-frontend` gave the
+most app-like screen. Still open: the refine row and the app-screen row have no critic verdict yet.
+
 ## 2026-10-27 — building-landing-pages follows the same split
 **Changed:** `setup/skills.txt` names the skill in the taste-skill install (`@design-taste-frontend`), the
 form the skills CLI matches. `building-landing-pages` v0.15 (its own repo) moves stage 3 direction and

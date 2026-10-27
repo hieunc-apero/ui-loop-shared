@@ -4,7 +4,7 @@ Product UI behind (or beside) a login: dashboards, editors, settings, libraries.
 
 ## Build
 
-- Load `design-taste-frontend` for new surfaces, `impeccable` when refining an existing one (SKILL.md step 3).
+- Load `design-taste-frontend` for new product screens, `impeccable` when refining an existing one; marketing pages follow `landing` (SKILL.md step 3).
 - Reuse the app's components and tokens first; DESIGN.md usually lists them.
 - Every screen has more states than the happy path: empty, loading, error, long text,
   logged-out/guest, feature flag off. Build the ones the brief names; mention the rest.
