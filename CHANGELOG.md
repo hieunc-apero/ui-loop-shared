@@ -13,6 +13,14 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-27 — desktop from a phone app is its own design (engine rule, every user)
+**Changed:** 🔒 rule in SKILL.md step 3 (Build): write the desktop layout in the brief before building
+a desktop screen from a phone source — what the width adds, where the main action sits — and reuse only
+components and tokens; a centred phone column or stretched phone stacks fails. Echoed in `web.md`,
+`ui-builder.md` (self-check) and `ui-critic.md` (universal blocker), measured by ui-check U32/U33.
+**Why:** it lived only in one person's taste profile (axis 14), so it reached the critic at the end and
+never reached other users. Engine rules are read while building and ship to everyone.
+
 ## 2026-10-27 — ui-check U20–U34 from the taste profile; local pages served for the critic
 **Changed:** `tools/ui-check/ui-check.js` gains U20–U33, `run.js` U34 — the taste profile's `[đo]` lines a
 DOM measurement can decide: accent dose per block, chip shadow, same component in different looks, native

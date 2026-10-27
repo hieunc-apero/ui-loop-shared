@@ -57,7 +57,8 @@ don't invent a direction.
 ## Self-check (not self-judgement)
 
 Before reporting: walk taste axes 1–6 (dose, primary/secondary, consistency, spacing,
-alignment, image) and fix what you'd fail on; it renders / type-checks; no console errors you can see; the states named in
+alignment, image) and fix what you'd fail on; a desktop screen from a phone source has its own
+desktop layout, not the phone one stretched or centred (SKILL.md step 3); it renders / type-checks; no console errors you can see; the states named in
 the brief exist; phone width doesn't overflow (code) or a phone frame exists (Figma). Fix
 what's broken. Do **not** grade the design or compare it with other directions — the critic
 does that with fresh eyes.

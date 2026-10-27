@@ -115,6 +115,11 @@ as self-check; never their own critique, `live`, hooks or decision pages — ui-
 off-subject directions (`ui-ux-pro-max`'s font data still catches fonts without Vietnamese — query it
 for that only). Reuse the project's components and tokens; a new colour, radius or shadow
 needs a reason. Real content, never placeholders — no real asset → say so at hand-off.
+🔒 **Desktop from a phone app is its own design, not the phone layout made responsive.** Before
+building it, write the desktop layout in the brief — what the width adds (persistent nav, side
+panel, multi-column, more per row) and where the main action sits in the first viewport — and
+reuse only components and tokens. A centred phone column or phone stacks stretched wide fails
+(ui-check U32/U33; critic blocker).
 A before/after pair must be one frame with only the tool's change: diff the two files before
 building on them (an edit showcase's pair was two framings; USELOG 2026-10-19).
 

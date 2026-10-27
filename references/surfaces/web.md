@@ -6,6 +6,8 @@ Product UI behind (or beside) a login: dashboards, editors, settings, libraries.
 
 - Load `design-taste-frontend` for new product screens, `impeccable` when refining an existing one; marketing pages and funnels use `impeccable` (SKILL.md step 3).
 - Reuse the app's components and tokens first; DESIGN.md usually lists them.
+- 🔒 A desktop screen made from a phone app is designed for desktop (SKILL.md step 3): its own
+  layout written first, never the phone column centred or stretched.
 - Every screen has more states than the happy path: empty, loading, error, long text,
   logged-out/guest, feature flag off. Build the ones the brief names; mention the rest.
 

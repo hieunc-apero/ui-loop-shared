@@ -140,6 +140,8 @@ Measurable — blockers:
 - Human faces cut by a crop or covered by an overlay — look at every image with a person.
 - Siblings meant to be equal that are not: measure card boxes in a row.
 - Tap targets under 44×44 px at phone width for primary actions.
+- Desktop built from a phone app that is the phone layout centred or stretched (no use of the
+  width, main action below the first viewport) — ui-check U32/U33 point at it.
 - A sheet or dialog covering most of a phone screen without its own close control (≥ 44 px) —
   the thin backdrop strip around it is not a way out.
 
