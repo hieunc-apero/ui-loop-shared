@@ -1,11 +1,11 @@
 #!/bin/sh
 # Run by this repo's .git/hooks/{post-commit,post-merge,post-rewrite} (written by install.sh).
-#  - after a pull/rebase: re-copy agents into accounts where they are copies, not links;
+#  - after a commit, pull or rebase: re-copy agents into accounts where they are copies, not links;
 #  - after any of them: refresh the engine mirror in ~/.ui-loop/engine/ if the user opted in.
 hook="$1"
 REPO=$(cd "$(dirname "$0")/.." && pwd -P)
 case "$hook" in
-  post-merge|post-rewrite)
+  post-commit|post-merge|post-rewrite)
     list="$REPO/.git/ui-loop-config-dirs"
     if [ -f "$list" ]; then
       set --

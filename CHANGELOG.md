@@ -13,6 +13,12 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-27 — hooks: re-copy agents after a local commit too
+**Changed:** `setup/hooks.sh` re-copies `ui-critic`/`ui-builder` into the accounts on post-commit as well
+as after a pull or rebase.
+**Why:** a maintainer's own agent edits stayed stale in the installed copies until the next pull — the
+critic ran on the previous instructions.
+
 ## 2026-10-27 — taste base: a shared default eye under every person's profile
 **Changed:** new `references/taste-base.md` — the fifteen taste axes distilled from the maintainer's
 profile (several hundred feedback messages), with quotes, dates, projects and theme-only rules taken
