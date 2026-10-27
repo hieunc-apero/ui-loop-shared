@@ -13,6 +13,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-27 — building-landing-pages follows the same split
+**Changed:** `setup/skills.txt` names the skill in the taste-skill install (`@design-taste-frontend`), the
+form the skills CLI matches. `building-landing-pages` v0.15 (its own repo) moves stage 3 direction and
+stage 5 build to `design-taste-frontend` / `impeccable`, keeping `ui-ux-pro-max` for font-script checks.
+**Why:** the landing lane loads that skill too; left alone it would have routed back to the two demoted
+skills.
+
 ## 2026-10-27 — build skills: impeccable + design-taste-frontend; frontend-design and ui-ux-pro-max demoted
 **Changed:** SKILL.md step 3 — `web-app`/`funnel`: `design-taste-frontend` for a new screen or page,
 `impeccable` for refining and for a new visual world; `landing` adds `design-taste-frontend` for art
