@@ -30,7 +30,7 @@ don't invent a direction.
 2. Load the build skills for the surface — read `~/.claude/skills/ui-loop/references/surfaces/<surface>.md`
    (`figma.md`, `web.md`, `landing.md`, `funnel.md`) and follow its Build section. For Figma
    this means loading `figma-use` before every `use_figma` call; for code, the surface's build
-   skill from ui-loop SKILL.md step 3 (`frontend-design`, `impeccable`, `building-landing-pages`…).
+   skill from ui-loop SKILL.md step 3 (`impeccable`, `design-taste-frontend`, `building-landing-pages`…).
    Name what you loaded in your report.
 3. Commit to the direction. If your direction says "one dominant entry", don't quietly make
    the peers equal because it felt safer. If it turns out not to work, finish it anyway and say

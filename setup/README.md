@@ -10,7 +10,7 @@ các file trong `setup/` và trình cài làm gì bên trong.
 | `hooks.sh`, `mirror-engine.sh` | git hook của repo này: sau mỗi pull chép lại agent (nếu là bản chép); sau mỗi commit/pull, nếu bật `--mirror`, chép cả bộ máy sang `~/.ui-loop/engine/` và commit + đẩy repo dữ liệu. |
 | `check.sh` | in `ok` / `MISSING` cho từng phần (bộ máy, dữ liệu, skill, agent, CLAUDE.md, skill dựng, ui-check, git/node/Chrome); không đổi gì. |
 | `BOOTSTRAP.md` | hướng dẫn **cho Claude**: trên máy mới, bạn bảo Claude làm theo file này là nó tự cài hết, tự kiểm, rồi báo. |
-| `skills.txt` | các skill dựng mà ui-loop nạp (Figma, frontend-design, impeccable, landing, SwiftUI…), dùng cho việc gì, cài ở đâu. `install.sh` đối chiếu và in ra cái nào còn thiếu; `--with-skills` thì tự cài (mỗi lệnh một lần). |
+| `skills.txt` | các skill dựng mà ui-loop nạp (Figma, impeccable, design-taste-frontend, landing, SwiftUI…), dùng cho việc gì, cài ở đâu. `install.sh` đối chiếu và in ra cái nào còn thiếu; `--with-skills` thì tự cài (mỗi lệnh một lần). |
 | `maintainers.txt` | tên GitHub của người duy trì — được đẩy thẳng thay đổi bộ máy. Người khác gửi pull request (fork nếu cần). |
 | `global-CLAUDE.md` | nguồn của khối luật toàn cục (tự gọi ui-loop, không dừng sau khi chấm, retro sau mỗi lần chạy). Sửa ở đây rồi chạy lại `install.sh` — đừng sửa thẳng trong `~/.claude/CLAUDE.md`. |
 
@@ -90,7 +90,7 @@ Skill và agent: phiên đang chạy tự nhận sau vài giây. `CLAUDE.md`: t�
 |---|---|
 | Critic xem trang web đang chạy | một MCP trình duyệt: Claude in Chrome, hoặc Claude Browser (app desktop) |
 | Vẽ / chấm trên Figma, kiểm luồng | Figma MCP (đăng nhập Figma) |
-| Build theo skill khác (`frontend-design`, `figma-use`, `building-landing-pages`…) | xem `skills.txt` — `install.sh` in ra cái nào thiếu và lệnh cài; thiếu thì ui-loop vẫn chạy, ít hướng dẫn dựng hơn |
+| Build theo skill khác (`impeccable`, `design-taste-frontend`, `figma-use`, `building-landing-pages`…) | xem `skills.txt` — `install.sh` in ra cái nào thiếu và lệnh cài; thiếu thì ui-loop vẫn chạy, ít hướng dẫn dựng hơn |
 
 Không có trình duyệt thì critic chấm từ ảnh chụp bạn đưa (thư mục ảnh).
 

@@ -51,14 +51,14 @@ sh ~/.claude/skills/ui-loop/setup/install.sh [account dirs] [--data <url>] [--mi
 
 This creates or clones `~/.ui-loop`, links the skill, installs the agents, writes the auto-invoke +
 retro block into each account's `CLAUDE.md`, installs git hooks, installs every missing build skill
-(`setup/skills.txt`: the Figma plugin, frontend-design, impeccable, ui-ux-pro-max,
+(`setup/skills.txt`: the Figma plugin, impeccable, design-taste-frontend,
 building-landing-pages, the SwiftUI skills) and `playwright-core` for ui-check. Read its output: a
 line starting with `!` is a failure — fix it or report it; rerunning is safe.
 
 ## 4. Verify
 
 1. `sh ~/.claude/skills/ui-loop/setup/check.sh [same account dirs]` — every line `ok`, exit 0.
-2. `claude plugin list` shows `figma`, `frontend-design`, `impeccable`, `ui-ux-pro-max`.
+2. `claude plugin list` shows `figma` and `impeccable`; `design-taste-frontend` is under `~/.claude/skills/`.
 3. `ls ~/.ui-loop` shows `taste.md`, `USELOG.md`, `CHANGELOG.md` (and `engine/` with `--mirror`).
 4. ui-check works: `node ~/.claude/skills/ui-loop/tools/ui-check/run.js
    'data:text/html,<button style="width:20px">Go now please</button>' --widths 390` prints a

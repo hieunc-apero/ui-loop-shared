@@ -12,7 +12,7 @@ critic-only runs: a run that went wrong is the one that shows the gap.
 **Version:** ui-loop vX.Y
 **Mode:** full loop | critic only | eval case
 **Lane:** small | medium | large  (rounds: full / scoped / verify)
-**Skills loaded:** <build skills loaded with the Skill tool — e.g. `frontend-design`, `figma-use` — or `none: <why>` (named one-property fix · not installed · critic only)>
+**Skills loaded:** <build skills loaded with the Skill tool — e.g. `impeccable`, `figma-use` — or `none: <why>` (named one-property fix · not installed · critic only)>
 **Rounds:** n (blockers per round: a → b → 0)
 **Cost:** wall time, critic tool calls, tokens if known
 **Critic caught:** <the real problems, one line each — what the user didn't have to point out>

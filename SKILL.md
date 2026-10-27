@@ -1,6 +1,6 @@
 ---
 name: ui-loop
-description: Design or build UI — in Figma, as front-end code for a web app, a landing page, or a multi-step funnel — and don't show it to the user until an independent critic passes it. Picks the surface, loads the right build skills (figma-use, frontend-design, building-landing-pages…), then runs build → capture → ui-critic agent → fix, up to 4 rounds, with the current project's own design rules (DESIGN.md, .claude/design-rules.md) when they exist. Also bridges Figma → code and code → Figma. Use for any visible UI work: a new page or screen, a redesign, "make this section better", fixing what the user flagged on a screenshot. Vietnamese triggers too: "vẽ", "thiết kế", "làm lại trang/màn/section", "sửa giao diện", "chỉnh UI", "trông xấu", "cho đẹp hơn", "vài phương án", "trên Figma", "check luồng", "rà luồng", "thiếu thừa màn", "đối chiếu spec". Also checks whole user flows (Figma screens + arrows, live journeys, spec conformance).
+description: Design or build UI — in Figma, as front-end code for a web app, a landing page, or a multi-step funnel — and don't show it to the user until an independent critic passes it. Picks the surface, loads the right build skills (figma-use, impeccable, design-taste-frontend, building-landing-pages…), then runs build → capture → ui-critic agent → fix, up to 4 rounds, with the current project's own design rules (DESIGN.md, .claude/design-rules.md) when they exist. Also bridges Figma → code and code → Figma. Use for any visible UI work: a new page or screen, a redesign, "make this section better", fixing what the user flagged on a screenshot. Vietnamese triggers too: "vẽ", "thiết kế", "làm lại trang/màn/section", "sửa giao diện", "chỉnh UI", "trông xấu", "cho đẹp hơn", "vài phương án", "trên Figma", "check luồng", "rà luồng", "thiếu thừa màn", "đối chiếu spec". Also checks whole user flows (Figma screens + arrows, live journeys, spec conformance).
 ---
 
 # ui-loop
@@ -93,7 +93,7 @@ mid-loop.
 - **Scope tags:** `[web]`, `[desktop]` (web ≥ 1024), `[app]`; `[live]`, `[figma]`; untagged =
   everywhere. Apply only rules matching the brief's platform and medium; pass both to the critic.
 - Project rules beat the taste profile where more specific. With neither, the critic's checklist
-  still applies; general principles are in the `impeccable` / `ui-ux-pro-max` skills.
+  still applies; general principles are in the `impeccable` / `design-taste-frontend` skills.
 
 ## 3. Build
 
@@ -102,13 +102,18 @@ not loading it (55 runs to 2026-10-19: `frontend-design` loaded 3 times, `impecc
 
 | Surface | Load before building |
 |---|---|
-| `web-app`, code `funnel` | `frontend-design` for a new page or section · `impeccable` for refining an existing one |
-| `landing` | `building-landing-pages` |
+| `web-app`, code `funnel` | `design-taste-frontend` for a new screen or page (its app-screen run for product UI) · `impeccable` for refining an existing one, and for a new visual world with no design system |
+| `landing` | `building-landing-pages` + `design-taste-frontend` for art direction |
 | `figma`, `app` in Figma, `flow` | `figma-use` before every `use_figma` (+ `figma-generate-design` for a new screen) |
 | `app` native iOS code | `swiftui-patterns`, `swiftui-layout-components` (+ `swiftui-liquid-glass`, `ios-accessibility`) |
 
 Not installed → carry on, say so in USELOG (hints: `setup/skills.txt`). Project rules and taste
-win over the skill. Reuse the project's components and tokens; a new colour, radius or shadow
+win over the skill — taste-skill's house bans (violet, gradients) yield to a brand that pins them.
+Use their build guidance and their measuring scripts (`impeccable detect`, taste-skill `lint`/`inspect`)
+as self-check; never their own critique, `live`, hooks or decision pages — ui-critic judges.
+`frontend-design` and `ui-ux-pro-max` are not loaded: in a 3-brief comparison they gave templated or
+off-subject directions (`ui-ux-pro-max`'s font data still catches fonts without Vietnamese — query it
+for that only). Reuse the project's components and tokens; a new colour, radius or shadow
 needs a reason. Real content, never placeholders — no real asset → say so at hand-off.
 A before/after pair must be one frame with only the tool's change: diff the two files before
 building on them (an edit showcase's pair was two framings; USELOG 2026-10-19).

@@ -103,7 +103,7 @@ thiết kế cố tình khác nhau, rồi gọi N `ui-builder` **chạy song son
 
 1. **Nhận vào**: brief chung + **brief hướng của mình** (tên, đặt cược vào gì, chịu bỏ gì) + luật +
    chỗ làm (code: một git worktree riêng; Figma: một page riêng). Nó không thấy hướng của người khác.
-2. **Đọc luật + gu**, nạp skill dựng của bề mặt (ví dụ `frontend-design`, `figma-use`).
+2. **Đọc luật + gu**, nạp skill dựng của bề mặt (ví dụ `impeccable`, `design-taste-frontend`, `figma-use`).
 3. **Đi hết hướng của mình** — không lén kéo về "an toàn ở giữa". Hướng thất bại thì vẫn làm xong và
    nói rõ vì sao: một hướng hỏng rõ ràng có ích hơn một hướng nhạt.
 4. **Tự kiểm** (không tự chấm): đi trục gu 1–6, chạy/type-check được, không lỗi console, đủ trạng

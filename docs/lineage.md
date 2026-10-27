@@ -55,9 +55,10 @@ MCP server's own instructions.
 
 | Skill | Installed | Role in ui-loop |
 |---|---|---|
-| `frontend-design` | 2026-05-22 (Anthropic, LICENSE.txt) | builder for new web-app surfaces |
+| `frontend-design` | 2026-05-22 (Anthropic, LICENSE.txt) | builder for new web-app surfaces — demoted 2026-10-27 (not loaded) |
 | `impeccable` | 2026-05-22 (Apache 2.0, "based on Anthropic's frontend-design") | builder when refining an existing UI; general design principles |
-| `ui-ux-pro-max` | 2026-05-22 | fallback reference for general principles |
+| `ui-ux-pro-max` | 2026-05-22 | fallback reference for general principles — demoted 2026-10-27 to font-subset lookups |
+| `design-taste-frontend` (taste-skill v2) | 2026-10-27 | builder for new screens, pages and landing art direction |
 
 ui-loop deliberately does **not** restate general design principles; it points at these.
 

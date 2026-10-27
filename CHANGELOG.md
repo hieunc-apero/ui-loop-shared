@@ -13,6 +13,20 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-10-27 — build skills: impeccable + design-taste-frontend; frontend-design and ui-ux-pro-max demoted
+**Changed:** SKILL.md step 3 — `web-app`/`funnel`: `design-taste-frontend` for a new screen or page,
+`impeccable` for refining and for a new visual world; `landing` adds `design-taste-frontend` for art
+direction. Their measuring scripts count as self-check, never their critique/live/hooks. taste-skill's
+house bans yield to a brand that pins violet or gradients. `frontend-design` and `ui-ux-pro-max` are no
+longer loaded (`ui-ux-pro-max` only for font-subset lookups); `setup/skills.txt` adds taste-skill and
+keeps the two demoted lines commented out. web.md, ui-builder, BOOTSTRAP, setup/README, how-it-works,
+lineage follow.
+**Why:** a comparison — the same brief built once per skill, three briefs (a branded purchase page, a
+brand-new shop home page, an app day view). With a brand system the skills converged; without one,
+`impeccable` and `design-taste-frontend` gave distinct, subject-specific directions while
+`ui-ux-pro-max` proposed off-subject palettes and patterns and `frontend-design` read thinner. The
+maintainer judged the same way.
+
 ## 2026-10-27 — critic: serve local files over http, never file://
 **Changed:** `references/loop/critic-round.md` → "Before round 1": never give the critic a `file://`
 URL; serve the folder over `http://127.0.0.1` first.

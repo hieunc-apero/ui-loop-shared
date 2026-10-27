@@ -9,11 +9,16 @@ figma-generate-design | figma: a new screen from a page or a design system | cla
 figma-generate-library | figma: building a component library | claude plugin install figma@claude-plugins-official
 figma-design-to-code | figma → code handoff, before get_design_context | claude plugin install figma@claude-plugins-official
 figma-code-connect | figma → code, when components map 1:1 | claude plugin install figma@claude-plugins-official
-frontend-design | web-app, funnel: a new page or section | claude plugin install frontend-design@claude-plugins-official
-impeccable | web-app, funnel: refining an existing page | claude plugin marketplace add pbakaus/impeccable && claude plugin install impeccable@impeccable
-ui-ux-pro-max | general UI/UX principles, only when the project has no rules | claude plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill && claude plugin install ui-ux-pro-max@ui-ux-pro-max-skill
+design-taste-frontend | web-app, funnel, landing: a new screen or page; app screens | npx --yes skills add Leonxlnx/taste-skill -g -y
+impeccable | web-app, funnel: refining an existing page; a new visual world | claude plugin marketplace add pbakaus/impeccable && claude plugin install impeccable@impeccable
 building-landing-pages | landing | npx --yes skills add hieunc-apero/building-landing-pages@building-landing-pages -g -y
 swiftui-patterns | app (native iOS code) | npx --yes skills add dpearson2699/swift-ios-skills@swiftui-patterns -g -y
 swiftui-layout-components | app (native iOS code) | npx --yes skills add dpearson2699/swift-ios-skills@swiftui-layout-components -g -y
 swiftui-liquid-glass | app (native iOS code, glass) | npx --yes skills add dpearson2699/swift-ios-skills@swiftui-liquid-glass -g -y
 ios-accessibility | app (native iOS code) | npx --yes skills add dpearson2699/swift-ios-skills@ios-accessibility -g -y
+
+#
+# Demoted 2026-10-27 (not loaded, not required; kept for reference — a 3-brief comparison found them
+# templated / off-subject): ui-ux-pro-max is still queried for font subsets when installed.
+# frontend-design | was: web-app new page | claude plugin install frontend-design@claude-plugins-official
+# ui-ux-pro-max | general UI/UX principles, only when the project has no rules | claude plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill && claude plugin install ui-ux-pro-max@ui-ux-pro-max-skill
