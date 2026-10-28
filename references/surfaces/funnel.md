@@ -19,6 +19,10 @@ and where a user can leave or go back. Write that list into the brief — the cr
 - **Give a code funnel a `?step=<name>` deep link before round 1** (QA only; seed any state a
   later step needs, e.g. a sample upload). Every capture and every re-capture then reaches each
   step in one navigation instead of clicking through the flow (USELOG 2026-10-16, seasonal funnel 1).
+- **Click the buy button through to the checkout and record every screen between.** A
+  per-frame timeline (innerText / role=dialog sampled each animation frame) catches a page that
+  renders something else first — a server-rendered old paywall flashed before the payment popup
+  and only the user saw it (USELOG 2026-10-28, paywall round 2).
 - **A funnel forked from another one inherits its documented decisions** (forward-only, no Back,
   prices). Put them under **Out of scope** from round 1 with their source, or they come back as
   blockers: round 1 of seasonal funnel 1 blocked on "no Back" that the source README chose.
