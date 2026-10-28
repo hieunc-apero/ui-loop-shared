@@ -23,6 +23,9 @@ state. **A local file or folder is served automatically, before every dispatch:*
 the pane shows "Sign in"): never sign in for it. Concatenate the source fragments (each slide's
 `<section>`, at its fixed 1920×1080 size, with the deck's font links) into one local page, serve
 it as above, and judge that; name the real viewer under "Not checked" (USELOG 2026-10-28).
+Custom tags the browser can't draw get a stand-in, or the critic judges blank boxes: `<x-shape>`
+arrows/diamonds as CSS `clip-path` polygons on the same box, live `<x-embed>`s as dashed
+placeholder boxes of the same size (a round reported arrows as "dark bars" until then).
 
 ## Every round
 
