@@ -44,7 +44,7 @@ What the script computes (`checks`):
 | `unlabeledEdges` | arrows with no label | the action that moves the user is not stated |
 | `hasGoldenPath` | a section named "golden path" exists | a project rule |
 
-Two blind spots of these checks (USELOG 2026-10-28): `arrowScreenOverlaps` skips the two screens an arrow joins, so a label wider than the gap still sits on them — compare label width with the gap; and nothing checks that an arrow leaves the state where its action is possible (Generate from a disabled button). Look for both on the screenshot.
+Two blind spots of these checks (USELOG 2026-10-28): `arrowScreenOverlaps` skips the two screens an arrow joins, so a label wider than the gap still sits on them — compare label width with the gap; and nothing checks that an arrow leaves the state where its action is possible (Generate from a disabled button), nor that it leaves at the tapped element rather than the frame's mid-height. Look for all three on the screenshot.
 
 Notes ("chip · ghi chú") are treated as **pass-through steps**: an arrow screen → note → screen
 is one transition with a condition written on the note.
