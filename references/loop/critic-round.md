@@ -19,6 +19,11 @@ state. **A local file or folder is served automatically, before every dispatch:*
 ~/.claude/skills/ui-loop/tools/ui-check/serve.js <folder|file.html> --port 8765` with
 `run_in_background`, curl the printed URL, put that URL in Target. Variants: one port each.
 
+**A page behind a sign-in the browser pane lacks** (a claude.ai Artifact such as a Slides deck —
+the pane shows "Sign in"): never sign in for it. Concatenate the source fragments (each slide's
+`<section>`, at its fixed 1920×1080 size, with the deck's font links) into one local page, serve
+it as above, and judge that; name the real viewer under "Not checked" (USELOG 2026-10-28).
+
 ## Every round
 
 - **A fresh capture folder.** Re-capture every state after the fixes, into a new folder; never
