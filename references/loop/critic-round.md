@@ -31,6 +31,9 @@ page of 18 slides the pane drew two slides, then only grey frames, and a verify 
 nothing (USELOG 2026-10-29). Give siblings meant to match (Q&A cards, note cards, chips in a
 row) an explicit equal height/width and `flex:none` — content-sized siblings were round 1's
 main blocker.
+When the browser pane draws only grey (window behind, long page), capture with headless Edge/Chrome
+(`msedge --headless=new --window-size=1920,1080 --screenshot=<file> <url>`, one page per slide) and
+hand the critic the PNG paths — it judged the 29/10 deck reliably that way.
 
 ## Every round
 
