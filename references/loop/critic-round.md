@@ -26,6 +26,11 @@ it as above, and judge that; name the real viewer under "Not checked" (USELOG 20
 Custom tags the browser can't draw get a stand-in, or the critic judges blank boxes: `<x-shape>`
 arrows/diamonds as CSS `clip-path` polygons on the same box, live `<x-embed>`s as dashed
 placeholder boxes of the same size (a round reported arrows as "dark bars" until then).
+Serve **one slide per page** (or one page per slide id) for decks over ~6 slides: on one tall
+page of 18 slides the pane drew two slides, then only grey frames, and a verify round saw
+nothing (USELOG 2026-10-29). Give siblings meant to match (Q&A cards, note cards, chips in a
+row) an explicit equal height/width and `flex:none` — content-sized siblings were round 1's
+main blocker.
 
 ## Every round
 
