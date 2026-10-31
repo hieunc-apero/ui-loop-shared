@@ -1,0 +1,34 @@
+{
+  "about": "Your repeated design tasks, the steps each takes by hand, and who does each step now: auto = the loop does it · removed = no longer human work · human = a person still does it · na = doesn't apply. tools/coverage/coverage.js matches USELOG runs to tasks (first `match` regex on the heading wins; put the catch-all last) and reports the automated share. Edit the tasks, the steps and the `manual` list to fit your job.",
+  "steps": {
+    "S1": "Read the request, write the brief — ask once if ambiguous",
+    "S2": "Find tokens, components, project rules, taste",
+    "S3": "Build / draw the first version",
+    "S4": "Measure: overflow, clipping, contrast, tap targets, wrapping, font coverage",
+    "S5": "Capture every width and theme, or every frame",
+    "S6": "Review against taste (hierarchy, alignment, accent dose, consistency…)",
+    "S7": "Fix the findings, review again",
+    "S8": "Final approval, pick a direction, decide",
+    "S9": "Hand off: screenshots, what changed, what is still uncertain",
+    "S10": "Turn lessons into rules for next time",
+    "S11": "Prepare real images / assets",
+    "S12": "Check on a real device after deploy"
+  },
+  "tasks": [
+    { "id": "T1", "name": "Review a flow, check against a spec", "match": "· flow",
+      "steps": { "S1": "auto", "S2": "auto", "S3": "auto", "S4": "na", "S5": "auto", "S6": "auto", "S7": "auto", "S8": "human", "S9": "auto", "S10": "auto", "S11": "na", "S12": "na" } },
+    { "id": "T2", "name": "Fix from feedback (screenshot, comment)", "match": "feedback|flagged|fix",
+      "steps": { "S1": "auto", "S2": "auto", "S3": "auto", "S4": "removed", "S5": "auto", "S6": "auto", "S7": "auto", "S8": "human", "S9": "auto", "S10": "auto", "S11": "na", "S12": "na" } },
+    { "id": "T3", "name": "Funnel / paywall / onboarding", "match": "funnel",
+      "steps": { "S1": "auto", "S2": "auto", "S3": "auto", "S4": "removed", "S5": "auto", "S6": "auto", "S7": "auto", "S8": "human", "S9": "auto", "S10": "auto", "S11": "human", "S12": "human" } },
+    { "id": "T4", "name": "Landing page", "match": "landing",
+      "steps": { "S1": "auto", "S2": "auto", "S3": "auto", "S4": "removed", "S5": "auto", "S6": "auto", "S7": "auto", "S8": "human", "S9": "auto", "S10": "auto", "S11": "human", "S12": "na" } },
+    { "id": "T5", "name": "App screens in Figma", "match": "figma|· app",
+      "steps": { "S1": "auto", "S2": "auto", "S3": "auto", "S4": "auto", "S5": "auto", "S6": "auto", "S7": "auto", "S8": "human", "S9": "auto", "S10": "auto", "S11": "na", "S12": "na" } },
+    { "id": "T6", "name": "New web-app screen or section", "match": ".",
+      "steps": { "S1": "auto", "S2": "auto", "S3": "auto", "S4": "removed", "S5": "auto", "S6": "auto", "S7": "auto", "S8": "human", "S9": "auto", "S10": "auto", "S11": "na", "S12": "na" } }
+  ],
+  "manual": [
+    { "name": "Example: hand assets to developers outside code", "perWeek": 2, "estimate": true, "why": "not covered by the loop" }
+  ]
+}

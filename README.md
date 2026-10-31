@@ -34,11 +34,13 @@ ui-loop/
 ├── README.md            ← bạn đang đọc
 ├── INSTALL.md           ← cài đặt từng bước, kiểm tra, cập nhật, gỡ, lỗi thường gặp
 ├── SKILL.md             ← hướng dẫn chính Claude làm theo (phải nằm ở gốc)
+├── VERSION              ← số phiên bản lớn hiện tại
 ├── CHANGELOG.md         ← lịch sử thay đổi của bộ máy, có điểm eval trước/sau
 │
 ├── docs/                ← tài liệu cho người đọc
 │   ├── how-it-works.md      cách hoạt động, từ điển, "muốn làm X thì sửa ở đâu"
-│   └── lineage.md           phần nào kế thừa từ skill/agent nào, phần nào là mới
+│   ├── lineage.md           phần nào kế thừa từ skill/agent nào, phần nào là mới
+│   └── versions.md          các phiên bản lớn: mục tiêu, thời gian, tag, mở lại bản cũ
 │
 ├── agents/              ← các Claude con chạy riêng (cài bằng setup/install.sh)
 │   ├── ui-critic.md         người chấm độc lập
@@ -50,6 +52,7 @@ ui-loop/
 │
 ├── evals/               ← cách đo critic bằng lỗi thật trong lịch sử git
 ├── tools/taste-mining/  ← script rút góp ý của bạn từ transcript để dựng hồ sơ gu
+├── tools/coverage/      ← tỉ lệ việc lặp đã tự động, đếm từ USELOG
 │
 └── setup/               ← cài đặt
     ├── install.sh           cài cho một hay nhiều tài khoản + tạo ~/.ui-loop
@@ -73,4 +76,5 @@ lỗi thường gặp: [`INSTALL.md`](INSTALL.md).
 
 ## Trạng thái
 
-Phiên bản hiện tại và mọi thay đổi: [`CHANGELOG.md`](CHANGELOG.md).
+Phiên bản hiện tại: **v3.0** — mục tiêu, thời gian và cách mở lại từng bản: [`docs/versions.md`](docs/versions.md).
+Mọi thay đổi: [`CHANGELOG.md`](CHANGELOG.md).

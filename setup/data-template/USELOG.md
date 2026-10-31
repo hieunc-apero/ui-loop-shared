@@ -9,7 +9,7 @@ critic-only runs: a run that went wrong is the one that shows the gap.
 ```markdown
 ## <date> — <project> · <surface> · <page/frame>
 
-**Version:** ui-loop vX.Y
+**Version:** ui-loop vN.0 (the `VERSION` file)
 **Mode:** full loop | critic only | eval case
 **Lane:** small | medium | large  (rounds: full / scoped / verify)
 **Skills loaded:** <build skills loaded with the Skill tool — e.g. `impeccable`, `figma-use` — or `none: <why>` (named one-property fix · not installed · critic only)>

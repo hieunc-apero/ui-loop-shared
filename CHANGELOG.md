@@ -13,6 +13,18 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## v3.0 — 2026-10-31 — major versions with goals, tags; automation coverage measured from USELOG
+**Changed:** numbering moves to major versions only (`VERSION`, `docs/versions.md`): v1 = the single-user
+loop (old v0.1–v0.21), v2 = shared engine (v0.22–v0.28), v3 = eval-picked build skills + shared taste
+base + ui-check U20–U34. Each has a goal, a time span and a git tag on both repos, so `git worktree add
+… v2.0` reopens it; between majors, dated entries only. v4.0 is set before it starts: four goals, each
+with a measure and a target, due 14/11/2026. New `tools/coverage/coverage.js` + data template
+`task-catalog.json`: the repeated tasks, the steps each takes by hand and who does each now; it matches
+USELOG runs to tasks and reports the frequency-weighted share automated, counting tasks that never
+reach the loop too.
+**Why:** 28 minor numbers with no goals said that things changed, not what each version was for or how
+to get it back; and "how much of the repeated work does this take" had no number behind it.
+
 ## 2026-10-27 — hooks: re-copy agents after a local commit too
 **Changed:** `setup/hooks.sh` re-copies `ui-critic`/`ui-builder` into the accounts on post-commit as well
 as after a pull or rebase.
