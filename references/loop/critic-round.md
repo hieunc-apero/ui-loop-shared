@@ -33,7 +33,15 @@ row) an explicit equal height/width and `flex:none` — content-sized siblings w
 main blocker.
 When the browser pane draws only grey (window behind, long page), capture with headless Edge/Chrome
 (`msedge --headless=new --window-size=1920,1080 --screenshot=<file> <url>`, one page per slide) and
-hand the critic the PNG paths — it judged the 29/10 deck reliably that way.
+hand the critic the PNG paths — it judged the 29/10 deck reliably that way. The `playwright-core`
+inside `tools/ui-check/node_modules` plus the local Chrome does the same per element
+(`locator('#slide').screenshot`) and can measure in the same pass: heading top per slide, gap
+under it, anything past y 920.
+**Decks — moving a heading moves its gap.** Adding a kicker to some slides to line the headings
+up pushed the heading 59 px down onto content laid out with `space-between`, and the next round
+blocked on crowding (USELOG 2026-11-02). Give every content section the same minimum `gap`
+(~80 px) with the kicker on all or none, then re-measure bottoms: the gap pushed six slides past
+y 920.
 
 ## Every round
 
