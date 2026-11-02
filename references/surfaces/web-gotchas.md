@@ -533,3 +533,15 @@ height (USELOG 2026-10-21, DOTD funnel 3 offer bunting).
 - Keying a white-backdrop render: a border flood-fill misses enclosed holes (a padlock's shackle) and grey floor
   shadows. Add a pass for enclosed light regions and low-saturation light pixels, then look at it on the page's own
   background before shipping.
+
+## Charts and tables that must read at phone width
+- An SVG chart drawn in a fixed viewBox (860 wide) shrinks its text with the box: 11px became 5px at 390
+  (2026-11-02, Funnel Automation explainer). Size `<text>` from the rendered width
+  (`font-size = 12.5 × viewBoxWidth / svg.getBoundingClientRect().width`) as an attribute, and never set
+  `font`/`font-size` on `svg text` in CSS: CSS beats the presentation attribute and silently undoes it. On a
+  narrow box also give the chart a taller viewBox, fewer axis labels and a wider left margin for tick numbers.
+  Redraw on resize and when a hidden tab becomes visible (width 0 while hidden).
+- Stacking a table into label/value rows on phone: `td{display:grid}` turns every inline child (`<b>`,
+  `<code>`, the text after it) into its own grid item, and they land in the label column. Use a block cell with
+  left padding and the label as an absolutely positioned `::before` in that padding. Check with
+  `getBoundingClientRect().left` of each `code`/`b` against the cell's value edge.

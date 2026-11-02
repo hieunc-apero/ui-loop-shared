@@ -92,3 +92,4 @@ building or what the critic flagged.
 | iPhone Safari layer budget | many animated layers, iOS Safari jank/blur |
 | Cutting a subject out of a photo, and filling the hole | cutting out a subject, inpainting |
 | HTML emails: judge with real merge values | transactional/marketing HTML email, merge fields |
+| Charts and tables that must read at phone width | SVG charts in a viewBox, tables stacked into rows on phone |
