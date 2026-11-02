@@ -14,6 +14,12 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-02 — figma: lookups that miss must throw; overlays take the target frame's size
+
+- `references/surfaces/figma.md` → two traps from a large Figma run: a guarded lookup (`if (node)`) let a
+  screen ship without the element it is named for while the script reported success; a sheet cloned
+  from an 852-tall frame into an 887-tall one left a strip and a second home indicator.
+
 ## 2026-11-02 — figma: a new list row is a clone of a sibling row
 
 - `references/surfaces/figma.md` → "Plugin API traps": to add a row to an existing list, clone a sibling row

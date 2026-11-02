@@ -38,6 +38,10 @@
 - Adding a row to an existing list (Settings, a menu): clone a **sibling row** and swap its
   icon and text. Rebuilding the row by hand missed the icon slot, the gap and the font, and
   the critic blocked it twice (USELOG 2026-11-02).
+- A lookup that finds nothing must throw, not skip. `if (toast) …` let a screen named for a
+  toast ship without one, and the script still returned ok (USELOG 2026-11-02).
+- An overlay (sheet + scrim) cloned from an 852-tall frame into an 887-tall one keeps 852:
+  resize it to the target frame and re-anchor the container, or two home indicators show.
 - An instance replacing a node that sat inside a wrapper (`Overlay > Sheet`) must go into
   that same wrapper. `parent.children.indexOf()` of a deeper node is −1, so the instance
   lands at index 0, behind everything.
