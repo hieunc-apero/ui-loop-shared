@@ -550,6 +550,9 @@ height (USELOG 2026-10-21, DOTD funnel 3 offer bunting).
   last column stays at ~2.5:1; pin the row-label column outside the scroller (labels scroll away otherwise);
   the scroller's wrapper inside a grid/flex parent needs `min-width:0` or the chart's `min-width` widens the
   page; a "jump to X" button needs `scroll-margin-top` ≥ the sticky header on X, or X lands under it.
+- An auto-playing demo that keeps its step list or log in view with `scrollIntoView({block:'nearest'})` also scrolls
+  the page whenever the item is off screen: the page crept 300px per run and pushed the map under the sticky tabs
+  (2026-11-02). Scroll only the box (`box.scrollTop += r.bottom - b.bottom`); measure `scrollY` before/after a run.
 - A value label above the tallest bar is clipped by the SVG top when that bar reaches the axis max: leave
   headroom ≥ label height + 8px above the max (2026-11-02, a critic verify round caught "40" cut in half).
 - Keeping the current item of a nested list in view: `scrollIntoView` also scrolls the page, so a step list
