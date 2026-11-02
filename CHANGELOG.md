@@ -13,6 +13,15 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+
+## 2026-11-02 — web-gotchas: chart headroom, nested scrollIntoView
+
+- `references/surfaces/web-gotchas.md` → "Charts and tables that must read at phone width": a value label
+  on a bar at the axis max needs headroom; `scrollIntoView` on a nested list scrolls the page on load.
+- From a large-lane explainer page: the fixed-viewBox chart mistake already in this section was repeated
+  because the surface reference and its gotchas were not opened before building (SKILL step 0). The rule
+  was right; the run skipped it.
+
 ## v3.0 — 2026-10-31 — major versions with goals, tags; automation coverage measured from USELOG
 **Changed:** numbering moves to major versions only (`VERSION`, `docs/versions.md`): v1 = the single-user
 loop (old v0.1–v0.21), v2 = shared engine (v0.22–v0.28), v3 = eval-picked build skills + shared taste
