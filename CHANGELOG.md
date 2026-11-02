@@ -14,6 +14,14 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-02 — figma: a refilled clone keeps its fixed height
+
+- `references/surfaces/figma.md` → "Plugin API traps": a cloned auto-layout card keeps a FIXED primary
+  size, so the rows added when its children are rebuilt get clipped. Set `primaryAxisSizingMode = 'AUTO'`
+  on it and its auto-layout parents, then re-anchor the bottom panel.
+- From a large-lane Figma run (new chat screens built by cloning live components): the status card's
+  footer buttons were cut off after a fix; caught by the builder's own screenshot, not the critic.
+
 ## 2026-11-02 — web-gotchas: chart headroom, nested scrollIntoView
 
 - `references/surfaces/web-gotchas.md` → "Charts and tables that must read at phone width": a value label

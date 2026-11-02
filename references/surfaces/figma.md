@@ -31,6 +31,10 @@
 - `detachInstance()` inside a loop over a list of instances invalidates the nodes after it:
   the IDs of nested children change, and the next `i.parent` throws "node does not exist".
   Detach one, re-query, repeat. Read `parent.name` before calling detach.
+- A cloned auto-layout card keeps its **fixed** height. Rebuild its children and the new last
+  row is clipped (a status card's footer buttons vanished; USELOG 2026-11-02). After refilling a
+  clone, set `primaryAxisSizingMode = 'AUTO'` on it and on every auto-layout parent up to the
+  panel, then re-anchor the panel (`y = screen.height - panel.height`).
 - An instance replacing a node that sat inside a wrapper (`Overlay > Sheet`) must go into
   that same wrapper. `parent.children.indexOf()` of a deeper node is −1, so the instance
   lands at index 0, behind everything.
