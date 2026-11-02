@@ -96,3 +96,14 @@ rebuilt.
 USELOG entry as usual, plus: N, the axes chosen, the critic's ranking, which variant the user
 actually chose. **User chose ≠ critic's rank 1** is the most useful line in the entry — it is
 direct evidence of where the critic's taste and the user's differ.
+
+## Light variant: hero comps before the whole page
+
+When a new page has no reference and no visual system to inherit (an explainer, a report, a
+one-off artifact), the direction is open even if nobody asked for options. Before building every
+section, build **three first-viewport comps** yourself (no builders): one static HTML each, real
+content and real images, differing on tone and imagery. Capture them at 1440 and 390, let the
+person pick (or mix), then build the whole page in the chosen one and run the normal loop.
+A critic PASS judges the build against its direction, not whether the direction suits the
+person: one explainer passed twice and was rejected twice on taste before three comps settled
+it in one answer (2026-11-02).

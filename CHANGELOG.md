@@ -14,6 +14,14 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+
+## 2026-11-02 — variants: hero comps before the whole page when the direction is open
+
+- `references/modes/variants.md` → "Light variant": a new page with nothing to inherit gets three
+  first-viewport comps (static, real content and images) for the person to pick before the full build.
+- Why: an explainer page passed the critic twice and was rejected twice on look; three comps settled
+  the direction in one answer. A PASS checks the build against its direction, not the direction.
+
 ## 2026-11-02 — figma: lookups that miss must throw; overlays take the target frame's size
 
 - `references/surfaces/figma.md` → two traps from a large Figma run: a guarded lookup (`if (node)`) let a
