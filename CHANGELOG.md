@@ -14,6 +14,12 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-02 — figma: a new list row is a clone of a sibling row
+
+- `references/surfaces/figma.md` → "Plugin API traps": to add a row to an existing list, clone a sibling row
+  and swap its content. A hand-built row with the right look missed the icon slot, the gap and the font,
+  and the critic blocked it in two rounds running (icon glued to the text, then 8 px off the icon column).
+
 ## 2026-11-02 — figma: a refilled clone keeps its fixed height
 
 - `references/surfaces/figma.md` → "Plugin API traps": a cloned auto-layout card keeps a FIXED primary
