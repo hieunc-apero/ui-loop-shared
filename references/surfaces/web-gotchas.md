@@ -557,3 +557,10 @@ height (USELOG 2026-10-21, DOTD funnel 3 offer bunting).
   headroom ≥ label height + 8px above the max (2026-11-02, a critic verify round caught "40" cut in half).
 - Keeping the current item of a nested list in view: `scrollIntoView` also scrolls the page, so a step list
   that does it on render makes the page open half-way down. Set the list's own `scrollTop` instead.
+
+## Vietnamese text: check the font's subsets before borrowing a brand face
+Google Fonts serves Vietnamese only to families with a `vietnamese` subset; without it, every accented glyph
+(ộ, ữ, ạ…) silently falls back mid-word. Lensie's own faces split (2026-11-02): Manrope has it, Instrument Serif
+and DM Mono do not. Swap the missing ones for a look-alike that has it (Instrument Serif italic → Newsreader
+italic, DM Mono → JetBrains Mono). Check by loading the css2 URL and reading the `/* vietnamese */` blocks per
+family, before the first build.
