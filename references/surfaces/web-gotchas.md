@@ -545,3 +545,8 @@ height (USELOG 2026-10-21, DOTD funnel 3 offer bunting).
   `<code>`, the text after it) into its own grid item, and they land in the label column. Use a block cell with
   left padding and the label as an absolutely positioned `::before` in that padding. Check with
   `getBoundingClientRect().left` of each `code`/`b` against the cell's value edge.
+- A wide chart that scrolls sideways on phone (2026-11-02, "Từ ticket tới PR" swimlane, 2 critic rounds): a
+  right-edge `mask-image` hint must turn off at the end (toggle a class on `scroll`, `resize` and load) or the
+  last column stays at ~2.5:1; pin the row-label column outside the scroller (labels scroll away otherwise);
+  the scroller's wrapper inside a grid/flex parent needs `min-width:0` or the chart's `min-width` widens the
+  page; a "jump to X" button needs `scroll-margin-top` ≥ the sticky header on X, or X lands under it.
