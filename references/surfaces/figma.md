@@ -35,6 +35,9 @@
   row is clipped (a status card's footer buttons vanished; USELOG 2026-11-02). After refilling a
   clone, set `primaryAxisSizingMode = 'AUTO'` on it and on every auto-layout parent up to the
   panel, then re-anchor the panel (`y = screen.height - panel.height`).
+- Adding a row to an existing list (Settings, a menu): clone a **sibling row** and swap its
+  icon and text. Rebuilding the row by hand missed the icon slot, the gap and the font, and
+  the critic blocked it twice (USELOG 2026-11-02).
 - An instance replacing a node that sat inside a wrapper (`Overlay > Sheet`) must go into
   that same wrapper. `parent.children.indexOf()` of a deeper node is −1, so the instance
   lands at index 0, behind everything.
