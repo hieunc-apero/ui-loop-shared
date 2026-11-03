@@ -106,6 +106,12 @@ and where a user can leave or go back. Write that list into the brief — the cr
 - **Several sessions on sibling funnels at once:** claim a funnel before editing ("claiming funnel N for
   X, hold off"), release with a one-line summary of what changed and where, and build on what is on
   disk. Never redeploy a sibling you didn't claim — the deploy ships whatever is on disk.
+- **Reskinning a forked funnel:** put the inherited theme layer behind the new one and switch its art off
+  wholesale — regex its `url("assets/<old>/…")` to `none` and remap its hard-coded atmosphere rgba — then
+  check what still paints: phone-only `!important` rules kept the old plum on option cards and text
+  halos, and an inherited `::after` ring doubled the new frame. Probe the DOM for every border, shadow
+  and background under the spot rather than guessing from pixels, and keep `overflow:visible` on the
+  scene wrappers (a padded wrap clipped glows into straight edges) (2026-11-03, Veterans fork of DOTD 3).
 - **After every deploy, prove production serves it:** fetch the cache-busted CSS/JS URL the page
   references and grep for a marker from this change; static hosts sometimes report "ready" while the
   old build still serves. Redeploy once if the marker is missing (2026-10-17 → 19: about one deploy in
