@@ -55,6 +55,13 @@ flow (a row added, a gap changed), re-snap every hotspot over that screen from t
 `absoluteBoundingBox` and re-check the labels of arrows that leave it — a stale box covered a footer
 and cost two more verify rounds (USELOG 2026-11-05).
 
+Find the control for a hotspot **inside the sheet/overlay**, not the whole screen: a sheet screen keeps the screen behind it
+as a child, and that background has buttons with the same layer names (`btn/primary`), so a search from the screen root
+snapped "Turn on notifications" onto the background's Generate button (USELOG 2026-11-05). Route by where the hotspot
+sits: in the right half or full width, a straight RIGHT→LEFT arrow; in the left half (a header bell, a back button), an
+elbowed arrow LEFT→TOP that leaves the screen sideways and goes over the top — straight or bottom-exit arrows from there
+crossed the status bar, the hero and the photo grid. Leave ~80 px above the screens for that elbow and its label.
+
 Notes ("chip · ghi chú") are treated as **pass-through steps**: an arrow screen → note → screen
 is one transition with a condition written on the note.
 

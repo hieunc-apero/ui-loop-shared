@@ -15,6 +15,11 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-05 — flow: find hotspot controls inside the sheet; route left-half hotspots over the top
+
+- `references/surfaces/flow.md` (hotspots). **Why:** in an iOS notification flow a hotspot snapped to a background
+  screen's same-named button, and arrows from left-side controls crossed the screens they left.
+
 ## 2026-11-05 — loop: re-read a live Figma frame before each brief; label where a rule came from
 
 - `references/loop/critic-round.md` (every round): new bullet. Re-read the Figma frame right before
