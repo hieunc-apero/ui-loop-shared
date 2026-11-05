@@ -44,6 +44,9 @@
 - A batch edit that picks nodes by layer name must assert the match is the one you meant (count,
   and a distinguishing field such as the row's time). Two rows shared the name `(ready2)`, and a
   thumbnail swap meant for a new row overwrote an older row's photo on ten screens (USELOG 2026-11-05).
+- Copying "the picture this screen shows": an image node can stack several image fills; the visible one is the LAST
+  visible fill in `fills`, not the first. Taking `fills[0]` put a hidden, different photo on every notification thumbnail
+  (USELOG 2026-11-05). Screenshot the copy next to the source before calling it matched.
 - Don't judge a light-theme frame from an instance dropped into a temporary frame on the page: the
   instance can resolve variables to the dark mode and render a dark body. Screenshot the component
   itself (`node.screenshot()`) before calling a theme bug (USELOG 2026-11-05).
