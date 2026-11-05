@@ -15,6 +15,12 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-05 — figma: assert name lookups in batch edits; screenshot themed components directly
+
+- `references/surfaces/figma.md` (Plugin API traps): two new bullets. **Why:** in an iOS notification batch, a
+  rename-by-layer-name hit two rows with the same name and overwrote an older row's photo on ten screens; and
+  light-theme frames rendered dark when instanced inside a temporary frame, almost causing a false theme fix.
+
 ## 2026-11-05 — flow: re-snap tap hotspots after editing a screen in a flow
 
 - `references/surfaces/flow.md` (tap hotspot paragraph): hotspots don't follow the control; after an edit
