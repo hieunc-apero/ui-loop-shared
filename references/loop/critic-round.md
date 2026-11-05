@@ -49,6 +49,11 @@ y 920.
   carry a file over from before a fix — copy changes included (a label rename made one capture
   stale twice in one day). A stale screenshot cost a whole round as a false blocker (USELOG
   2026-10-15, Motion Control variant).
+- **Figma: re-read the frame right before writing the brief.** The user may be editing the same
+  frame live while the loop runs. One verify round came back "not fixed" because a hand edit had reset a
+  button the loop had already fixed. That same edit also changed the copy and type sizes. Read back the
+  sizes the brief quotes, and take the user's changes as the new baseline, never revert them (USELOG
+  2026-11-05, referral REF-01).
 - **Check each rule and taste path still exists.** Another session can merge or move a file
   mid-run; the critic then quietly runs without that profile (USELOG 2026-10-15, runs tray).
 - **Pick the round type** — it decides most of the cost:

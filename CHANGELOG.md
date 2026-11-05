@@ -15,6 +15,16 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-05 — loop: re-read a live Figma frame before each brief; label where a rule came from
+
+- `references/loop/critic-round.md` (every round): new bullet. Re-read the Figma frame right before
+  writing the brief, because the user may be editing it at the same time. Take the user's edits as the
+  new baseline. **Why:** a verify round reported a fixed tap target as "not fixed": the user had resized
+  that button by hand mid-run and changed the copy too (USELOG 2026-11-05).
+- `references/loop/retro.md`: new "Say where a rule came from" paragraph. Rules from critic blockers carry
+  "(critic <date>)". **Why:** a critic-made copy rule passed for a product requirement until the user
+  asked who had ordered it, then relaxed it (USELOG 2026-11-05). **Rules updated:** these two files.
+
 ## 2026-11-05 — figma: assert name lookups in batch edits; screenshot themed components directly
 
 - `references/surfaces/figma.md` (Plugin API traps): two new bullets. **Why:** in an iOS notification batch, a

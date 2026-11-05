@@ -32,6 +32,11 @@ Small lane: only 3 — and only if the user reacted. Otherwise the USELOG line i
 | How the loop should work, true for any user | `SKILL.md`, `references/`, `agents/` + a `CHANGELOG.md` entry. No names, quotes or paths of one user: "the user", cite the USELOG date. A one-situation trick goes in the topic file (e.g. `web-gotchas.md`), not in a core file |
 | A one-off | nowhere — USELOG only |
 
+**Say where a rule came from.** A rule written from a critic blocker says "(critic <date>)". One the user
+or the product owner decided says so too. Later, someone will ask "lệnh này từ ai", and a critic-made rule is
+the first one to relax when the user overrules it. Unlabelled, a critic-made copy rule passed for a PO
+requirement until the user asked (USELOG 2026-11-05).
+
 **Quality bar** — a rule goes in only if it is **evidenced** in this run (quote, measurement,
 commit — cited next to it), **general** enough to change next time, and **new** (otherwise
 sharpen the existing rule). A rule that turned out **wrong** (false blocker, overruled by the
