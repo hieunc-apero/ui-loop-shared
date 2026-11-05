@@ -15,6 +15,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-05 — figma: a new row's accessory sits at the column the sibling rows use
+
+- `references/surfaces/figma.md` → "Adding a row": clone the sibling with the same shape (two-line
+  from two-line), then place any accessory it lacks (chevron) at the absolute x of rows that already
+  carry one. **Why:** cloned groups differed in width (343 vs 353); a 16 px inset left the chevron
+  6 px off the column and cost a verify round (USELOG 2026-11-05). **Rules updated:** this file.
+
 ## 2026-11-02 — variants: hero comps before the whole page when the direction is open
 
 - `references/modes/variants.md` → "Light variant": a new page with nothing to inherit gets three

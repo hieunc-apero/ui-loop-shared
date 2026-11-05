@@ -37,7 +37,10 @@
   panel, then re-anchor the panel (`y = screen.height - panel.height`).
 - Adding a row to an existing list (Settings, a menu): clone a **sibling row** and swap its
   icon and text. Rebuilding the row by hand missed the icon slot, the gap and the font, and
-  the critic blocked it twice (USELOG 2026-11-02).
+  the critic blocked it twice (USELOG 2026-11-02). Clone the sibling with the same *shape* (a
+  two-line row from a two-line row), then put any accessory it lacks (chevron) at the absolute x
+  of the rows that already carry one — cloned groups can differ in width, and a 16 px inset left
+  the chevron 6 px off the column (USELOG 2026-11-05).
 - A lookup that finds nothing must throw, not skip. `if (toast) …` let a screen named for a
   toast ship without one, and the script still returned ok (USELOG 2026-11-02).
 - An overlay (sheet + scrim) cloned from an 852-tall frame into an 887-tall one keeps 852:
