@@ -50,6 +50,10 @@ that must leave at the tapped row or button starts from a **tap hotspot**: a das
 named `điểm chạm · <control>` laid over the control's absolute bounds, sibling of the screen in
 the case section. Do it for every button-driven arrow in the same pass — fixing only the arrows a
 critic named cost a second verify round on the rest (USELOG 2026-11-05).
+Hotspots are not linked to the control: after any edit that moves something inside a screen used in a
+flow (a row added, a gap changed), re-snap every hotspot over that screen from the control's
+`absoluteBoundingBox` and re-check the labels of arrows that leave it — a stale box covered a footer
+and cost two more verify rounds (USELOG 2026-11-05).
 
 Notes ("chip · ghi chú") are treated as **pass-through steps**: an arrow screen → note → screen
 is one transition with a condition written on the note.

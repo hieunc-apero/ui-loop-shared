@@ -15,6 +15,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-05 — flow: re-snap tap hotspots after editing a screen in a flow
+
+- `references/surfaces/flow.md` (tap hotspot paragraph): hotspots don't follow the control; after an edit
+  that moves content in a screen used in a flow, re-snap them and re-check the outgoing labels. **Why:** a
+  stale hotspot covered a footer and an arrow label straddled the frame — two extra verify rounds
+  (USELOG 2026-11-05). **Rules updated:** this file.
+
 ## 2026-11-05 — app: money screens copy their numbers from one mock ledger
 
 - `references/surfaces/app.md` → new "Money screens share one ledger". **Why:** a batch of wallet,
