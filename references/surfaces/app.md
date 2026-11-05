@@ -56,6 +56,15 @@ Taste (with confidence):
   (hover reveals, desktop-style dropdowns) carried over.
 - One primary action per screen, in thumb reach.
 
+## Money screens share one ledger
+
+Before drawing several screens that show credits, balances, dates or counts (wallet, history,
+notifications, invite stats), write the mock ledger once — every grant, spend, reward and date, and
+the balance each bucket ends at, computed from today — then copy each screen's numbers from it. A
+referral batch lost three verify rounds to numbers patched screen by screen: a wallet at 120 while
+the invites list said +480, a grant dated in the past, a history that didn't reach the balance
+(USELOG 2026-11-05).
+
 ## What doesn't carry over from web
 
 Hover, URL state, scroll restoration, breakpoints above tablet: not applicable. Motion can't

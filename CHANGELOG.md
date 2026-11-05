@@ -15,6 +15,12 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-05 — app: money screens copy their numbers from one mock ledger
+
+- `references/surfaces/app.md` → new "Money screens share one ledger". **Why:** a batch of wallet,
+  history, notification and invite screens spent three verify rounds on numbers patched one screen at
+  a time (USELOG 2026-11-05). **Rules updated:** this file.
+
 ## 2026-11-05 — flow: tap hotspots for arrows that start at a control inside an instance
 
 - `references/surfaces/flow.md` → B. Figma flow: connectors cannot attach inside an instance, so a
