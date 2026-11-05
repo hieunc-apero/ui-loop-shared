@@ -45,6 +45,11 @@ What the script computes (`checks`):
 | `hasGoldenPath` | a section named "golden path" exists | a project rule |
 
 Two blind spots of these checks (USELOG 2026-10-28): `arrowScreenOverlaps` skips the two screens an arrow joins, so a label wider than the gap still sits on them — compare label width with the gap; and nothing checks that an arrow leaves the state where its action is possible (Generate from a disabled button), nor that it leaves at the tapped element rather than the frame's mid-height. Look for all three on the screenshot.
+A connector cannot attach to a node inside an instance ("Invalid endpointNodeId"), so an arrow
+that must leave at the tapped row or button starts from a **tap hotspot**: a dashed accent frame
+named `điểm chạm · <control>` laid over the control's absolute bounds, sibling of the screen in
+the case section. Do it for every button-driven arrow in the same pass — fixing only the arrows a
+critic named cost a second verify round on the rest (USELOG 2026-11-05).
 
 Notes ("chip · ghi chú") are treated as **pass-through steps**: an arrow screen → note → screen
 is one transition with a condition written on the note.

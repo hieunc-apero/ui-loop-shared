@@ -15,6 +15,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-05 — flow: tap hotspots for arrows that start at a control inside an instance
+
+- `references/surfaces/flow.md` → B. Figma flow: connectors cannot attach inside an instance, so a
+  button-driven arrow starts from a dashed "tap hotspot" frame over the control; do every such arrow
+  in one pass. **Why:** a flow critic blocked arrows leaving mid-frame, then a second verify round
+  found the same defect on arrows that weren't named (USELOG 2026-11-05). **Rules updated:** this file.
+
 ## 2026-11-05 — figma: a new row's accessory sits at the column the sibling rows use
 
 - `references/surfaces/figma.md` → "Adding a row": clone the sibling with the same shape (two-line
