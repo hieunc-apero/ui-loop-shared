@@ -564,3 +564,13 @@ Google Fonts serves Vietnamese only to families with a `vietnamese` subset; with
 and DM Mono do not. Swap the missing ones for a look-alike that has it (Instrument Serif italic → Newsreader
 italic, DM Mono → JetBrains Mono). Check by loading the css2 URL and reading the `/* vietnamese */` blocks per
 family, before the first build.
+
+## A horizontal pill row: measure its edges in every scroll state
+
+A scrolling row of pills passed at rest (first pill 16 px in) and failed twice in verify rounds (USELOG 2026-11-06):
+`scrollIntoView({inline:'nearest'})` put the chosen last pill flush on the screen edge (no `scroll-padding-inline`), and
+once the unread counts vanished the row overflowed by less than its own inset, so the last pill sat 1 px from the edge
+with nothing to signal more. Measure `getBoundingClientRect()` of the first and last pill at rest, with the last pill
+chosen, and after any change that shrinks the pills — at 320 and 390. Fix with the row's own padding plus
+`scroll-padding-inline` equal to it (no extra spacer: Chrome keeps a flex scroller's end padding, and a spacer doubles
+it), and size the pills so a row that nearly fits really fits.

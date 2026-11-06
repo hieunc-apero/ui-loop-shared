@@ -94,3 +94,4 @@ building or what the critic flagged.
 | HTML emails: judge with real merge values | transactional/marketing HTML email, merge fields |
 | Charts and tables that must read at phone width | SVG charts in a viewBox, tables stacked into rows on phone |
 | Vietnamese text: check the font's subsets before borrowing a brand face | picking fonts for Vietnamese copy |
+| A horizontal pill row: measure its edges in every scroll state | a scrolling row of chips/pills/tabs, `scrollIntoView` on a chip |

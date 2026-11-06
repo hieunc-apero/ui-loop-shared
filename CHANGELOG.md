@@ -15,6 +15,15 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-06 — web gotchas: a horizontal pill row's edges in every scroll state
+
+**Changed:** `references/surfaces/web-gotchas.md` gets "A horizontal pill row: measure its edges in every scroll
+state", and `web.md`'s gotcha table points to it.
+**Why:** a notification centre's pill row passed self-check at rest and was blocked in two verify rounds in a row:
+the chosen last pill scrolled flush onto the screen edge, then — once the unread counts were gone — the row overflowed
+by less than its own inset, leaving the last pill 1 px from the edge. Both were measurable by script; neither was
+measured until the critic saw it.
+
 ## 2026-11-06 — figma: gotchas topic file; clones holding instances, variable fonts, sheet re-anchor
 
 **Changed:** `references/surfaces/figma.md` was over its 8 KB cap. The image-fill and theme-preview traps
