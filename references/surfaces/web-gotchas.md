@@ -468,6 +468,15 @@ it-on-black measured 3.5–3.9:1 on badges, bands and small numerals. Pick the l
 (#43288F → flips to ~#8B70D7, 6.3:1) and re-measure contrast in the flip simulator, not just in light/dark
 (2026-11-06, 8-mail flow). Text baked into images is a label like any other: at 320 a 760-px picture shows at
 0.38x, so keep labels out of the picture and set them in HTML under it.
+A swipe row of cards in an email (the app's "card" rows): one `white-space:nowrap` div with `overflow-x:auto` and
+inline-block cards of a fixed width (~200 px) so the next card peeks as the cue. Wrap it in a
+`table-layout:fixed; width:100%` table, or the nowrap row widens the whole mail past the screen. Keep it inside the
+text column (`.px`-style classes force the page padding on phones, so a bleed doesn't hold) and give Outlook
+desktop a grid in `<!--[if mso]>`. Blocks return no trailing spacer when the builder adds the gaps — a block
+that ends in its own 40 px plus the builder's 40 px reads as 80 (2026-11-06). A checkout drawn inside an email
+(mock phone, screenshot) keeps its own button muted grey: a second coloured button competes with the mail's one CTA. Before a critic round, regenerate EVERY fixture variant (all
+mails × light/dark/gmail) from the current build: re-shooting only the variants you looked at leaves stale dark
+pages the critic will rightly fail (2026-11-06).
 Merge fields come from the content owner's field list; when a block needs data the list lacks, say so
 and ask — don't coin names and ship them in the template (2026-11-06).
 

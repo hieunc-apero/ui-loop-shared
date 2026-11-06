@@ -15,6 +15,14 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-06 — web gotchas: email swipe rows, block gaps, muted mock buttons
+
+**Changed:** `references/surfaces/web-gotchas.md` (HTML email): recipe for a horizontal card row (nowrap scroller in a
+`table-layout:fixed` table, inside the column, mso grid fallback); blocks carry no trailing spacer when the builder
+adds gaps; a drawn checkout's own button stays muted grey.
+**Why:** the first carousel widened the whole mail; a 40+40 px double gap read as "too far"; the critic flagged a
+green mock Subscribe as a second CTA.
+
 ## 2026-11-06 — web gotchas: mid-tone buttons under Gmail flip
 
 **Changed:** `references/surfaces/web-gotchas.md` (HTML email): a bright mid-tone fill with a dark label fails after
