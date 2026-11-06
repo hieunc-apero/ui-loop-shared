@@ -453,6 +453,11 @@ Side-by-side media in an email (two frames + a fixed gutter) come out a few px u
 columns size to their content (a label above one frame): put `table-layout:fixed` on that table and
 give only the gutter a width, so the frames split the rest exactly. Text baked into a GIF shrinks with
 the frame — at 320 a 240-px-wide GIF shows at ~0.53x, so bake labels at ≥ 16 px (2026-11-06).
+Gmail's lightness flip turns a MID accent into a mid accent: #5B3FA8 became #7357C0 and black-on-it /
+it-on-black measured 3.5–3.9:1 on badges, bands and small numerals. Pick the light-theme accent dark enough
+(#43288F → flips to ~#8B70D7, 6.3:1) and re-measure contrast in the flip simulator, not just in light/dark
+(2026-11-06, 8-mail flow). Text baked into images is a label like any other: at 320 a 760-px picture shows at
+0.38x, so keep labels out of the picture and set them in HTML under it.
 Merge fields come from the content owner's field list; when a block needs data the list lacks, say so
 and ask — don't coin names and ship them in the template (2026-11-06).
 

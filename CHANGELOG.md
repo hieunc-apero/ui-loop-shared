@@ -15,6 +15,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-06 — web gotchas: Gmail flip needs a darker accent; labels out of pictures
+
+**Changed:** `references/surfaces/web-gotchas.md` (HTML email): a mid accent fails AA after Gmail's lightness flip,
+so choose a darker light-theme accent and measure in the simulator; keep label text out of baked pictures.
+**Why:** an 8-mail flow passed light and dark but failed in the Gmail sim on every badge, band and small numeral
+(3.5–3.9:1); a hero picture's baked pills rendered at 6–8 px.
+
 ## 2026-11-06 — web gotchas: equal email frames, baked GIF text, merge-field names
 
 **Changed:** `references/surfaces/web-gotchas.md`, HTML-email section: `table-layout:fixed` for side-by-side
