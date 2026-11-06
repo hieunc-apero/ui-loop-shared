@@ -15,6 +15,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-06 — web gotchas: equal email frames, baked GIF text, merge-field names
+
+**Changed:** `references/surfaces/web-gotchas.md`, HTML-email section: `table-layout:fixed` for side-by-side
+frames, minimum size for text baked into GIFs, merge-field names come from the content owner's list.
+**Why:** a hero's two frames measured 126 vs 128 px at 320 because a label sized one column; the critic blocked it.
+Four of the template's merge fields had been coined by the builder and the user had to ask which were real.
+
 ## 2026-11-06 — web gotchas: HTML email captures and narrow tables
 
 **Changed:** `references/surfaces/web-gotchas.md`, HTML-email section: headless Chrome's 500 px floor and the

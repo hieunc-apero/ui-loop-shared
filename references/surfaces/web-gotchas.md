@@ -449,6 +449,12 @@ reads sunk: give its text a DARK accent in light (it flips to a light accent) an
 dark-mode class so Apple Mail dark keeps the violet instead of a neutral grey (2026-11-06).
 Two CTAs in one email at different container widths scale their image labels differently on a
 narrow phone: inset the standalone CTA to the in-card CTA's exact width at every breakpoint.
+Side-by-side media in an email (two frames + a fixed gutter) come out a few px unequal when the
+columns size to their content (a label above one frame): put `table-layout:fixed` on that table and
+give only the gutter a width, so the frames split the rest exactly. Text baked into a GIF shrinks with
+the frame — at 320 a 240-px-wide GIF shows at ~0.53x, so bake labels at ≥ 16 px (2026-11-06).
+Merge fields come from the content owner's field list; when a block needs data the list lacks, say so
+and ask — don't coin names and ship them in the template (2026-11-06).
 
 
 ## Forking a funnel into another brand
