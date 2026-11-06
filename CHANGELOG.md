@@ -15,6 +15,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-06 — web gotchas: real screenshots in mass email
+
+**Changed:** `references/surfaces/web-gotchas.md` (HTML email): redact a screenshot's values with solid bars, not blur;
+cut rows that don't carry the message; crop inside its own frame; short crop and full column at <=340.
+**Why:** a checkout screenshot blurred by its sender still read as a real address at 1x; the tall white raster
+outweighed the heading in dark clients.
+
 ## 2026-11-06 — web gotchas: Gmail flip needs a darker accent; labels out of pictures
 
 **Changed:** `references/surfaces/web-gotchas.md` (HTML email): a mid accent fails AA after Gmail's lightness flip,

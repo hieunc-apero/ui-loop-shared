@@ -430,6 +430,12 @@ mid tones, the CTA label as an image (stretched gradient/rim backgrounds + fixed
 never shrinks on narrow screens like a whole-button image does), alt text coloured per theme.
 Email images are cached by URL (Gmail's image proxy): give every changed image a new filename;
 re-uploading under the same name kept the old logo in a real Gmail send (USELOG 2026-10-19).
+A real screenshot (checkout, app screen) in a mass mail: a light blur the sender already applied
+still read as the tester's address at 1x and will read better on retina. Replace every value with a
+solid bar, cut the rows that don't carry the message (email, country), crop inside the screenshot's
+own frame so the mail's rim is the only border, and keep the bottom inset equal to the sides. A white
+raster glares in dark clients and Gmail won't swap images by theme: crop it short, and let it span
+the column at <=340 so it doesn't sit a near-miss inside the card below (USELOG 2026-11-06).
 A logo that must flip with Gmail's inversion (black-led on light, white-led on Gmail dark): Gmail
 recolours the cell behind an image but never the image, so split it into a background-image layer
 (the coloured part, identical in both modes) under an `<img style="mix-blend-mode:difference">`
