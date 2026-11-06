@@ -15,6 +15,11 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-06 — web gotchas: email table headers on one line
+
+**Changed:** `references/surfaces/web-gotchas.md` (HTML email): comparison headers nowrap, sized for the longest header.
+**Why:** user asked for "Other AI Apps" on one line and a narrower label column.
+
 ## 2026-11-06 — web gotchas: email swipe rows, block gaps, muted mock buttons
 
 **Changed:** `references/surfaces/web-gotchas.md` (HTML email): recipe for a horizontal card row (nowrap scroller in a

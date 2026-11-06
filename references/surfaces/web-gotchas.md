@@ -476,7 +476,8 @@ desktop a grid in `<!--[if mso]>`. Blocks return no trailing spacer when the bui
 that ends in its own 40 px plus the builder's 40 px reads as 80 (2026-11-06). A checkout drawn inside an email
 (mock phone, screenshot) keeps its own button muted grey: a second coloured button competes with the mail's one CTA. Before a critic round, regenerate EVERY fixture variant (all
 mails × light/dark/gmail) from the current build: re-shooting only the variants you looked at leaves stale dark
-pages the critic will rightly fail (2026-11-06).
+pages the critic will rightly fail (2026-11-06). Comparison-table column headers stay on one line (`white-space:nowrap`,
+~11 px under 360): size the columns for the longest header, and narrow the label column instead (2026-11-06).
 Merge fields come from the content owner's field list; when a block needs data the list lacks, say so
 and ask — don't coin names and ship them in the template (2026-11-06).
 
