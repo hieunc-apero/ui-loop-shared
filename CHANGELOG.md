@@ -15,6 +15,13 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-06 — web gotchas: email offer card type tiers, one-shell points, nbsp re-check
+
+**Changed:** `references/surfaces/web-gotchas.md` (HTML email): offer card ≤ 3 type tiers; a standout point uses
+weight, not a tile; re-measure all widths after a `&nbsp;` wrap fix.
+**Why:** critic failed a rewritten 8-mail flow on 9 sizes in one card and a renewal tile breaking the list; the first
+nbsp fix then left "waiting" alone on a line at 320.
+
 ## 2026-11-06 — web gotchas: email table headers on one line
 
 **Changed:** `references/surfaces/web-gotchas.md` (HTML email): comparison headers nowrap, sized for the longest header.

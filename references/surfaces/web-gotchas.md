@@ -480,6 +480,10 @@ pages the critic will rightly fail (2026-11-06). Comparison-table column headers
 ~11 px under 360): size the columns for the longest header, and narrow the label column instead (2026-11-06).
 Merge fields come from the content owner's field list; when a block needs data the list lacks, say so
 and ask — don't coin names and ship them in the template (2026-11-06).
+An offer card in an email keeps three type tiers — labels (~12), body (~15), the prices — with badge, number dots
+and summary head folded into those; a point that must stand out (renewal terms) gets weight and full-strength
+colour, not its own tile, so the numbered list keeps one shell. A no-break space added to fix a headline wrap can
+leave one word alone on a middle line at 320: re-measure every width after each `&nbsp;` change (2026-11-06).
 
 
 ## Forking a funnel into another brand
