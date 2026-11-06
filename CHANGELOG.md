@@ -15,6 +15,15 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-07 — funnel: inspect merge-asset samples; label the missing-data case on every step
+
+**Changed:** `references/surfaces/funnel.md` → Build: two bullets — open a frame of each reused email sample asset
+before drawing UI over it (baked-in lock/caption); give personal-data slots their own missing-data labels and check a
+"rendered" claim across every step of the funnel.
+**Why:** a 7-funnel build from a PO sheet doubled a baked caption on the first capture, and critic round 1 blocked on
+a fallback image labelled as the user's photo and on a later step contradicting the first step's no-render wording.
+**Rules updated:** this file + the project's `.claude/design-rules.md` (rules 2–4).
+
 ## 2026-11-06 — web gotchas: email offer card type tiers, one-shell points, nbsp re-check
 
 **Changed:** `references/surfaces/web-gotchas.md` (HTML email): offer card ≤ 3 type tiers; a standout point uses

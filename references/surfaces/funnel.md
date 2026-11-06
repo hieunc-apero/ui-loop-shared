@@ -75,6 +75,14 @@ and where a user can leave or go back. Write that list into the brief — the cr
 - **Re-read the PO sheet before hand-off, not only at the start.** The sheet changed mid-run (an
   emoji in D8, a new feedback row). The user's "update ô 8D" assumed the latest sheet was being
   read.
+- **A funnel that continues an email reuses the email's merge-asset samples — open a frame of each first.**
+  The sample "blurred video" GIF had the lock and its caption baked in; an overlay drawn on top doubled the label
+  ("Your video here" twice). Extract one frame (`ffmpeg -frames:v 1`) of every sample asset before drawing UI on it,
+  and read the email project's handoff for what the backend bakes in (USELOG 2026-11-07).
+- **Label every personal-data slot for the case where the data is missing.** A fallback template image kept the
+  "Your photo · Uploaded · 100% Rendered" labels and the critic blocked it as a false claim; the same funnel's
+  later step also claimed "rendered" while its first step deliberately didn't. Give the fallback its own labels
+  and grep the claim across every step of the funnel, not only the step the spec mentions (USELOG 2026-11-07).
 - **Sticky price rail beside a long proof column, under a sticky header:** keep the page's bottom
   space *inside* the grid area (padding on the long column, not the grid). Otherwise the rail
   is pushed up under the header at the end of the page and its heading gets cut (2026-10-16).
