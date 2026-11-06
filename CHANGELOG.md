@@ -15,6 +15,12 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-06 — web gotchas: mid-tone buttons under Gmail flip
+
+**Changed:** `references/surfaces/web-gotchas.md` (HTML email): a bright mid-tone fill with a dark label fails after
+Gmail's flip; use a dark fill + white label. Rings in HTML mocks = coloured wrapper cells with a theme class.
+**Why:** a checkout mock's green Subscribe measured about 2:1 in the Gmail simulator.
+
 ## 2026-11-06 — web gotchas: real screenshots in mass email
 
 **Changed:** `references/surfaces/web-gotchas.md` (HTML email): redact a screenshot's values with solid bars, not blur;

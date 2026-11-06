@@ -436,6 +436,10 @@ solid bar, cut the rows that don't carry the message (email, country), crop insi
 own frame so the mail's rim is the only border, and keep the bottom inset equal to the sides. A white
 raster glares in dark clients and Gmail won't swap images by theme: crop it short, and let it span
 the column at <=340 so it doesn't sit a near-miss inside the card below (USELOG 2026-11-06).
+A bright mid-tone fill (checkout green #3DD571) keeps its lightness under Gmail's flip while its dark
+label flips to white: about 2:1. A button drawn in HTML needs a dark fill with a white label (#15803D),
+which flips to light green + dark label. Ringing values in an HTML mock: a 2px coloured wrapper cell with a
+theme class, like the rims, not a CSS border (no per-theme class for borders) (USELOG 2026-11-06).
 A logo that must flip with Gmail's inversion (black-led on light, white-led on Gmail dark): Gmail
 recolours the cell behind an image but never the image, so split it into a background-image layer
 (the coloured part, identical in both modes) under an `<img style="mix-blend-mode:difference">`
