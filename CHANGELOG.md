@@ -15,6 +15,16 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-06 — web gotchas: HTML email captures and narrow tables
+
+**Changed:** `references/surfaces/web-gotchas.md`, HTML-email section: headless Chrome's 500 px floor and the
+iframe harness that captures true 420/320; local fixtures can go to `ui-critic` via `serve.js`; table cells at
+320 (no `break-word`, unit on its own line); a winning column under Gmail's lightness flip; two image-label CTAs
+kept at one width.
+**Why:** a re-engagement email's first captures at "420" were really 500-wide crops; the critic then blocked
+three things only visible at a true 320 (mismatched CTA labels, a value spilling its cell, 11 px labels), and
+the first fix for the cell (`break-word`) split prices mid-word.
+
 ## 2026-11-06 — web gotchas: a horizontal pill row's edges in every scroll state
 
 **Changed:** `references/surfaces/web-gotchas.md` gets "A horizontal pill row: measure its edges in every scroll

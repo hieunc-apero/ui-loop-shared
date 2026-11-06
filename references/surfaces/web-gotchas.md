@@ -436,6 +436,19 @@ recolours the cell behind an image but never the image, so split it into a backg
 layer fitted per pixel against the page colour (#FFF light, #202124 Gmail iOS dark); show it only
 under `u + .body`, keep the plain logo as the default so stripped-<style> clients fall back.
 White can only reach #DFDEDB on #202124 this way (USELOG 2026-10-19).
+Headless Chrome will not lay a page out under 500 px: `--window-size=420,…` or `320,…` silently
+renders at 500 and crops, so an email "checked at 420" was really checked at 500 (`innerWidth` reports
+500). Capture through a harness page — an `<iframe>` of the exact width inside a 500-wide window — and
+crop the screenshot to that width; print `innerWidth`/`scrollWidth` into the capture to prove it.
+A local email fixture is judgeable by `ui-critic`: serve the folder (`tools/ui-check/serve.js`) and
+give it light / forced-dark / Gmail-flip pages plus the captures (2026-11-06).
+At 320 an email table column is ~56 px: `word-break:break-word` splits values mid-word ("$9.99/w k").
+Keep values ≤ ~8 characters and move units to a second, smaller line (amount over "per week").
+A light tint behind a winning column flips to near-black under Gmail's lightness flip and the column
+reads sunk: give its text a DARK accent in light (it flips to a light accent) and give it its own
+dark-mode class so Apple Mail dark keeps the violet instead of a neutral grey (2026-11-06).
+Two CTAs in one email at different container widths scale their image labels differently on a
+narrow phone: inset the standalone CTA to the in-card CTA's exact width at every breakpoint.
 
 
 ## Forking a funnel into another brand
