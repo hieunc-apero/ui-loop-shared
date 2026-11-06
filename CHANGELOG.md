@@ -15,6 +15,19 @@ after, so the history shows whether a change helped rather than only that it hap
 
 
 
+## 2026-11-06 — figma: gotchas topic file; clones holding instances, variable fonts, sheet re-anchor
+
+**Changed:** `references/surfaces/figma.md` was over its 8 KB cap. The image-fill and theme-preview traps
+moved to a new topic file `references/surfaces/figma-gotchas.md`, linked from figma.md. Three new traps went
+into the topic file:
+- a cloned component's instance subtree is empty within the same script, so set overrides in a second call;
+- copy `{family, style}`, not the whole `fontName`;
+- re-anchor a sheet after hiding a button in it.
+
+**Why:** in one run, overrides set on a fresh clone did nothing, a font copy threw, and a shrunken sheet floated
+30 px above the screen edge. The critic blocked the sheet.
+**Rules updated:** figma.md (moved 2 bullets, added 1 link line), figma-gotchas.md (new).
+
 ## 2026-11-05 — figma: the visible image is the last fill
 
 - `references/surfaces/figma.md`. **Why:** thumbnails copied from a result screen took a hidden bottom fill.
