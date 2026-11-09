@@ -22,3 +22,6 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
   card sat on a black Dynamic Island (USELOG 2026-11-09). After `figma.group`, `g.insertChild(0, mask)`.
 - Dynamic Island mocks cloned from an existing frame can be off-centre: measure the island centre (196.5
   in a 393 frame) and the camera zone (≈ x 134–259, y 11–48) before placing content (USELOG 2026-11-09).
+- Placing a new block in a section the user is editing live: re-read the section's children right before
+  `y = …` and go below the lowest one. A minimal block computed from a list read a minute earlier landed on an
+  item the user had just added (critic blocker, USELOG 2026-11-09).
