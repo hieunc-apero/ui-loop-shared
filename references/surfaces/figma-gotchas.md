@@ -25,3 +25,6 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
 - Placing a new block in a section the user is editing live: re-read the section's children right before
   `y = …` and go below the lowest one. A minimal block computed from a list read a minute earlier landed on an
   item the user had just added (critic blocker, USELOG 2026-11-09).
+- Setting `x` on a child of an auto-layout frame does nothing (the layout re-places it) and the script still
+  returns ok. To space nodes inside auto-layout columns, change the column's alignment (`counterAxisAlignItems`)
+  or widths, then read positions back from the node tree (USELOG 2026-11-09: a "fixed" tracker stayed 107/88/107).
