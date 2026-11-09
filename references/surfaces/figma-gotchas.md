@@ -17,3 +17,8 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
 - Hiding a button inside a bottom sheet shrinks the sheet from the bottom, so it floats above the
   screen edge with the page showing underneath (critic blocker, USELOG 2026-11-06). After any change
   to a sheet's content, re-anchor it: `sheet.y = screen.height - sheet.height`.
+- A mask clips only the layers ABOVE it in its group. Grouping `[content, mask]` (mask last) left a
+  blurred sheen spilling past a ticket's cut-outs; invisible over a busy wallpaper, a grey haze once the
+  card sat on a black Dynamic Island (USELOG 2026-11-09). After `figma.group`, `g.insertChild(0, mask)`.
+- Dynamic Island mocks cloned from an existing frame can be off-centre: measure the island centre (196.5
+  in a 393 frame) and the camera zone (≈ x 134–259, y 11–48) before placing content (USELOG 2026-11-09).

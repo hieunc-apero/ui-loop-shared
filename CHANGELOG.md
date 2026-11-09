@@ -10,6 +10,11 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-09 — figma-gotchas: mask order, Dynamic Island geometry
+
+**Changed:** two lines in `references/surfaces/figma-gotchas.md`.
+**Why:** a sheen mask placed above its content leaked onto a black island; island mocks cloned from a file frame were 4pt off-centre and content ran under the camera (critic blockers, USELOG 2026-11-09).
+
 
 
 
