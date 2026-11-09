@@ -28,3 +28,7 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
 - Setting `x` on a child of an auto-layout frame does nothing (the layout re-places it) and the script still
   returns ok. To space nodes inside auto-layout columns, change the column's alignment (`counterAxisAlignItems`)
   or widths, then read positions back from the node tree (USELOG 2026-11-09: a "fixed" tracker stayed 107/88/107).
+- A new section placed "next to" an existing one can land on the user's loose scratch nodes on the page. Before
+  setting its x/y, test its box against every page child's absoluteBoundingBox and move it to free space (USELOG 2026-11-09).
+- Use the product's real logo for icons from the first build (Android small icon = a one-colour glyph cut from the
+  wordmark if no logomark exists); a placeholder sparkle got a "thay logo thật vào" (USELOG 2026-11-09).
