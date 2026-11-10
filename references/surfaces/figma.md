@@ -60,6 +60,10 @@
   (a campaign pop-up) and copy its header, not only the screen for the same event. An inset image card
   next to a full-bleed one reads as two patterns (USELOG 2026-11-10).
 
+- Aligning a new accessory (switch, pill) to a column of chevrons: measure the **glyph**
+  (`absoluteRenderBounds` of the vector), not the instance box. A chevron's 24 px box ends 10 px
+  from the card edge but its glyph ends at 26, and the switch overshot the column by 16 (USELOG 2026-11-10).
+
 ## Restyling one component across many frames
 
 When the job is "make X look like the approved Y everywhere" (e.g. old CTAs → the new
