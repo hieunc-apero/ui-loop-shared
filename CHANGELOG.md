@@ -10,6 +10,11 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-10 — figma.md: ABSOLUTE keeps FILL width; image variant copies an existing image sheet
+
+**Changed:** two traps in `references/surfaces/figma.md` (Plugin API traps).
+**Why:** a grabber row switched to absolute kept a 393 FILL width and sat 24 px off centre; an image variant of a system pop-up was drawn as an inset card while the app's campaign pop-up uses a full-bleed header (two critic blockers, USELOG 2026-11-10).
+
 ## 2026-11-09 — figma-gotchas: mask order, Dynamic Island geometry
 
 **Changed:** two lines in `references/surfaces/figma-gotchas.md`.

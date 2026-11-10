@@ -53,6 +53,12 @@
 - An instance replacing a node that sat inside a wrapper (`Overlay > Sheet`) must go into
   that same wrapper. `parent.children.indexOf()` of a deeper node is −1, so the instance
   lands at index 0, behind everything.
+- Setting `layoutPositioning = 'ABSOLUTE'` on a child keeps the width it had as FILL. A grabber
+  row taken out of a sheet whose padding was zeroed stayed 393 wide and drew the grabber 24 px off
+  centre. Resize it after the switch, then check its centre against the sheet's (USELOG 2026-11-10).
+- Before drawing an "image" variant of a sheet, look for a sheet that already carries an image
+  (a campaign pop-up) and copy its header, not only the screen for the same event. An inset image card
+  next to a full-bleed one reads as two patterns (USELOG 2026-11-10).
 
 ## Restyling one component across many frames
 
