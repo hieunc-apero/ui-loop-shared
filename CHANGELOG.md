@@ -10,6 +10,11 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-10 — web-gotchas: per-kind colours vs generic state rules
+
+**Changed:** one section in `references/surfaces/web-gotchas.md`.
+**Why:** a generic "unread, light theme" rule outweighed a kind's own colour, so one tile kind showed the wrong colour in exactly one state; no capture had that row, so the critic could not see it (caught by a per-kind capture after the round).
+
 ## 2026-11-10 — figma.md: ABSOLUTE keeps FILL width; image variant copies an existing image sheet
 
 **Changed:** two traps in `references/surfaces/figma.md` (Plugin API traps).

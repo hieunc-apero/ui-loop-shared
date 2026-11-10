@@ -622,3 +622,9 @@ with nothing to signal more. Measure `getBoundingClientRect()` of the first and 
 chosen, and after any change that shrinks the pills — at 320 and 390. Fix with the row's own padding plus
 `scroll-padding-inline` equal to it (no extra spacer: Chrome keeps a flex scroller's end padding, and a spacer doubles
 it), and size the pills so a row that nearly fits really fits.
+
+## Per-kind colours: capture every kind × read state × theme
+A generic state rule (`:root[data-theme=light] .row.is-unread .tile`, five selectors) silently outweighs a per-kind rule
+(`:root[data-theme=light] .tile.tile-locked`, four): the amber lock tile turned violet only when unread, only in light
+(USELOG 2026-11-10; the critic never saw it — no capture had that row). Give the kind rule the same selector depth and
+put it after, and capture one row of each kind in each read state and theme before calling a list done.
