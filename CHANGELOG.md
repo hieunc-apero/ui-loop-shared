@@ -10,6 +10,12 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-11 — figma-gotchas: WebP uploads, alpha-mask fades, chip re-anchor
+
+**Changed:** three traps in `references/surfaces/figma-gotchas.md`.
+**Why:** porting a web home page into app frames, an uploaded WebP rendered blank, a gradient alpha mask did not fade the photo, and right-aligned price chips were placed before they hugged their text and ran off the tile; each cost a self-check.
+**Rules updated:** engine figma-gotchas (3 bullets).
+
 ## 2026-11-10 — web-gotchas: per-kind colours vs generic state rules
 
 **Changed:** one section in `references/surfaces/web-gotchas.md`.

@@ -32,3 +32,9 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
   setting its x/y, test its box against every page child's absoluteBoundingBox and move it to free space (USELOG 2026-11-09).
 - Use the product's real logo for icons from the first build (Android small icon = a one-colour glyph cut from the
   wordmark if no logomark exists); a placeholder sparkle got a "thay logo thật vào" (USELOG 2026-11-09).
+- An image uploaded as **WebP** through `upload_assets` is accepted (hash returned, fill set) but renders blank in
+  screenshots. Convert to JPG/PNG before uploading (a before/after card stayed empty for two self-checks).
+- A gradient **alpha mask** (`isMask`) meant to fade a photo into its card did not fade in renders, even with
+  `maskType='ALPHA'`. Put a gradient overlay in the card's sampled colour on top of the photo instead.
+- A copied auto-layout chip's x is computed before it hugs its text: re-anchor right-aligned chips after the text is
+  set (`x = parent.width - inset - width`), or the chip runs off the tile edge.
