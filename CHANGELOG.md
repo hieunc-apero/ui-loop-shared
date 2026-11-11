@@ -10,6 +10,12 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-11 — figma-gotchas: glyphs from a real icon set, zoom at 2×
+
+**Changed:** one trap in `references/surfaces/figma-gotchas.md`.
+**Why:** a hand-typed wrench path rendered broken on a feature card; self-check and three critic rounds at 1× missed it, the user caught it after hand-off.
+**Rules updated:** engine figma-gotchas (1 bullet).
+
 ## 2026-11-11 — figma-gotchas: WebP uploads, alpha-mask fades, chip re-anchor
 
 **Changed:** three traps in `references/surfaces/figma-gotchas.md`.

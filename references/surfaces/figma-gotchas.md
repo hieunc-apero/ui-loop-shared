@@ -38,3 +38,6 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
   `maskType='ALPHA'`. Put a gradient overlay in the card's sampled colour on top of the photo instead.
 - A copied auto-layout chip's x is computed before it hugs its text: re-anchor right-aligned chips after the text is
   set (`x = parent.width - inset - width`), or the chip runs off the tile edge.
+- Glyphs typed from memory as SVG paths can render as a broken shape that neither the self-check nor the critic
+  notices at 1× (a "wrench" came out as a bent stroke; the user caught it). Take icon paths from a real set (Lucide,
+  Solar, the codebase), and zoom every new glyph at 2× (`node.screenshot({scale:2})`) before the critic round.
