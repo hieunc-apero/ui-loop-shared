@@ -10,6 +10,12 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-13 — figma-gotchas: iOS → Android clones need a geometry re-anchor
+
+**Changed:** one trap in `references/surfaces/figma-gotchas.md`.
+**Why:** six Android frames cloned from approved iOS screens kept 353-wide cards, a terms line at the iOS bottom (an 84 px empty band), an iOS home indicator inside a shared sheet and an opaque status bar; the critic raised five blockers, then one more when a new scrim covered the status bar.
+**Rules updated:** engine figma-gotchas (1 bullet).
+
 ## 2026-11-11 — figma-gotchas: glyphs from a real icon set, zoom at 2×
 
 **Changed:** one trap in `references/surfaces/figma-gotchas.md`.

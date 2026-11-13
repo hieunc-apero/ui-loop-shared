@@ -41,3 +41,7 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
 - Glyphs typed from memory as SVG paths can render as a broken shape that neither the self-check nor the critic
   notices at 1× (a "wrench" came out as a bent stroke; the user caught it). Take icon paths from a real set (Lucide,
   Solar, the codebase), and zoom every new glyph at 2× (`node.screenshot({scale:2})`) before the critic round.
+- Porting an iOS frame to Android by cloning carries iOS geometry with it. Re-anchor everything, not just the frame
+  size: content column and cards to the new width (FILL, no half-pixel x), bottom-anchored items (terms, pinned CTA)
+  to the new bottom inset, the iOS home indicator inside shared sheets hidden per Android placement. Put the Android
+  status bar on the top layer with no fill (edge-to-edge), above any scrim you add. Tap targets ≥ 48 dp.
