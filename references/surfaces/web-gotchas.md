@@ -638,3 +638,4 @@ A generic state rule (`:root[data-theme=light] .row.is-unread .tile`, five selec
 (`:root[data-theme=light] .tile.tile-locked`, four): the amber lock tile turned violet only when unread, only in light
 (USELOG 2026-11-10; the critic never saw it — no capture had that row). Give the kind rule the same selector depth and
 put it after, and capture one row of each kind in each read state and theme before calling a list done.
+- **Email from a spec sheet: an empty design cell means no visual.** If a block's "Mô tả design" cell is blank, ship headline + text only — don't keep a picture/pills a shared block carries by default (P7 C2-D, 16/11). And build only the columns the sheet highlights when it marks a set; unhighlighted columns are repeats.
