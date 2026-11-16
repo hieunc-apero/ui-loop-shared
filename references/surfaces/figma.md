@@ -64,6 +64,11 @@
   (`absoluteRenderBounds` of the vector), not the instance box. A chevron's 24 px box ends 10 px
   from the card edge but its glyph ends at 26, and the switch overshot the column by 16 (USELOG 2026-11-10).
 
+- After `insertChild` of a cloned row into an auto-layout list, read every sibling's `y` back. Once the
+  list did not reflow: the new row sat on top of the next one and the screen frame shrank (1337 → 1178).
+  Nudging `itemSpacing` (+1 then back) on the list and its auto-layout parents forced the relayout
+  (USELOG 2026-11-16).
+
 ## Restyling one component across many frames
 
 When the job is "make X look like the approved Y everywhere" (e.g. old CTAs → the new
