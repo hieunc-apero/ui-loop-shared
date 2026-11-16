@@ -77,6 +77,12 @@ adds gaps; a drawn checkout's own button stays muted grey.
 **Why:** the first carousel widened the whole mail; a 40+40 px double gap read as "too far"; the critic flagged a
 green mock Subscribe as a second CTA.
 
+## 2026-11-16 — web gotchas: copy swaps in an email set
+
+**Changed:** `references/surfaces/web-gotchas.md` (HTML email): a <br /> between the sentences of a two-sentence accented
+headline; after a copy swap, search every sheet sentence in the built HTML and accept only design-mapping misses.
+**Why:** a 17-mail text update wrapped the new headline mid-sentence at 320 (critic note).
+
 ## 2026-11-06 — web gotchas: mid-tone buttons under Gmail flip
 
 **Changed:** `references/surfaces/web-gotchas.md` (HTML email): a bright mid-tone fill with a dark label fails after

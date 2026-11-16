@@ -440,6 +440,10 @@ A bright mid-tone fill (checkout green #3DD571) keeps its lightness under Gmail'
 label flips to white: about 2:1. A button drawn in HTML needs a dark fill with a white label (#15803D),
 which flips to light green + dark label. Ringing values in an HTML mock: a 2px coloured wrapper cell with a
 theme class, like the rims, not a CSS border (no per-theme class for borders) (USELOG 2026-11-06).
+Copy swaps in a mail set: a two-sentence headline with the second sentence accented needs a <br /> between
+the sentences, or at 320 the accent starts mid-line ("…is / saved. Finish in / one step."); keep the first
+sentence's last word joined with &nbsp;. After a swap, search every sheet sentence in the built HTML (strip tags):
+the misses that remain must be design mappings only (badge, price card, link text, subject in the head) (USELOG 2026-11-16).
 A logo that must flip with Gmail's inversion (black-led on light, white-led on Gmail dark): Gmail
 recolours the cell behind an image but never the image, so split it into a background-image layer
 (the coloured part, identical in both modes) under an `<img style="mix-blend-mode:difference">`
