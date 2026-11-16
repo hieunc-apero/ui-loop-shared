@@ -447,6 +447,9 @@ the misses that remain must be design mappings only (badge, price card, link tex
 A tint fill (number dot #D9CFF8 on a #EEEEF1 card) flips to near-black on a near-black card: the numeral passes
 but the dot vanishes. Measure the fill against its container after the flip too, and give Gmail a solid fill via
 `u + .body .cls { … !important }` (light / dark themes untouched) (USELOG 2026-11-16).
+A content sheet keeps copy in its design-note cells too (table rows, frame tags, card titles, badge wording,
+"don't use X"): a copy swap reads every note cell, not only the Text rows. Missed once: the old tick table and
+a "100% Rendered" tag shipped after the sheet had replaced them in the notes (USELOG 2026-11-16).
 A logo that must flip with Gmail's inversion (black-led on light, white-led on Gmail dark): Gmail
 recolours the cell behind an image but never the image, so split it into a background-image layer
 (the coloured part, identical in both modes) under an `<img style="mix-blend-mode:difference">`

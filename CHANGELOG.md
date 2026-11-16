@@ -77,6 +77,11 @@ adds gaps; a drawn checkout's own button stays muted grey.
 **Why:** the first carousel widened the whole mail; a 40+40 px double gap read as "too far"; the critic flagged a
 green mock Subscribe as a second CTA.
 
+## 2026-11-16 — web gotchas: copy also lives in design notes
+
+**Changed:** `references/surfaces/web-gotchas.md` (HTML email): a copy swap reads the sheet's design-note cells too.
+**Why:** a text table, a frame tag and card titles defined only in design notes were missed in the first pass.
+
 ## 2026-11-16 — web gotchas: tint fills vanish under Gmail flip
 
 **Changed:** `references/surfaces/web-gotchas.md` (HTML email): measure a tint fill against its container after the flip;
