@@ -444,6 +444,9 @@ Copy swaps in a mail set: a two-sentence headline with the second sentence accen
 the sentences, or at 320 the accent starts mid-line ("…is / saved. Finish in / one step."); keep the first
 sentence's last word joined with &nbsp;. After a swap, search every sheet sentence in the built HTML (strip tags):
 the misses that remain must be design mappings only (badge, price card, link text, subject in the head) (USELOG 2026-11-16).
+A tint fill (number dot #D9CFF8 on a #EEEEF1 card) flips to near-black on a near-black card: the numeral passes
+but the dot vanishes. Measure the fill against its container after the flip too, and give Gmail a solid fill via
+`u + .body .cls { … !important }` (light / dark themes untouched) (USELOG 2026-11-16).
 A logo that must flip with Gmail's inversion (black-led on light, white-led on Gmail dark): Gmail
 recolours the cell behind an image but never the image, so split it into a background-image layer
 (the coloured part, identical in both modes) under an `<img style="mix-blend-mode:difference">`

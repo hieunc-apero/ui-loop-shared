@@ -77,6 +77,12 @@ adds gaps; a drawn checkout's own button stays muted grey.
 **Why:** the first carousel widened the whole mail; a 40+40 px double gap read as "too far"; the critic flagged a
 green mock Subscribe as a second CTA.
 
+## 2026-11-16 — web gotchas: tint fills vanish under Gmail flip
+
+**Changed:** `references/surfaces/web-gotchas.md` (HTML email): measure a tint fill against its container after the flip;
+give Gmail a solid fill through `u + .body`.
+**Why:** number dots disappeared on cards in the Gmail simulator although the numerals passed.
+
 ## 2026-11-16 — web gotchas: copy swaps in an email set
 
 **Changed:** `references/surfaces/web-gotchas.md` (HTML email): a <br /> between the sentences of a two-sentence accented
