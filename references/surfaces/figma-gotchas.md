@@ -45,3 +45,13 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
   size: content column and cards to the new width (FILL, no half-pixel x), bottom-anchored items (terms, pinned CTA)
   to the new bottom inset, the iOS home indicator inside shared sheets hidden per Android placement. Put the Android
   status bar on the top layer with no fill (edge-to-edge), above any scrim you add. Tap targets ≥ 48 dp.
+
+## Pulling images out of a Figma fold for code
+
+- `get_screenshot` renders at the node's 1× size whatever `maxDimension` says (a 141 px tile stays 141 px). For web
+  assets call `download_assets` with `defaultScale: 3`: it returns the 3× export and the raw source images of the subtree
+  (USELOG 2026-11-17).
+- Ids inside an instance (`I123:4;567:8`) are refused by `get_screenshot` / `download_assets`; the part after the last
+  `;` is the main component's own node — export that.
+- Crop parts from the 3× export by the metadata's x/y/w/h × 3 and give the crop its own rounded alpha mask, so the
+  frame's background colour never shows in the corners on a page of another colour.

@@ -10,6 +10,12 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-17 — figma-gotchas: pulling images out of a fold for code
+
+**Changed:** new section in `references/surfaces/figma-gotchas.md` (get_screenshot is 1×; download_assets at 3×; instance-child ids; crop + rounded alpha).
+**Why:** a web build needed the fold's laptop and feature tiles; screenshots came back at 141 px and instance ids were refused.
+**Rules updated:** engine figma-gotchas (1 section).
+
 ## 2026-11-17 — web-gotchas: user-supplied screenshots stay as uploaded
 
 **Changed:** narrowed the "mixed crops" bullet of "Re-theming a dark page to light": user-supplied screenshots are never faded, cropped or spliced; cards top-align instead.
