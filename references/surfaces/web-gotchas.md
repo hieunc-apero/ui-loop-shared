@@ -642,3 +642,16 @@ put it after, and capture one row of each kind in each read state and theme befo
 - **Email heading size follows the block's position, not the block.** A shared block that opens some mails (h1) must drop to section-head size when it sits after the hero — a second h1 in one mail reads as a new mail (Lensie P7 M2 offer hook, 16/11).
 - **Email headings: glue only the 2-word phrase you must keep, never chain &nbsp;.** A helper that already turns the last space into &nbsp; (no lone last word) plus your own &nbsp;s can weld a whole title into one unbreakable run that overflows 320px. Glue "payment&nbsp;details", leave the other spaces, then look at 320 (Lensie P7, 16/11).
 - **A new screen in an existing funnel copies a sibling's column layout, and its class names get grepped first.** P10 retry put plans alone in the desktop media column (read before the headline, half empty) and a `.help` class collided with the header's absolutely-positioned "Need help?" link (Lensie order funnels, 16/11).
+
+## Re-theming a dark page to light
+
+- **White art served as images vanishes on white.** Before the first capture, list every `<img>` and sample its
+  mean colour; a wordmark, a rendered headline lockup, award laurels or press logos in white need an inked copy
+  (or `filter:brightness(0)` when the file is one flat white). Keep the coloured parts (app icon, gradient word)
+  by recolouring only the low-saturation pixels (USELOG 2026-11-17).
+- **A transparent fixed bar over a two-pane shell**: give only the panel side a solid band whose left edge follows the
+  stage width per step (`html[data-screen]`), so content scrolled up never reads through and the photo keeps the top
+  edge; a rail wider than the panel on a wide-stage step keeps only its current label.
+- **Done ticks are accent too** — `--ok` green survived a re-theme and was round 1's blocker.
+- **Equal screenshot cards from mixed crops**: crop every source to one aspect; when a source is taller, splice out
+  its empty screen band (rows of one flat colour) instead of cropping through a caption or headline.

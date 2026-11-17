@@ -10,6 +10,12 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-17 — web-gotchas: re-theming a dark page to light
+
+**Changed:** new section in `references/surfaces/web-gotchas.md` (white image art, transparent fixed bar over a two-pane shell, done ticks, equal screenshot cards from mixed crops).
+**Why:** a dark funnel switched to light lost its white wordmark, headline lockup and laurels on white; its fixed bar let panel content read through (ui-check U7 block); green done ticks were round 1's blocker; a taller app screenshot was first cropped through its caption.
+**Rules updated:** engine web-gotchas (1 section).
+
 ## 2026-11-13 — figma-gotchas: iOS → Android clones need a geometry re-anchor
 
 **Changed:** one trap in `references/surfaces/figma-gotchas.md`.
