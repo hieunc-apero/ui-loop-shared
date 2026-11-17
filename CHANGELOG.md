@@ -10,6 +10,12 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-17 — web-gotchas: live-site screenshot as a device-mock screen
+
+**Changed:** new section in `references/surfaces/web-gotchas.md` (wait out typing animations; never the fold the page already shows; capture at the screen aspect).
+**Why:** a laptop mock showed a placeholder frozen mid-typing and repeated the bento's four cards.
+**Rules updated:** engine web-gotchas (1 section).
+
 ## 2026-11-17 — figma-gotchas: pulling images out of a fold for code
 
 **Changed:** new section in `references/surfaces/figma-gotchas.md` (get_screenshot is 1×; download_assets at 3×; instance-child ids; crop + rounded alpha).

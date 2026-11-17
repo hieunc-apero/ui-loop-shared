@@ -656,3 +656,11 @@ put it after, and capture one row of each kind in each read state and theme befo
 - **Screenshot cards from mixed crops**: screenshots the user supplied stay exactly as uploaded — no fade, crop or splice
   to make a row match (a spliced + faded shot was sent back, USELOG 2026-11-17); top-align the cards and let each hug its
   image. Only art you made yourself may be cropped to a shared aspect, and never through a caption.
+
+## Using a live site's screenshot as a device-mock screen
+
+- Pages with a typing placeholder, rotating hero or marquee get caught mid-animation ("Put a woman in a sun hat o")
+  and read as a typo once shrunk into a laptop. Poll the animated text until it is complete and stable, then shoot.
+- Don't put the fold the page already rebuilds below (feature cards, bento) on the screen — pick another page of the
+  product, or the same cards show twice in one scroll (USELOG 2026-11-17).
+- Capture at the screen's aspect (16:10 → 1440×900) at DPR 2, and re-capture when the product changes.
