@@ -10,6 +10,12 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-17 — web-gotchas: user-supplied screenshots stay as uploaded
+
+**Changed:** narrowed the "mixed crops" bullet of "Re-theming a dark page to light": user-supplied screenshots are never faded, cropped or spliced; cards top-align instead.
+**Why:** the user sent back a spliced, top-faded app screenshot the same day and asked for the original.
+**Rules updated:** engine web-gotchas (1 bullet narrowed).
+
 ## 2026-11-17 — web-gotchas: re-theming a dark page to light
 
 **Changed:** new section in `references/surfaces/web-gotchas.md` (white image art, transparent fixed bar over a two-pane shell, done ticks, equal screenshot cards from mixed crops).

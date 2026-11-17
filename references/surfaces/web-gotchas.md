@@ -653,5 +653,6 @@ put it after, and capture one row of each kind in each read state and theme befo
   stage width per step (`html[data-screen]`), so content scrolled up never reads through and the photo keeps the top
   edge; a rail wider than the panel on a wide-stage step keeps only its current label.
 - **Done ticks are accent too** — `--ok` green survived a re-theme and was round 1's blocker.
-- **Equal screenshot cards from mixed crops**: crop every source to one aspect; when a source is taller, splice out
-  its empty screen band (rows of one flat colour) instead of cropping through a caption or headline.
+- **Screenshot cards from mixed crops**: screenshots the user supplied stay exactly as uploaded — no fade, crop or splice
+  to make a row match (a spliced + faded shot was sent back, USELOG 2026-11-17); top-align the cards and let each hug its
+  image. Only art you made yourself may be cropped to a shared aspect, and never through a caption.
