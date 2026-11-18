@@ -10,6 +10,11 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-18 — critic-round: tell a resumed critic which decision was superseded
+
+**Changed:** `references/loop/critic-round.md` "Every round" — name the current layout decision and the one it replaces when resuming a critic.
+**Why:** a resumed critic judged a dark variant "same layout as approved" against a layout the user had already replaced, and raised a false blocker.
+
 ## 2026-11-17 — web-gotchas: live-site screenshot as a device-mock screen
 
 **Changed:** new section in `references/surfaces/web-gotchas.md` (wait out typing animations; never the fold the page already shows; capture at the screen aspect).

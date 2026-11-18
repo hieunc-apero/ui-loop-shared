@@ -54,6 +54,10 @@ y 920.
   button the loop had already fixed. That same edit also changed the copy and type sizes. Read back the
   sizes the brief quotes, and take the user's changes as the new baseline, never revert them (USELOG
   2026-11-05, referral REF-01).
+- **A resumed critic remembers old decisions.** When the user changed a layout since the critic's
+  last round, name the current decision and the one it replaces in the brief ("2×2 on every width
+  — replaces the swipe row"); "same layout as the approved build" alone made a resumed critic
+  block the superseded layout (USELOG 2026-11-18, dance-reunion dark success).
 - **Check each rule and taste path still exists.** Another session can merge or move a file
   mid-run; the critic then quietly runs without that profile (USELOG 2026-10-15, runs tray).
 - **Pick the round type** — it decides most of the cost:
