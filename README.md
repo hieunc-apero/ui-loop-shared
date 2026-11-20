@@ -47,12 +47,13 @@ ui-loop/
 │   └── ui-builder.md        người vẽ một phương án (chế độ nhiều phương án)
 │
 ├── references/          ← hướng dẫn chi tiết theo từng tình huống
-│   ├── surfaces/            figma · web · landing · funnel · app · flow (+ flow-graph.js)
+│   ├── surfaces/            figma · web · landing · funnel · app · flow · email (+ flow-graph.js)
 │   └── modes/               variants (nhiều phương án)
 │
 ├── evals/               ← cách đo critic bằng lỗi thật trong lịch sử git
 ├── tools/taste-mining/  ← script rút góp ý của bạn từ transcript để dựng hồ sơ gu
 ├── tools/coverage/      ← tỉ lệ việc lặp đã tự động, đếm từ USELOG
+├── tools/email-shots/   ← fixture email sáng / tối / Gmail đảo màu × 420/320 + giả lập Gmail
 │
 └── setup/               ← cài đặt
     ├── install.sh           cài cho một hay nhiều tài khoản + tạo ~/.ui-loop

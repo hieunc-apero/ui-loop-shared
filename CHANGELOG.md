@@ -10,6 +10,12 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-20 — new surface: HTML email
+
+**Changed:** `references/surfaces/email.md` (new: build, skeleton, style, dark mode across client families, the Gmail lightness flip, background-image rule, three-variant logo, image-only CTA, self-check, capture); `references/surfaces/email-gotchas.md` (new: the "HTML emails" section and 3 email bullets moved verbatim out of `web-gotchas.md`, plus simulator/capture traps); `tools/email-shots/` (light / dark / gmail-sim fixtures × 420/320 through an iframe harness + the lightness-flip simulator); SKILL.md surface + build rows and triggers; `critic/modes.md` `email` section; `ui-critic` input + description; READMEs.
+**Why:** email lessons from ~10 runs were scattered across web-gotchas, a project rule file and a handoff; each new mail set re-learned the dark-mode traps (Gmail flipping accents, logo vanishing, CTA labels inverting).
+**Rules updated:** engine email.md + email-gotchas.md (new), web-gotchas (email section → pointer), critic modes (+email).
+
 ## 2026-11-18 — critic-round: tell a resumed critic which decision was superseded
 
 **Changed:** `references/loop/critic-round.md` "Every round" — name the current layout decision and the one it replaces when resuming a critic.

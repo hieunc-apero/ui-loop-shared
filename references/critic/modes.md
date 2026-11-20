@@ -40,6 +40,18 @@ separately). On Figma, measure from node data as in `figma` mode; motion and ges
 Not checked. Flag web-only patterns carried into an app (hover reveals, desktop dropdowns,
 page-width layouts).
 
+**`email`** — an HTML email, given as fixture pages (light / dark / gmail-sim) at 420 and 320 plus
+their PNGs. Read `~/.claude/skills/ui-loop/references/surfaces/email.md` first. Judge every mail ×
+mode × width; a defect in one mode is a blocker even when the others pass. On top of the
+universal checklist: no horizontal overflow (`scrollWidth` ≤ width); contrast of every text on its
+own ground **in each mode** (the gmail page is what Gmail iOS/Android users see — a label, numeral
+or logo that fades there is a blocker); the logo reads in all three; one CTA (a repeat of the same
+CTA is allowed in a long mail), its label legible and the same size wherever it repeats; no
+coloured live text relied on in the gmail mode; no white box behind a logo or icon; images that
+carry text readable at 320; long merge values don't split mid-word; copy matches the content
+sheet given. You can't see real clients: list Gmail app, Apple Mail, Outlook desktop and
+images-off under Not checked unless their captures were supplied.
+
 **`flow`** — a whole user flow. Read `~/.claude/skills/ui-loop/references/surfaces/flow.md`.
 - *Figma flow:* read the flow-graph JSON you were given (screens, notes, edges with exact
   from/to, and computed `checks`). Treat each computed check as a lead, not a verdict: screenshot

@@ -1,6 +1,6 @@
 ---
 name: ui-critic
-description: Independent visual critic for a UI that someone just built or changed — a web app page, a landing page, a multi-step funnel, or frames in a Figma file. Dispatch it with the surface and target (a URL already serving, ordered funnel steps, a Figma fileKey + nodeIds, or screenshot files), the intent of the change, and the paths to the project's design rules. It looks at the rendered result with fresh eyes — never the source code — checks it against a universal checklist plus the project's own rules, and returns PASS or FAIL with measured findings. Used by the ui-loop skill as the judge in a build → critique → fix loop. It never edits anything.
+description: Independent visual critic for a UI that someone just built or changed — a web app page, a landing page, a multi-step funnel, an HTML email, or frames in a Figma file. Dispatch it with the surface and target (a URL already serving, ordered funnel steps, a Figma fileKey + nodeIds, or screenshot files), the intent of the change, and the paths to the project's design rules. It looks at the rendered result with fresh eyes — never the source code — checks it against a universal checklist plus the project's own rules, and returns PASS or FAIL with measured findings. Used by the ui-loop skill as the judge in a build → critique → fix loop. It never edits anything.
 model: inherit
 color: purple
 tools: Read, Skill, mcp__Claude_Browser__navigate, mcp__Claude_Browser__javascript_tool, mcp__Claude_Browser__computer, mcp__Claude_Browser__read_page, mcp__Claude_Browser__find, mcp__Claude_Browser__resize_window, mcp__Claude_Browser__read_console_messages, mcp__Claude_Browser__browser_batch, mcp__Claude_Browser__tabs_create, mcp__Claude_Browser__tabs_close, mcp__remote-devices__Claude_Browser__navigate, mcp__remote-devices__Claude_Browser__javascript_tool, mcp__remote-devices__Claude_Browser__computer, mcp__remote-devices__Claude_Browser__read_page, mcp__remote-devices__Claude_Browser__find, mcp__remote-devices__Claude_Browser__resize_window, mcp__remote-devices__Claude_Browser__read_console_messages, mcp__remote-devices__Claude_Browser__browser_batch, mcp__remote-devices__Claude_Browser__tabs_create, mcp__remote-devices__Claude_Browser__tabs_close, mcp__claude-in-chrome__navigate, mcp__claude-in-chrome__javascript_tool, mcp__claude-in-chrome__computer, mcp__claude-in-chrome__read_page, mcp__claude-in-chrome__find, mcp__claude-in-chrome__resize_window, mcp__claude-in-chrome__read_console_messages, mcp__claude-in-chrome__tabs_context_mcp, mcp__claude-in-chrome__tabs_create_mcp, mcp__claude-in-chrome__tabs_close_mcp, mcp__figma__get_screenshot, mcp__figma__get_metadata, mcp__figma__get_variable_defs, mcp__figma__get_design_context, mcp__figma__search_design_system, mcp__782a24fe-086f-4fc8-81e2-8961bbba8242__get_screenshot, mcp__782a24fe-086f-4fc8-81e2-8961bbba8242__get_metadata, mcp__782a24fe-086f-4fc8-81e2-8961bbba8242__get_variable_defs, mcp__782a24fe-086f-4fc8-81e2-8961bbba8242__get_design_context, mcp__782a24fe-086f-4fc8-81e2-8961bbba8242__search_design_system
@@ -26,7 +26,7 @@ fresh so you can't do that. Keep it that way:
 
 1. **Surface and target** — `web-app` / `landing`: URLs already serving (localhost, staging).
    `funnel`: ordered steps, each a URL or action plus test input. `figma`: a fileKey and the
-   frame nodeIds. Native: paths to screenshot files (you can't drive the UI yourself).
+   frame nodeIds. `email`: fixture pages light / dark / gmail-sim × 420 / 320 (URLs + PNGs). Native: paths to screenshot files (you can't drive the UI yourself).
    Optionally a **reference** — approved Figma nodeIds the coded page must match.
 2. **Intent** — what the page/change is supposed to accomplish, and which states matter
    (hover, empty, loading, error, logged out…).
@@ -108,7 +108,7 @@ If the target is missing, or a URL won't load, stop and say so. Don't critique a
 ## Surface modes
 
 The procedure above is written for a browser target (`web-app`). For **any other surface or
-mode** — `landing`, `funnel`, `figma`, `app`, `flow`, a **Reference** given, or
+mode** — `landing`, `funnel`, `figma`, `app`, `flow`, `email`, a **Reference** given, or
 `Mode: compare` — `Read` `~/.claude/skills/ui-loop/references/critic/modes.md` and follow the
 section for it (only that section) before step 4.
 

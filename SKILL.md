@@ -1,6 +1,6 @@
 ---
 name: ui-loop
-description: Design or build UI — in Figma, as front-end code for a web app, a landing page, or a multi-step funnel — and don't show it to the user until an independent critic passes it. Picks the surface, loads the right build skills (figma-use, impeccable, design-taste-frontend, building-landing-pages…), then runs build → capture → ui-critic agent → fix, up to 4 rounds, with the current project's own design rules (DESIGN.md, .claude/design-rules.md) when they exist. Also bridges Figma → code and code → Figma. Use for any visible UI work: a new page or screen, a redesign, "make this section better", fixing what the user flagged on a screenshot. Vietnamese triggers too: "vẽ", "thiết kế", "làm lại trang/màn/section", "sửa giao diện", "chỉnh UI", "trông xấu", "cho đẹp hơn", "vài phương án", "trên Figma", "check luồng", "rà luồng", "thiếu thừa màn", "đối chiếu spec". Also checks whole user flows (Figma screens + arrows, live journeys, spec conformance).
+description: Design or build UI — in Figma, as front-end code for a web app, a landing page, a multi-step funnel, or an HTML email — and don't show it to the user until an independent critic passes it. Picks the surface, loads the right build skills (figma-use, impeccable, design-taste-frontend, building-landing-pages…), then runs build → capture → ui-critic agent → fix, up to 4 rounds, with the current project's own design rules (DESIGN.md, .claude/design-rules.md) when they exist. Also bridges Figma → code and code → Figma. Use for any visible UI work: a new page or screen, a redesign, "make this section better", fixing what the user flagged on a screenshot. Vietnamese triggers too: "vẽ", "thiết kế", "làm lại trang/màn/section", "sửa giao diện", "chỉnh UI", "trông xấu", "cho đẹp hơn", "vài phương án", "trên Figma", "check luồng", "rà luồng", "thiếu thừa màn", "đối chiếu spec", "email", "mail", "dark mode Gmail". Also checks whole user flows (Figma screens + arrows, live journeys, spec conformance).
 ---
 
 # ui-loop
@@ -61,6 +61,7 @@ capture, what's specific to it):
 | `funnel` | onboarding, paywall, checkout, wizard — the sequence matters | `references/surfaces/funnel.md` |
 | `app` | iOS / Android app screens — in Figma or a native build | `references/surfaces/app.md` |
 | `flow` | a whole user flow — Figma screens + arrows, a live journey, conformance to a spec | `references/surfaces/flow.md` |
+| `email` | an HTML email — marketing, retention, transactional; anything a mail client renders | `references/surfaces/email.md` |
 
 Work that crosses surfaces runs the loop once per surface (Figma until it passes, then code
 with the approved frames as Reference — `figma.md`, "Handoff to code"). A coded funnel also
@@ -106,6 +107,7 @@ not loading it (55 runs to 2026-10-19: `frontend-design` loaded 3 times, `impecc
 | `web-app` — screens people work in (dashboard, admin, wallet, settings…) | `design-taste-frontend` (its app-screen run), brand or no brand · `impeccable` to refine an existing screen |
 | `landing`, code `funnel` — pages that persuade | `building-landing-pages` (landing) + `impeccable` — new or refined, brand or no brand |
 | `figma`, `app` in Figma, `flow` | `figma-use` before every `use_figma` (+ `figma-generate-design` for a new screen) |
+| `email` | none fits — start from the project's newest shipped mail + its generator script (`email.md`, "Build"); `impeccable` only for copy/hierarchy |
 | `app` native iOS code | `swiftui-patterns`, `swiftui-layout-components` (+ `swiftui-liquid-glass`, `ios-accessibility`) |
 
 Not installed → carry on, say so in USELOG (hints: `setup/skills.txt`). Project rules and taste

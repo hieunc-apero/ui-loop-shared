@@ -91,7 +91,7 @@ building or what the critic flagged.
 | Scale-up reveals stay sharp | scale-up reveal animations |
 | iPhone Safari layer budget | many animated layers, iOS Safari jank/blur |
 | Cutting a subject out of a photo, and filling the hole | cutting out a subject, inpainting |
-| HTML emails: judge with real merge values | transactional/marketing HTML email, merge fields |
+| HTML emails → moved to `email.md` + `email-gotchas.md` | any HTML email |
 | Charts and tables that must read at phone width | SVG charts in a viewBox, tables stacked into rows on phone |
 | Vietnamese text: check the font's subsets before borrowing a brand face | picking fonts for Vietnamese copy |
 | A horizontal pill row: measure its edges in every scroll state | a scrolling row of chips/pills/tabs, `scrollIntoView` on a chip |

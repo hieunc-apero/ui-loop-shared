@@ -10,12 +10,14 @@ references/
 │   ├── funnel.md      đi một luồng nhiều bước trên bản đang chạy (onboarding, paywall, checkout)
 │   ├── flow.md        kiểm cả một luồng: Figma (màn + mũi tên), bản chạy thật, đối chiếu spec
 │   ├── flow-graph.js  script CHỈ ĐỌC: rút sơ đồ luồng từ Figma + tính sẵn các phép kiểm
+│   ├── email.md       HTML email: khung, style, dark mode / Gmail tự đảo màu, logo, CTA ảnh, tự kiểm
+│   ├── email-gotchas.md mẹo email theo chủ đề (chuyển từ web-gotchas 20/11)
 │   └── app.md         app iOS/Android; checklist nền tảng (44pt, vùng an toàn…)
 ├── loop/              ← chi tiết các bước của vòng lặp, mở khi tới bước đó
 │   ├── critic-round.md  gửi critic thế nào; 3 kiểu vòng full / scoped / verify
 │   └── retro.md         rút luật, nơi ghi, giới hạn dung lượng, gộp/hạ/nâng luật
 ├── critic/            ← phần critic chỉ đọc khi cần
-│   └── modes.md         cách chấm riêng cho landing, funnel, figma, app, flow, so sánh
+│   └── modes.md         cách chấm riêng cho landing, funnel, figma, app, flow, email, so sánh
 └── modes/             ← "làm theo kiểu nào"
     └── variants.md    nhiều phương án song song, critic xếp hạng
 ```
