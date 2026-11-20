@@ -55,3 +55,8 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
   `;` is the main component's own node — export that.
 - Crop parts from the 3× export by the metadata's x/y/w/h × 3 and give the crop its own rounded alpha mask, so the
   frame's background colour never shows in the corners on a page of another colour.
+
+- **Re-colouring a cloned paint with `{...paint, color}` keeps its `boundVariables`.** The variable still wins, so the
+  main component can look right while an instance in another mode resolves to another colour (an icon showed purple in the
+  component and `#f5f5f5` in the screen). Drop `boundVariables` from the paint, and from gradient stops, when you mean a fixed
+  colour. Also check `instance.boundVariables.componentProperties`: a variant prop such as `Mode` can be bound to a library variable.
