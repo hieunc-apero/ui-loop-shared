@@ -72,3 +72,10 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
 - **Fix token contrast before drawing many frames.** White labels on a bright orange primary (3.1:1) and light-grey
   captions (2.7:1) failed across a whole 97-frame file; the fix was token values + a page-wide pass that rebinds text by
   its background. Compute the 4–5 text/background pairs of a new palette first (USELOG 2026-11-20).
+- **Colour options across many frames = variable modes.** Add one mode per option to the colour collection and set it as
+  the explicit mode on cloned sample frames; the pick then rolls out to every frame with one `setExplicitVariableModeForCollection`
+  each. Raw paints (gradient fades, translucent fills) don't follow — recolour them in the same pass (USELOG 2026-11-20).
+- **Decor across many frames: place by measured free space, not fixed coordinates.** One fixed-coordinate set pasted on
+  every frame put confetti on titles and a cloud under paywall copy (critic, 6 blockers). Collect the boxes of every text,
+  instance and filled/stroked node, place each piece only where it clears them by ≥ 8 px, behind content, ≤ 4 per frame,
+  and avoid 3+ pieces on one baseline (USELOG 2026-11-20).

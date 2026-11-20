@@ -1275,3 +1275,9 @@ Critic: round 1 FAIL with 4 blockers, round 2 PASS.
 **Changed:** `references/surfaces/figma-gotchas.md` +3 (a Starter-plan file cuts the MCP off → build in a paid-team file and have the user copy the page; resizing a main component does not reach every instance; compute a new palette's text/background contrast before drawing many frames). `references/surfaces/app.md`: new section — when redrawing a competitor's screens, change at least one structure per flow, and illustrate media up front.
 **Why:** a 97-frame redesign run (USELOG 2026-11-20): MCP cut off in the source file; round 1 flagged whole-file contrast, icon-tile media placeholders and three flows that kept the competitor's arrangement; round 3 failed on chip instances that kept their old height.
 **Rules updated:** figma-gotchas.md, app.md.
+
+## 2026-11-20 — figma-gotchas: colour options as variable modes; decor by measured free space
+
+**Changed:** `references/surfaces/figma-gotchas.md` +2.
+**Why:** after hand-off the user asked for a cuter style and other colourways for a 97-frame file; options as variable modes made the pick a one-pass roll-out, and decor pasted at fixed coordinates failed a critic round with 6 blockers until it was placed by measured free space.
+**Rules updated:** figma-gotchas.md.
