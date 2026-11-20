@@ -82,3 +82,8 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
 - **Bind a paint with its real colour as the base, not black.** `setBoundVariableForPaint({type:'SOLID',color:{r:0,g:0,b:0}}, …)`
   rendered one Button/Secondary instance black although its binding and mode resolved to pink; rebinding with the variable's
   actual value as the base colour fixed it. Write helpers that read `variable.valuesByMode[mode]` for the base (USELOG 2026-11-20).
+- **`vectorPaths` accepts only M, L, C, Q and Z.** An `H`/`V` command ("Invalid command at H") throws, and the whole
+  `use_figma` call rolls back, so a 6-screen batch was lost and resent. Write every segment as `L x y` (USELOG 2026-11-20).
+- **An icon helper fed a name missing from its SVG map draws nothing and still returns ok.** A CTA kept an empty
+  `icon/mic` slot until the critic noticed. Make the lookup throw on an unknown key, because each `use_figma` call
+  redeclares its own icon map and it drifts between calls (USELOG 2026-11-20).

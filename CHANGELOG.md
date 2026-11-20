@@ -10,6 +10,12 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-20 — figma-gotchas: vectorPaths commands, silent missing icons
+
+**Changed:** `references/surfaces/figma-gotchas.md` +2 lines: vectorPaths only accepts M/L/C/Q/Z (H/V throws and rolls back the call); an icon map lookup must throw on an unknown key (a CTA rendered with an empty icon slot).
+**Why:** both cost a retry or a critic finding in a 62-frame competitor redesign.
+**Rules updated:** figma-gotchas.md (+2). Lane: large. Cost: ~2 h run.
+
 ## 2026-11-20 — retro: a project family's blueprint is updated by every run
 
 **Changed:** `references/loop/retro.md` "Where each lesson goes" — new row: lessons about a family of projects sharing one blueprint (listed in `projects.md`) also go into that blueprint's right part (shell/step, recurring error with its count, element range, default addition tagged `[concept]`/`[gu]`), every run, unasked. `references/surfaces/funnel.md`: start a funnel family from its blueprint; recurring cross-funnel checks in the critic section; fork/reskin, motion/media and personal-data bullets moved to the new `funnel-gotchas.md` with three probes (cropped shadow, decor over content, reveal timing).
