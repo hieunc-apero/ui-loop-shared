@@ -23,37 +23,16 @@ and where a user can leave or go back. Write that list into the brief — the cr
   per-frame timeline (innerText / role=dialog sampled each animation frame) catches a page that
   renders something else first — a server-rendered old paywall flashed before the payment popup
   and only the user saw it (USELOG 2026-10-28, paywall round 2).
-- **A funnel forked from another one inherits its documented decisions** (forward-only, no Back,
-  prices). Put them under **Out of scope** from round 1 with their source, or they come back as
-  blockers: round 1 of seasonal funnel 1 blocked on "no Back" that the source README chose.
 - **A deep link that seeds state shows the seed, not the flow.** `?step=processing` in a fresh
   page has no upload, so the seeded sample appears where the user's photo would. Say so in the
   critic brief under Measured, or capture those steps in the same page after a real upload —
   round 1 of seasonal funnel 3 blocked on it (USELOG 2026-10-16).
-- **A fork starts from the source's rule file, copied whole, then edited.** Seasonal funnel 3's rules were
-  rewritten from memory and lost funnel 1's "processing fits one phone viewport"; the user
-  caught it ("màn loading đang dài quá").
-- **Re-theming a fork: when a colour changes role, audit every inherited state that used it.**
-  Seasonal funnel 3 moved orange from "selection" to "CTA"; the option cards were redone, but the
-  paywall's selected-plan check stayed orange and the critic blocked it. Grep the old token
-  and its rgba triples across the whole stylesheet, not only the screens you redesigned.
-- **A fork whose parent is still being edited inherits a moving target.** Re-read the parent's
-  `.claude/design-rules.md` before every critic round and port the rules added since the fork
-  (seasonal funnel 2: rounds 1–2 blocked on parent rules 14–17 written after the fork — real webs,
-  no success webs, the "Need help?" pill). Diff the parent's rule numbers, not your memory.
-- **A re-themed fork keeps the parent's colours in hard-coded triples, not only tokens.** Remapping the
-  tokens left ~40 `rgba(r,g,b,…)` / hex uses of the old accent (a halo, a card border, a fade band) and the
-  critic found them screen by screen. Grep the old accent's triples and hexes across every file and remap
-  them in one pass; then sample the hues of every AI-generated prop too (a generated bunting carried one
-  off-palette flag) (2026-10-21).
 - **Anything that rises or swings on a step (a card out of an envelope, a lid, a flap) gets its
   clearance measured in the DOM across viewport heights** — 1440×900/800, 1280×720, 1366×640,
   390×844, 375×667 — sampling the top of every moving part through the animation against the
   title's bottom and the CTA's top. Measure the CTA's own bottom against the viewport in the same probe — a scene
   that fits its gap can still push the CTA below the fold (2026-10-21). One screenshot at 1440×900 hid an overlap at 720 tall
   (seasonal funnel 2, rounds 3–4). Size the moving object from the viewport height, not a fixed px.
-- **Forking a funnel into a new brand, and checking the capture server:** `web-gotchas.md` →
-  "Forking a funnel into another brand" (kill-lists vs the new brief, restyle not recolour, busy ports).
 - **An entrance that fires on a timer has already fired by `load`.** A probe that wants the
   "before" frame of a curtain, a card dealing in or a hero animating cannot just screenshot early
   after `waitUntil:"load"` — `load` waits for images, while the step's own 300ms timer ran at DOM
@@ -62,10 +41,6 @@ and where a user can leave or go back. Write that list into the brief — the cr
 - **A fix is done when its element is on a screenshot, not when the CSS is written.** A lock decor aimed at
   `.knock`, a class the fork never had, shipped as done and the PO asked again. Also scope every per-step
   override to its steps: an unscoped `.dd-mari` rule pulled the story props onto two headlines (2026-10-22).
-- **Capture hygiene for scripted runs:** never let a partial re-capture overwrite the full run's
-  `metrics.json` (name it per run), and log `document.fonts.check(...)`, failed requests and
-  broken images in the continuous-flow run too — a run that lost its web fonts and logo cost a
-  round as a false blocker (seasonal funnel 2, round 4).
 - **Check every spec add-on against the data that exists at its step before building it.** A
   "reveal the result" effect on a paywall that has no output image can only reveal the user's own
   upload. The user rejected it as "k hợp lý" (seasonal funnel 2, 16/10). Flag it, or propose an
@@ -75,18 +50,6 @@ and where a user can leave or go back. Write that list into the brief — the cr
 - **Re-read the PO sheet before hand-off, not only at the start.** The sheet changed mid-run (an
   emoji in D8, a new feedback row). The user's "update ô 8D" assumed the latest sheet was being
   read.
-- **A funnel that continues an email reuses the email's merge-asset samples — open a frame of each first.**
-  The sample "blurred video" GIF had the lock and its caption baked in; an overlay drawn on top doubled the label
-  ("Your video here" twice). Extract one frame (`ffmpeg -frames:v 1`) of every sample asset before drawing UI on it,
-  and read the email project's handoff for what the backend bakes in (USELOG 2026-11-07).
-- **Label every personal-data slot for the case where the data is missing.** A fallback template image kept the
-  "Your photo · Uploaded · 100% Rendered" labels and the critic blocked it as a false claim; the same funnel's
-  later step also claimed "rendered" while its first step deliberately didn't. Give the fallback its own labels
-  and grep the claim across every step of the funnel, not only the step the spec mentions (USELOG 2026-11-07).
-- **Sticky price rail beside a long proof column, under a sticky header:** keep the page's bottom
-  space *inside* the grid area (padding on the long column, not the grid). Otherwise the rail
-  is pushed up under the header at the end of the page and its heading gets cut (2026-10-16).
-
 - **Measure positions at rest:** finish every entrance animation first (`el.getAnimations().forEach(a=>a.finish())`,
   in a try — infinite ones throw). A header read mid-rise was reported 14px low and the user asked to move it (2026-10-22).
 
@@ -95,36 +58,25 @@ and where a user can leave or go back. Write that list into the brief — the cr
   maracas animated with standalone `rotate`/`translate` ran in desktop Chrome but stood still on the user's phone — write
   phone animations as `transform` keyframes. Chrome in the pane is not proof a phone moves (2026-10-22).
 
-- **Per-step rooms: find the layer that actually paints.** A fixed `.atmo` may sit behind an opaque framed fill
-  (`.panel::after`) plus an inset band and a button scrim of the same colour; recolour all of them, and outrank the old
-  selector's specificity (`!important` alone lost to (0,3,1)). Use `elementsFromPoint` — it skips `pointer-events:none`
-  layers, so read the pseudo-elements too. Never a room in the CTA's hue (2026-10-22, DOTD f2).
-- **No AI image credits? Cut the prop from the photos you already have.** Real rose leaves lifted from a rose photo
-  (green mask → opening to drop the stem → components → soft alpha) replaced a stock leaf the PO called fake (2026-10-22).
 
 - **Media that runs across steps (a song, an ambient loop) gets its own element outside the
   per-step markup.** Changing step swaps only the picture. If the clips share the soundtrack,
   start each new clip at the song's position. In the capture script, measure the track time
   before and after Continue (seasonal funnel 1, 16/10: "đừng play lại từ đầu").
 
-- **"Like the original" means its arrangement, exactly.** When the user points at a live source funnel
-  ("sửa cho đúng bản gốc, style giữ nguyên"), open it and copy its order, its single CTA and where it
-  sits, its price layout, and what is or isn't sticky; read its real prices from its offer endpoint
-  rather than guessing. Keep only your styling (2026-10-19, a paywall rebuilt twice).
-- **Several sessions on sibling funnels at once:** claim a funnel before editing ("claiming funnel N for
-  X, hold off"), release with a one-line summary of what changed and where, and build on what is on
-  disk. Never redeploy a sibling you didn't claim — the deploy ships whatever is on disk.
-- **Reskinning a forked funnel:** put the inherited theme layer behind the new one and switch its art off
-  wholesale — regex its `url("assets/<old>/…")` to `none` and remap its hard-coded atmosphere rgba — then
-  check what still paints: phone-only `!important` rules kept the old plum on option cards and text
-  halos, and an inherited `::after` ring doubled the new frame. Probe the DOM for every border, shadow
-  and background under the spot rather than guessing from pixels, and keep `overflow:visible` on the
-  scene wrappers (a padded wrap clipped glows into straight edges) (2026-11-03, Veterans fork of DOTD 3).
 - **After every deploy, prove production serves it:** fetch the cache-busted CSS/JS URL the page
   references and grep for a marker from this change; static hosts sometimes report "ready" while the
   old build still serves. Redeploy once if the marker is missing (2026-10-17 → 19: about one deploy in
   six needed a second try). If the log has no "Aliased" line, read its head: on 22/10 `npx vercel` pulled a broken
   new CLI (65.1.0, npm 404); pin the last good one (`npx -y vercel@65.0.0 deploy --prod --yes`). If the stamp is still old after a "ready" deploy, redeploy with `--force` (23/10: twice in a row the new files were up but `index.html` was the previous build).
+
+- **Forks, re-themes, sibling sessions, per-step rooms, capture hygiene, email-continued funnels:**
+  `funnel-gotchas.md` → "Forks and re-themes" (also personal-data fallback labels) — read it for a fork, a reskin or a fallback sample.
+- **Recurring corrections across a person's funnels:** if `~/.ui-loop/projects.md` lists a cross-funnel
+  checklist for the brand, walk it in the self-check and give it to the critic as project rules. A run that skipped one
+  shipped the same cropped shadow, decor over the CTA and topbar cutting the hat that earlier funnels had already
+  been corrected on (2026-11-20 mining: ~16 cropped-shadow flags over 10 funnels).
+- **`[đo]` probes every funnel needs:** `funnel-gotchas.md` → "Probes" (cropped shadow, decor over content, reveal timing).
 
 ## Capture for the critic
 
