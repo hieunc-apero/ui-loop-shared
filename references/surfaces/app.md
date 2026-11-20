@@ -69,3 +69,10 @@ the invites list said +480, a grant dated in the past, a history that didn't rea
 
 Hover, URL state, scroll restoration, breakpoints above tablet: not applicable. Motion can't
 be judged on Figma frames — list it under Not checked.
+
+## Redrawing a competitor's screen list as a new product
+
+New colours and type are not enough: the critic flagged three flows that kept the competitor's arrangement (same
+two-card toggle + list, same profile stack, same 2-column grid and 2×2 answers). For each flow change at least one
+structure (layout pattern, interaction, step order), not only the skin. Media placeholders (icon tiles for videos)
+read as "nothing loaded": generate illustrations up front (USELOG 2026-11-20).

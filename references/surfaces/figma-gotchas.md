@@ -60,3 +60,15 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
   main component can look right while an instance in another mode resolves to another colour (an icon showed purple in the
   component and `#f5f5f5` in the screen). Drop `boundVariables` from the paint, and from gradient stops, when you mean a fixed
   colour. Also check `instance.boundVariables.componentProperties`: a variant prop such as `Mode` can be bound to a library variable.
+
+- **A file owned by a Starter-plan team cuts the MCP off after a short burst** ("tool call limit on the Starter plan"):
+  reads may work again a minute later, writes keep failing. Check `whoami` for the plan that owns the file before
+  promising to draw there; build in a new file under a plan where the user has a Full seat on a paid tier and tell the user
+  to copy the page across (USELOG 2026-11-20, 97-screen redesign).
+- **Resizing a main component's height does not reach every instance.** Instances placed in wrap/auto-layout rows kept
+  36/39 px after both chip components were set to 44 px, and a verify round failed on it. After changing a component's
+  size, walk its instances, set `layoutSizingVertical = 'FIXED'` + `resize(w, h)`, and read the heights back
+  (USELOG 2026-11-20).
+- **Fix token contrast before drawing many frames.** White labels on a bright orange primary (3.1:1) and light-grey
+  captions (2.7:1) failed across a whole 97-frame file; the fix was token values + a page-wide pass that rebinds text by
+  its background. Compute the 4–5 text/background pairs of a new palette first (USELOG 2026-11-20).
