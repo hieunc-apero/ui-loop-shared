@@ -23,6 +23,17 @@ self-check needs one of the probes below. Moved out of `funnel.md` on 2026-11-20
   first change within 400 ms, no run of ≥ 10 identical frames mid-reveal (a static hold), no single-frame jump
   larger than 1/8 of the total travel.
 
+## Motion and media across steps
+
+- **Keyframes name both ends, and phone motion uses `transform`.** A `@keyframes` with only `to` starts from the element's
+  own transform: a film strip's `rotate(-3deg)` turned to 0° every loop and cropped a sprocket row on all 3 funnels. And
+  maracas animated with standalone `rotate`/`translate` ran in desktop Chrome but stood still on the user's phone — write
+  phone animations as `transform` keyframes. Chrome in the pane is not proof a phone moves (2026-10-22).
+- **Media that runs across steps (a song, an ambient loop) gets its own element outside the
+  per-step markup.** Changing step swaps only the picture. If the clips share the soundtrack,
+  start each new clip at the song's position. In the capture script, measure the track time
+  before and after Continue (seasonal funnel 1, 16/10: "đừng play lại từ đầu").
+
 ## Forks and re-themes
 
 - **A funnel forked from another one inherits its documented decisions** (forward-only, no Back,

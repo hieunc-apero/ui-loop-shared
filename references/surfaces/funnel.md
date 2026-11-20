@@ -53,17 +53,6 @@ and where a user can leave or go back. Write that list into the brief — the cr
 - **Measure positions at rest:** finish every entrance animation first (`el.getAnimations().forEach(a=>a.finish())`,
   in a try — infinite ones throw). A header read mid-rise was reported 14px low and the user asked to move it (2026-10-22).
 
-- **Keyframes name both ends, and phone motion uses `transform`.** A `@keyframes` with only `to` starts from the element's
-  own transform: a film strip's `rotate(-3deg)` turned to 0° every loop and cropped a sprocket row on all 3 funnels. And
-  maracas animated with standalone `rotate`/`translate` ran in desktop Chrome but stood still on the user's phone — write
-  phone animations as `transform` keyframes. Chrome in the pane is not proof a phone moves (2026-10-22).
-
-
-- **Media that runs across steps (a song, an ambient loop) gets its own element outside the
-  per-step markup.** Changing step swaps only the picture. If the clips share the soundtrack,
-  start each new clip at the song's position. In the capture script, measure the track time
-  before and after Continue (seasonal funnel 1, 16/10: "đừng play lại từ đầu").
-
 - **After every deploy, prove production serves it:** fetch the cache-busted CSS/JS URL the page
   references and grep for a marker from this change; static hosts sometimes report "ready" while the
   old build still serves. Redeploy once if the marker is missing (2026-10-17 → 19: about one deploy in
@@ -76,8 +65,6 @@ and where a user can leave or go back. Write that list into the brief — the cr
   checklist for the brand, walk it in the self-check and give it to the critic as project rules. A run that skipped one
   shipped the same cropped shadow, decor over the CTA and topbar cutting the hat that earlier funnels had already
   been corrected on (2026-11-20 mining: ~16 cropped-shadow flags over 10 funnels).
-- **`[đo]` probes every funnel needs:** `funnel-gotchas.md` → "Probes" (cropped shadow, decor over content, reveal timing).
-
 ## Capture for the critic
 
 Pass `Surface: funnel` and the steps as an ordered list, each with its URL (or the action that
@@ -100,4 +87,13 @@ Use test data only. The critic never submits real payment or personal data.
   product allows them and are not hidden.
 - Error and retry on the steps that call a server.
 - One primary action per step.
+
+Recurring across funnels (2026-11-20 mining, each flagged on 3+ funnels; probes in `funnel-gotchas.md` → "Probes"):
+- `[đo]` No cropped shadow or glow: no shadow inside a clipping ancestor, and every cutout's outer 2 px of alpha is 0.
+- `[đo]` Decor never overlaps text, the CTA, the sound control or faces (0 px at 390×844 and 390×664); the CTA paints above decor.
+- `[đo]` Text over imagery is made legible with text-shadow, never with a scrim over the video or decor.
+- `[đo]` A selected option differs from default by fill + border + a mark, in a hue that is not the page background's.
+- `[đo]` Tap-to-reveal: an idle affordance, the reveal starts ≤ 400 ms after the tap, no static hold, no jump.
+- `[đo]` WebKit at 390×664: images in fixed layers load (no lazy), autofilled text keeps its colour, a CTA tapped with an input focused fires once.
+- `[gu]` Props look photographic and asymmetric and match the ref side by side; later steps keep the opening's decor family; a font change starts from a comparison sheet.
 - `[đo]` Decor over a full-bleed video/clip: faces and subjects move and differ per clip, so place dressing only in bands that are empty in every clip (top sky strip above the header, screen edges just above the headline) and check each clip, not one frame.
