@@ -10,6 +10,12 @@ refer to that repo.
 Every entry says **Changed**, **Why**, and — once evals exist — the **score** before and
 after, so the history shows whether a change helped rather than only that it happened.
 
+## 2026-11-20 — retro: a project family's blueprint is updated by every run
+
+**Changed:** `references/loop/retro.md` "Where each lesson goes" — new row: lessons about a family of projects sharing one blueprint (listed in `projects.md`) also go into that blueprint's right part (shell/step, recurring error with its count, element range, default addition tagged `[concept]`/`[gu]`), every run, unasked. `references/surfaces/funnel.md`: start a funnel family from its blueprint; recurring cross-funnel checks in the critic section; fork/reskin, motion/media and personal-data bullets moved to the new `funnel-gotchas.md` with three probes (cropped shadow, decor over content, reveal timing).
+**Why:** mining one user's ~15 funnel sessions (USELOG 2026-11-20) found the same corrections repeated across funnels — cropped shadows about 16 times over 10 funnels — because each lesson lived only in that funnel's own rule file. The user asked that the blueprint keep itself current from later sessions.
+**Rules updated:** retro.md (+1 destination row), funnel.md, funnel-gotchas.md (new).
+
 ## 2026-11-20 — new surface: HTML email
 
 **Changed:** `references/surfaces/email.md` (new: build, skeleton, style, dark mode across client families, the Gmail lightness flip, background-image rule, three-variant logo, image-only CTA, self-check, capture); `references/surfaces/email-gotchas.md` (new: the "HTML emails" section and 3 email bullets moved verbatim out of `web-gotchas.md`, plus simulator/capture traps); `tools/email-shots/` (light / dark / gmail-sim fixtures × 420/320 through an iframe harness + the lightness-flip simulator); SKILL.md surface + build rows and triggers; `critic/modes.md` `email` section; `ui-critic` input + description; READMEs.
