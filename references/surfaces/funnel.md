@@ -61,8 +61,9 @@ and where a user can leave or go back. Write that list into the brief — the cr
 
 - **Forks, re-themes, sibling sessions, per-step rooms, capture hygiene, email-continued funnels:**
   `funnel-gotchas.md` → "Forks and re-themes" (also personal-data fallback labels) — read it for a fork, a reskin or a fallback sample.
-- **Recurring corrections across a person's funnels:** if `~/.ui-loop/projects.md` lists a cross-funnel
-  checklist for the brand, walk it in the self-check and give it to the critic as project rules. A run that skipped one
+- **Recurring corrections across a person's funnels:** if `~/.ui-loop/projects.md` lists a blueprint for
+  the brand's funnel family (shared steps, element positions, decor zones, recurring errors), start a new funnel from it,
+  walk it in the self-check and give it to the critic as project rules. A run that skipped one
   shipped the same cropped shadow, decor over the CTA and topbar cutting the hat that earlier funnels had already
   been corrected on (2026-11-20 mining: ~16 cropped-shadow flags over 10 funnels).
 ## Capture for the critic
