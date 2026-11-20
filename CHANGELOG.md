@@ -1281,3 +1281,9 @@ Critic: round 1 FAIL with 4 blockers, round 2 PASS.
 **Changed:** `references/surfaces/figma-gotchas.md` +2.
 **Why:** after hand-off the user asked for a cuter style and other colourways for a 97-frame file; options as variable modes made the pick a one-pass roll-out, and decor pasted at fixed coordinates failed a critic round with 6 blockers until it was placed by measured free space.
 **Rules updated:** figma-gotchas.md.
+
+## 2026-11-20 — figma-gotchas: bound paint base colour
+
+**Changed:** `references/surfaces/figma-gotchas.md` +1 — bind paints with the variable's real value as the base colour.
+**Why:** a critic round flagged a "black border" the user had asked to remove; the node was bound to the pink variable in the right mode but rendered black until rebound with a pink base.
+**Rules updated:** figma-gotchas.md.

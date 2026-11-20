@@ -79,3 +79,6 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
   every frame put confetti on titles and a cloud under paywall copy (critic, 6 blockers). Collect the boxes of every text,
   instance and filled/stroked node, place each piece only where it clears them by ≥ 8 px, behind content, ≤ 4 per frame,
   and avoid 3+ pieces on one baseline (USELOG 2026-11-20).
+- **Bind a paint with its real colour as the base, not black.** `setBoundVariableForPaint({type:'SOLID',color:{r:0,g:0,b:0}}, …)`
+  rendered one Button/Secondary instance black although its binding and mode resolved to pink; rebinding with the variable's
+  actual value as the base colour fixed it. Write helpers that read `variable.valuesByMode[mode]` for the base (USELOG 2026-11-20).
