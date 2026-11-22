@@ -76,3 +76,11 @@ New colours and type are not enough: the critic flagged three flows that kept th
 two-card toggle + list, same profile stack, same 2-column grid and 2×2 answers). For each flow change at least one
 structure (layout pattern, interaction, step order), not only the skin. Media placeholders (icon tiles for videos)
 read as "nothing loaded": generate illustrations up front (USELOG 2026-11-20).
+
+## Store assets (Play / App Store icon + screenshots)
+Learned on two Android apps (USELOG 2026-11-22, two projects, same failures):
+- Icon master = full-bleed square, no baked radius; show masks (circle/squircle) only as previews; key art inside the ~61% centre circle.
+- Each shot's caption must describe what its screen shows — a store shot that misstates a feature is a blocker.
+- Shots 1 and 2 must differ at thumbnail size (different screen type, not the same scene twice); one feature card without a phone is a good break.
+- Callouts sit in clear space (never over app text) and add a fact the screen and headline don't already say.
+- Nothing cut by the frame edge except an intentional, obvious bleed; dark app screens on a dark stage need a stroke or lighter stage.
