@@ -93,3 +93,10 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
   the start: retrofitting them afterwards made captions 12 px taller and pushed a hint card over the mic (USELOG 2026-11-22).
 - **A huge OUTSIDE stroke does not draw a spotlight scrim.** A 1200 px stroke round a hole rendered nothing. Use
   `figma.subtract([fullRect, hole])` and fill the result (USELOG 2026-11-22).
+- **A batch swap that replaces an image with a wrapper changes every later lookup.** After photos became
+  `Scene/…` frames holding the mascot, a resize pass that looked for direct children found 0 and reported ok; search
+  descendants (`findAll`) and assert the count. A rule keyed on row text ("Order your usual") also matched a whole
+  screen and swapped its centre avatar for a list tile — scope such passes by parent (row frames only), and set x/y on
+  anything inserted into a non-auto-layout parent or it lands at (0,0) (USELOG 2026-11-22).
+- **Swapping in a bigger subject moves the face.** Recompute every overlay stack against the new chin line (Loqui: a
+  mascot 1.3× the old photo dropped the chin 50 px under three captions) (USELOG 2026-11-22).
