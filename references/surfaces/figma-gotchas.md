@@ -105,3 +105,5 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
 - Progress rings: a stroked ELLIPSE with arcData draws the pie radii to the centre and covers the label — use a filled ellipse with `arcData.innerRadius` (donut) and put the text last. (Loqui 22/11)
 - In `findAll` predicates, `n.findOne`/`n.findAll` throw on TEXT nodes — guard with `'children' in n`. A throwing script rolls back the whole call.
 - Before building a multi-section app, write the mock-data ledger (streak, badges, scores, dates) once and reuse it; ledger drift was most of a 9-blocker critic round.
+- The Figma MCP seat has a call cap: a 38-frame build plus per-frame screenshots ran it out, and the critic then saw 2 frames (NOT REVIEWED). Budget calls: build several screens per `use_figma`, self-check with one high-res section screenshot per row instead of one per frame, and give the critic row screenshots (or exported PNGs) instead of a nodeId list.
+- Place frame captions/annotations last, after every resize and restack; captions placed early drift when a frame grows or a row moves.
