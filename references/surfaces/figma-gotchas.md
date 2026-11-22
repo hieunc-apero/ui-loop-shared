@@ -101,3 +101,7 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
 - **Swapping in a bigger subject moves the face.** Recompute every overlay stack against the new chin line (Loqui: a
   mascot 1.3× the old photo dropped the chin 50 px under three captions) (USELOG 2026-11-22).
 - `setBoundVariableForPaint` drops paint-level `opacity`: for translucent scrims/glows use node opacity or an unbound paint (Sayso v2, 2026-11-22).
+
+- Progress rings: a stroked ELLIPSE with arcData draws the pie radii to the centre and covers the label — use a filled ellipse with `arcData.innerRadius` (donut) and put the text last. (Loqui 22/11)
+- In `findAll` predicates, `n.findOne`/`n.findAll` throw on TEXT nodes — guard with `'children' in n`. A throwing script rolls back the whole call.
+- Before building a multi-section app, write the mock-data ledger (streak, badges, scores, dates) once and reuse it; ledger drift was most of a 9-blocker critic round.
