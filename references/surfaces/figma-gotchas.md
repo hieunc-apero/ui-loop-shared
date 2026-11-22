@@ -87,3 +87,9 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
 - **An icon helper fed a name missing from its SVG map draws nothing and still returns ok.** A CTA kept an empty
   `icon/mic` slot until the critic noticed. Make the lookup throw on an unknown key, because each `use_figma` call
   redeclares its own icon map and it drifts between calls (USELOG 2026-11-20).
+- **A 90-frame build drifts when every call redeclares its helpers.** Store the helper library once as a text node on a
+  `_lib` page and load it at the top of each call with `await new (Object.getPrototypeOf(async function(){}).constructor)(node.characters)()`
+  (eval works in the sandbox). Bake the 48 dp hit area, centred sheet grabber and one toast recipe into those helpers from
+  the start: retrofitting them afterwards made captions 12 px taller and pushed a hint card over the mic (USELOG 2026-11-22).
+- **A huge OUTSIDE stroke does not draw a spotlight scrim.** A 1200 px stroke round a hole rendered nothing. Use
+  `figma.subtract([fullRect, hole])` and fill the result (USELOG 2026-11-22).
