@@ -100,3 +100,4 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
   anything inserted into a non-auto-layout parent or it lands at (0,0) (USELOG 2026-11-22).
 - **Swapping in a bigger subject moves the face.** Recompute every overlay stack against the new chin line (Loqui: a
   mascot 1.3× the old photo dropped the chin 50 px under three captions) (USELOG 2026-11-22).
+- `setBoundVariableForPaint` drops paint-level `opacity`: for translucent scrims/glows use node opacity or an unbound paint (Sayso v2, 2026-11-22).
