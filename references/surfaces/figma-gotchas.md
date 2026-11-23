@@ -107,3 +107,4 @@ Moved out of `figma.md` (size cap) and grown by topic. Each line is a trap that 
 - Before building a multi-section app, write the mock-data ledger (streak, badges, scores, dates) once and reuse it; ledger drift was most of a 9-blocker critic round.
 - The Figma MCP seat has a call cap: a 38-frame build plus per-frame screenshots ran it out, and the critic then saw 2 frames (NOT REVIEWED). Budget calls: build several screens per `use_figma`, self-check with one high-res section screenshot per row instead of one per frame, and give the critic row screenshots (or exported PNGs) instead of a nodeId list.
 - Place frame captions/annotations last, after every resize and restack; captions placed early drift when a frame grows or a row moves.
+- Recolouring a subset: target the exact nodes (by name/label) or hit-test the background under each node — never climb N parents and recolour everything inside (Tala 23/11 turned tabs/buttons orange).
