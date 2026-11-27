@@ -84,3 +84,4 @@ Learned on two Android apps (USELOG 2026-11-22, two projects, same failures):
 - Shots 1 and 2 must differ at thumbnail size (different screen type, not the same scene twice); one feature card without a phone is a good break.
 - Callouts sit in clear space (never over app text) and add a fact the screen and headline don't already say.
 - Nothing cut by the frame edge except an intentional, obvious bleed; dark app screens on a dark stage need a stroke or lighter stage.
+- Icon decor sits fully inside the circle mask (farthest corner ≤ ~47% of the side from centre) or bleeds obviously; check the circle preview, not only the square. Feature-graphic pop cards sit below the mascot's chin, never over the mouth.
